@@ -1,0 +1,10 @@
+{
+  "registerPage": "Register page",
+  "requiredError": "This field is required.",
+  "tyeError": "Just type letters.",
+  "usernameError": "Must be between 8 to 20 characters,just numbers and letters.",
+  "emailError": "Please provide a valid email",
+  "onlyNumberError": "Only letters are allowed.",
+  "passwordError": "Length must be at least 8 charachters, atleast 1 number, capital and small letter has to be used.",
+  "rePasswordError": "Password does not match"
+}

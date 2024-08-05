@@ -1,0 +1,46 @@
+// react
+import { ReactNode, useEffect } from 'react';
+
+// next js
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Image from 'next/image';
+
+// i18next
+import { useTranslation, Trans } from 'next-i18next';
+
+// tailwind merge in order to merge added classes
+import { twMerge } from 'tailwind-merge';
+
+interface IProps
+  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  labelClassName?: string;
+}
+
+const Checkbox: React.FC<IProps> = (props) => {
+  const router = useRouter();
+  const { children, labelClassName = '', className, ...rest } = props;
+
+  return (
+    <div className="flex items-center">
+      <input
+        id="checkbox"
+        type="checkbox"
+        className={twMerge(
+          `w-4 h-4 text-lightGreen-500 bg-inherit rounded-sm border border-darkBlue-100 focus:outline-0 outline-0 ring-0 focus:ring-0 focus:ring-offset-0`,
+          className
+        )}
+        {...rest}
+      />
+      <label
+        htmlFor="checkbox"
+        className={twMerge(`ml-2 text-sm font-book text-darkBlue-500`, labelClassName)}>
+        {children}
+      </label>
+    </div>
+  );
+};
+
+export default Checkbox;
