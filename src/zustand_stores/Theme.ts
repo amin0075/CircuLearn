@@ -1,6 +1,5 @@
-import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
-
+import { create } from "zustand";
 // types
 import { IColor } from "@src/@types/color";
 
