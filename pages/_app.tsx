@@ -22,9 +22,6 @@ import { Page } from "@src/@types/page";
 // react-toastify
 import { ToastContainer } from "react-toastify";
 
-// hoc
-import { withAuth } from "@src/hoc/withAuth";
-
 type Props = AppProps & {
   Component: Page;
 };

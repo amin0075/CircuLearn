@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-// i18next
-
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";
 

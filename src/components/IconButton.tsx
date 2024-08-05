@@ -11,8 +11,6 @@ import Image from "next/image";
 // utils
 import { bgColor, bgGradient, borderColor } from "@src/utils/colorUtils";
 
-// i18next
-
 // zustand store
 import { useThemeStore } from "@src/zustand_stores/Theme";
 

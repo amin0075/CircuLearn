@@ -12,7 +12,7 @@ import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 
 // icons
-import { Info } from "@src/assets/icons";
+import { Faq } from "@src/assets/icons";
 
 // i18next
 
@@ -86,7 +86,7 @@ const TextField: React.FC<IProps> = forwardRef((props, ref) => {
         } min-h-[50px] ${attr()}`}
       >
         {error ? (
-          <Info className={`w-6 h-6 ${multiLine ? "mt-3" : ""}`} />
+          <Faq className={`w-6 h-6 ${multiLine ? "mt-3" : ""}`} />
         ) : (
           iconLeft && iconLeft
         )}
@@ -123,7 +123,7 @@ const TextField: React.FC<IProps> = forwardRef((props, ref) => {
           textTransform="capitalize"
           className="dark:text-primary-red text-primary-red"
         >
-          {t(errorText || "")}
+          {errorText || ""}
         </Typography>
       )}
     </div>

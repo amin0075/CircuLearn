@@ -11,8 +11,6 @@ import Image from "next/image";
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";
 
-// i18next
-
 // components
 import Typography from "@src/components/Typography";
 

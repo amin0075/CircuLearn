@@ -1,27 +1,27 @@
 // react
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect } from "react";
 
 // next js
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import Image from 'next/image';
-
-// i18next
-import { useTranslation, Trans } from 'next-i18next';
+import type { NextPage } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
 
 // tailwind merge in order to merge added classes
-import { twMerge } from 'tailwind-merge';
+import { twMerge } from "tailwind-merge";
 
 interface IProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   labelClassName?: string;
 }
 
 const Checkbox: React.FC<IProps> = (props) => {
   const router = useRouter();
-  const { children, labelClassName = '', className, ...rest } = props;
+  const { children, labelClassName = "", className, ...rest } = props;
 
   return (
     <div className="flex items-center">
@@ -36,7 +36,11 @@ const Checkbox: React.FC<IProps> = (props) => {
       />
       <label
         htmlFor="checkbox"
-        className={twMerge(`ml-2 text-sm font-book text-darkBlue-500`, labelClassName)}>
+        className={twMerge(
+          `ml-2 text-sm font-book text-darkBlue-500`,
+          labelClassName
+        )}
+      >
         {children}
       </label>
     </div>

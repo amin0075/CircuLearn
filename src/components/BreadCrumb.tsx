@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-// i18next
-
 // components
 import Typography from "@src/components/Typography";
 import Button from "@src/components/Button";

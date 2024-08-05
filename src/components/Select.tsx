@@ -8,13 +8,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-// i18next
-
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";
 
 // icons
-import { Info, Arrow } from "@src/assets/icons";
+import { Arrow, Faq } from "@src/assets/icons";
 
 // hooks
 import useComponentVisible from "@src/hooks/useComponentVisible";
@@ -63,7 +61,7 @@ const Select: React.FC<IProps> = forwardRef((props, ref) => {
             : "focus:border-black dark:border-customGray border-customGrayDark"
         }`}
       >
-        {error ? <Info className="w-6 h-6" /> : iconLeft && iconLeft}
+        {error ? <Faq className="w-6 h-6" /> : iconLeft && iconLeft}
 
         <select
           ref={ref}
@@ -93,7 +91,7 @@ const Select: React.FC<IProps> = forwardRef((props, ref) => {
           textTransform="capitalize"
           className="dark:text-primary-red text-primary-red"
         >
-          {t(errorText || "")}
+          {errorText || ""}
         </Typography>
       )}
     </div>
