@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-// i18next
-
 // utils
 import { bgColor, borderColor } from "@src/utils/colorUtils";
 
