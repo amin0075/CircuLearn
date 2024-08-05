@@ -18,7 +18,6 @@ import useComponentVisible from "@src/hooks/useComponentVisible";
 
 // zustand store
 import { useThemeStore } from "@src/zustand_stores/Theme";
-import { useUserStore } from "@src/zustand_stores/user";
 
 // routes
 import { ROUTES_URL } from "@src/routes";
