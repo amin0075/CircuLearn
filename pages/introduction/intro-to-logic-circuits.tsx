@@ -10,9 +10,6 @@ import { useRef, useEffect } from "react";
 // hooks
 import useHasHydrated from "@src/hooks/useHasHydrated";
 
-// react-query
-import { dehydrate, QueryClient, useQuery } from "react-query";
-
 // utils
 import { ssrAuthHandler } from "@src/utils/ssrAuthHandler";
 import Button from "@src/components/Button";
