@@ -42,13 +42,13 @@ export default function FAQ() {
         {data.faq.map((item, index) => (
           <div
             key={index}
-            className="w-full flex flex-col gap-4 p-4 bg-gray-200 rounded-lg"
+            className="w-full flex flex-col gap-4 p-4 bg-gray-200 dark:bg-customGrayDark rounded-lg"
           >
             <div className="w-full flex items-center justify-between gap-2">
               <Typography variant="h4">{item.question}</Typography>
               <IconButton onClick={() => toggleAnswer(index)} className="p-0">
                 <Close
-                  className={`w-8 h-8 text-black transition-all ease-in-out duration-300 ${toggle[index] ? "" : "rotate-45"}`}
+                  className={`w-8 h-8 text-black dark:text-white transition-all ease-in-out duration-300 ${toggle[index] ? "" : "rotate-45"}`}
                 />
               </IconButton>
             </div>

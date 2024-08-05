@@ -63,13 +63,13 @@ export default function Glossary() {
             .sort()
             .map((letter) => (
               <div key={letter} className="mb-6">
-                <Typography variant="h4" className="mb-2" fontweight="semiBold">
+                <Typography variant="h3" className="mb-2" fontweight="semiBold">
                   {letter}
                 </Typography>
                 {groupedData[letter].map((item) => (
                   <div
                     key={item.term}
-                    className="p-2 bg-gray-200 rounded-lg mb-2 flex justify-between items-center"
+                    className="p-2 bg-gray-200 rounded-lg mb-2 flex gap-4 items-center"
                   >
                     <Typography
                       variant="body1"
