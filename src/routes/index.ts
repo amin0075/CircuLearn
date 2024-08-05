@@ -26,7 +26,7 @@ type IMainRoute = {
   basicConcepts: IRoute[];
   gates: IRoute[];
   quiz: IRoute[];
-  aditionalResources: IRoute[];
+  additionalResources: IRoute[];
 };
 
 const ROUTES_URL = {
@@ -44,8 +44,8 @@ const ROUTES_URL = {
   xnorGate: "/gates/xnor-gate",
   quiz: "/quiz",
   feedback: "/feedback",
-  glossary: "/glossary",
-  faq: "/faq",
+  glossary: "/additional-resources/glossary",
+  faq: "/additional-resources/faq",
   contact: "/contact",
   privacy: "/privacy",
 };
@@ -97,7 +97,7 @@ const mainRoutes: IMainRoute = {
       icon: Feedback,
     },
   ],
-  aditionalResources: [
+  additionalResources: [
     { name: "Glossary of terms", url: ROUTES_URL.glossary, icon: Glossary },
     { name: "FAQs", url: ROUTES_URL.faq, icon: Faq },
   ],

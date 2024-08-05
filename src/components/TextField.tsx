@@ -81,9 +81,7 @@ const TextField: React.FC<IProps> = forwardRef((props, ref) => {
           isSensitive ? "dark:bg-backgroundDark bg-backgroundLight" : ""
         } flex w-full ${
           multiLine ? "items-start" : "items-center"
-        } gap-2 px-3 ${
-          multiLine ? "ltr:pr-0 rtl:pr-0" : ""
-        } min-h-[50px] ${attr()}`}
+        } gap-2 ${multiLine ? "pr-0" : ""} ${attr()}`}
       >
         {error ? (
           <Faq className={`w-6 h-6 ${multiLine ? "mt-3" : ""}`} />
@@ -95,7 +93,7 @@ const TextField: React.FC<IProps> = forwardRef((props, ref) => {
             rows={rows}
             ref={ref}
             type="text"
-            className={`text-body2 placeholder:text-body2 ltr:pr-3 rtl:pr-3 ${twMerge(
+            className={`text-body2 placeholder:text-body2 pr-3 ${twMerge(
               `w-full bg-inherit border-none p-0 py-3 dark:text-white text-black placeholder:text-customGrayDark dark:placeholder:text-customGray focus:ring-0 outline-none font-regular placeholder:font-light`,
               className
             )}`}

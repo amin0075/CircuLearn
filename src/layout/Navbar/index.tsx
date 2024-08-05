@@ -66,6 +66,11 @@ const Navbar: React.FC<IProps> = ({
                 textTransform="first-letter-capital"
                 variant="base"
                 fontweight="medium"
+                className={`${
+                  router.pathname === route.url
+                    ? textColor(primaryColor)
+                    : "text-black dark:text-white"
+                }`}
               >
                 {route.name}
               </Typography>

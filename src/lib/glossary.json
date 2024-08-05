@@ -1,0 +1,44 @@
+{
+  "glossary": [
+    {
+      "term": "AND Gate",
+      "definition": "A basic logic gate that outputs true (1) only when all its inputs are true. (Example: If A = 1 and B = 1, output = 1)"
+    },
+    {
+      "term": "Binary System",
+      "definition": "A numbering system that represents all numbers using two symbols: 0 and 1. (Example: Decimal 2 in binary is 10)"
+    },
+    {
+      "term": "Capacitor",
+      "definition": "An electronic component that stores electrical energy in an electric field."
+    },
+    {
+      "term": "Diode",
+      "definition": "A semiconductor device that allows current to flow in one direction only."
+    },
+    {
+      "term": "Exclusive OR (XOR) Gate",
+      "definition": "A logic gate that outputs true (1) when the number of true inputs is odd."
+    },
+    {
+      "term": "Frequency",
+      "definition": "The number of times a periodic action occurs in one second."
+    },
+    {
+      "term": "Gate",
+      "definition": "A basic building block of digital circuits that performs a logical operation."
+    },
+    {
+      "term": "Hexadecimal",
+      "definition": "A base-16 numbering system using digits 0-9 and letters A-F."
+    },
+    {
+      "term": "Inductor",
+      "definition": "A passive electronic component that stores energy in a magnetic field."
+    },
+    {
+      "term": "Junction",
+      "definition": "The region where two different semiconductor materials meet in a semiconductor device."
+    }
+  ]
+}

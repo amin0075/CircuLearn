@@ -7,11 +7,11 @@ import { useRouter } from "next/router";
 
 // components
 
-export default function Introduction() {
+export default function AdditionalResources() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/introduction/intro-to-logic-circuits");
+    router.push("/additional-resources/glossary");
   }, []);
 
   return <></>;
@@ -20,7 +20,7 @@ export default function Introduction() {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return {
     redirect: {
-      destination: "/introduction/intro-to-logic-circuits",
+      destination: "/additional-resources/glossary",
       permanent: false,
     },
   };

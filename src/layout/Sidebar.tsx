@@ -38,7 +38,7 @@ interface ISection {
   basicConcepts: boolean;
   gates: boolean;
   quiz: boolean;
-  aditionalResources: boolean;
+  additionalResources: boolean;
 }
 
 const Sidebar: React.FC<IProps> = () => {
@@ -46,22 +46,26 @@ const Sidebar: React.FC<IProps> = () => {
 
   const { sidebarTransparent, primaryColor, sidebarExpand, darkMode } =
     useThemeStore((state) => state);
-  const { aditionalResources, basicConcepts, gates, introduction, quiz } =
+  const { additionalResources, basicConcepts, gates, introduction, quiz } =
     mainRoutes;
   const LogoRef = useRef<SVGElement | null>();
   const [sections, setSections] = useState<ISection>({
     introduction: false,
-    aditionalResources: false,
+    additionalResources: false,
     basicConcepts: false,
     gates: false,
     quiz: false,
   });
   // function for detecting routes
   const routeDetector = () => `/${router.pathname.split("/")[1]}`;
-  console.log("routeDetector:", routeDetector());
+  // console.log("routeDetector:", routeDetector());
   useEffect(() => {
     Object.keys(sections).forEach((key, index) => {
-      if (routeDetector().replace("/", "") === key.toString()) {
+      console.log("key.toString(): ", key.toString());
+      if (
+        routeDetector().replace("/", "").replace("-", "").toLowerCase() ===
+        key.toString().toLowerCase()
+      ) {
         setSections((prevState) => ({
           ...prevState,
           [key]: true,
@@ -244,7 +248,7 @@ const Sidebar: React.FC<IProps> = () => {
               onClick={() =>
                 setSections((prevState) => ({
                   ...prevState,
-                  aditionalResources: !prevState.aditionalResources,
+                  additionalResources: !prevState.additionalResources,
                 }))
               }
               className={`flex items-center justify-between cursor-pointer text-black dark:text-white mt-4 mb-2 ${
@@ -260,16 +264,18 @@ const Sidebar: React.FC<IProps> = () => {
               </Typography>
               <Arrow
                 className={`w-4 h-4 transition-all duration-300 ease-in-out ${
-                  sections.aditionalResources ? "rotate-[270deg]" : "rotate-90"
+                  sections.additionalResources ? "rotate-[270deg]" : "rotate-90"
                 }`}
               />
             </div>
             <div
               className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out px-2 ${
-                sections.aditionalResources ? "max-h-[500px]" : "max-h-0"
+                sections.additionalResources
+                  ? "max-h-[500px] pb-4"
+                  : "max-h-0 pb-0"
               }`}
             >
-              {aditionalResources.map((route, index) => (
+              {additionalResources.map((route, index) => (
                 <SidebarLink key={index} data={route} />
               ))}
             </div>
