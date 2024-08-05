@@ -16,7 +16,6 @@ import useComponentVisible from "@src/hooks/useComponentVisible";
 
 // zustand store
 import { useThemeStore } from "@src/zustand_stores/Theme";
-import { useUserStore } from "@src/zustand_stores/user";
 
 // routes
 import { navRoutes, ROUTES_URL } from "@src/routes";
@@ -51,7 +50,6 @@ const Navbar: React.FC<IProps> = ({
     sidebarExpand,
     darkMode,
   } = useThemeStore((state) => state);
-  const { userState } = useUserStore((state) => state);
 
   return (
     <>
