@@ -11,10 +11,7 @@ import Image from "next/image";
 // i18next
 
 // icons
-import { Arrow, USDT, ArrowLeft } from "@src/assets/icons";
-
-// luxon
-import { DateTime } from "luxon";
+import { Arrow } from "@src/assets/icons";
 
 // next-usequerystate
 import { useQueryState } from "next-usequerystate";
@@ -26,7 +23,6 @@ import Paper from "../Paper";
 import Table from "@src/components/Table";
 import IconButton from "../IconButton";
 import Select from "../Select";
-import TablePagination from "@src/components/global/TablePagination";
 import Badge from "@src/components/Badge";
 
 interface IProps {
@@ -174,7 +170,6 @@ const TableSample: React.FC<IProps> = ({ data }) => {
             </td>
             <td className="px-6 py-4">
               <div className="flex items-center gap-1">
-                <USDT className="w-4 h-4" />
                 <Typography
                   variant="body2"
                   fontweight="medium"
@@ -196,9 +191,7 @@ const TableSample: React.FC<IProps> = ({ data }) => {
                 fontweight="medium"
                 className="whitespace-nowrap"
               >
-                {DateTime.fromJSDate(new Date(el.updatedAt)).toFormat(
-                  "dd LLL',' HH':'mm a"
-                )}
+                asasa
               </Typography>
             </td>
             <td className="flex items-center px-6 py-4 gap-2">
@@ -235,8 +228,6 @@ const TableSample: React.FC<IProps> = ({ data }) => {
           </tr>
         ))}
       />
-      {/* pagination */}
-      <TablePagination pageCount={5} totalCount={50} />
     </Paper>
   );
 };
