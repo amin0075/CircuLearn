@@ -15,6 +15,7 @@ import IconButton from "@src/components/IconButton";
 import { Chat, Close } from "@src/assets/icons";
 import Paper from "@src/components/Paper";
 import ChatInput from "./ChatInput";
+import ChatBox from "./ChatBox";
 
 interface IProps {
   children?: ReactNode;
@@ -40,7 +41,7 @@ const Chatbot: React.FC<IProps> = () => {
           <Close className="w-8 h-w-8 text-black" />
         </IconButton>
         <div className="flex flex-col gap-2 w-full">
-          <Chatbot />
+          <ChatBox />
           <ChatInput />
         </div>
       </Paper>

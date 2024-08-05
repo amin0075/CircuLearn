@@ -61,7 +61,12 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
-      colors: {},
+      colors: {
+        stone: colors.stone,
+        neutral: colors.neutral,
+        gray: colors.gray,
+        slate: colors.slate,
+      },
       boxShadow: {
         "box-shadow-black-md": "rgb(0 0 0 / 24%) 0px 4px 6px",
       },
