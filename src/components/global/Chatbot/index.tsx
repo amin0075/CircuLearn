@@ -32,7 +32,7 @@ const Chatbot: React.FC<IProps> = () => {
     <div className="fixed bottom-7 right-7 left-unset flex flex-col gap-3">
       {/* chat box */}
       <Paper
-        className={`min-w-[300px] flex flex-col gap-2 relative transition-all ease-in-out duration-300 ${
+        className={`w-[300px] flex flex-col gap-2 relative transition-all ease-in-out duration-300 ${
           isOpen ? "opacity-100 visible h-[500px]" : "invisible opacity-0 h-0"
         }`}
       >
