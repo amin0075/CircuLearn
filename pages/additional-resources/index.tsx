@@ -20,7 +20,7 @@ export default function AdditionalResources() {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return {
     redirect: {
-      destination: "/additional-resources/glossary",
+      destination: "/additional-resources/glossaryy",
       permanent: false,
     },
   };

@@ -56,12 +56,15 @@ const Sidebar: React.FC<IProps> = () => {
     gates: false,
     quiz: false,
   });
+
+  // console.log("sections:", sections);
+
   // function for detecting routes
   const routeDetector = () => `/${router.pathname.split("/")[1]}`;
   // console.log("routeDetector:", routeDetector());
   useEffect(() => {
     Object.keys(sections).forEach((key, index) => {
-      console.log("key.toString(): ", key.toString());
+      // console.log("key.toString(): ", key.toString());
       if (
         routeDetector().replace("/", "").replace("-", "").toLowerCase() ===
         key.toString().toLowerCase()
@@ -107,39 +110,8 @@ const Sidebar: React.FC<IProps> = () => {
           <Divider darkcolor={!darkMode} className="w-full" />
           {/* pages links */}
           <div className="flex flex-col w-full px-4">
-            {/* introduction routes */}
-            <div
-              onClick={() =>
-                setSections((prevState) => ({
-                  ...prevState,
-                  introduction: !prevState.introduction,
-                }))
-              }
-              className={`flex items-center justify-between cursor-pointer text-black dark:text-white mt-4 mb-2 ${
-                sidebarExpand ? "px-2" : "px-0"
-              }`}
-            >
-              <Typography
-                variant={sidebarExpand ? "body2" : "caption2"}
-                fontweight="bold"
-                textTransform="uppercase"
-              >
-                Introduction
-              </Typography>
-              <Arrow
-                className={`w-4 h-4 transition-all duration-300 ease-in-out ${
-                  sections.introduction ? "rotate-[270deg]" : "rotate-90"
-                }`}
-              />
-            </div>
-            <div
-              className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out px-2 ${
-                sections.introduction ? "max-h-[500px]" : "max-h-0"
-              }`}
-            >
-              {introduction.map((route, index) => (
-                <SidebarLink key={index} data={route} />
-              ))}
+            <div className="flex flex-col overflow-hidden transition-all duration-300 ease-in-out px-2 py-2">
+              <SidebarLink data={introduction} />
             </div>
             {/* basic concepts routes */}
             <div

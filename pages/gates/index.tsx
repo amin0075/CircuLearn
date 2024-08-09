@@ -7,11 +7,11 @@ import { useRouter } from "next/router";
 
 // components
 
-export default function Home() {
+export default function GatesMainPage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/introduction");
+    router.push("/gates/and-gate");
   }, []);
 
   return <></>;
@@ -20,7 +20,7 @@ export default function Home() {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return {
     redirect: {
-      destination: "/introduction",
+      destination: "/gates/and-gate",
       permanent: false,
     },
   };

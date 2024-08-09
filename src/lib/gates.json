@@ -1,0 +1,217 @@
+[
+  {
+    "name": "AND Gate",
+    "description": "An AND gate is a basic digital logic gate that implements logical conjunction. It produces a true (1) output only when both of its inputs are true. AND gates are used in various applications including digital circuits, computer systems, and more. They are fundamental in building combinational logic circuits.",
+    "truthTable": [
+      { "A": 0, "B": 0, "Output": 0 },
+      { "A": 0, "B": 1, "Output": 0 },
+      { "A": 1, "B": 0, "Output": 0 },
+      { "A": 1, "B": 1, "Output": 1 }
+    ],
+    "simulation": {
+      "inputLabels": ["A", "B"],
+      "outputLabel": "Output"
+    },
+    "questions": [
+      {
+        "question": "What is the output when both inputs A and B are 1?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "What is the output when input A is 0 and input B is 1?",
+        "options": ["0", "1"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "In which scenarios does an AND gate produce a false output?",
+        "options": ["When both inputs are 1", "When at least one input is 0"],
+        "correctAnswer": "When at least one input is 0"
+      }
+    ]
+  },
+  {
+    "name": "OR Gate",
+    "description": "An OR gate is a fundamental logic gate that implements logical disjunction. It produces a true (1) output if at least one of its inputs is true. OR gates are essential in the design of digital circuits and are used to create combinational logic systems.",
+    "truthTable": [
+      { "A": 0, "B": 0, "Output": 0 },
+      { "A": 0, "B": 1, "Output": 1 },
+      { "A": 1, "B": 0, "Output": 1 },
+      { "A": 1, "B": 1, "Output": 1 }
+    ],
+    "simulation": {
+      "inputLabels": ["A", "B"],
+      "outputLabel": "Output"
+    },
+    "questions": [
+      {
+        "question": "What is the output when both inputs A and B are 0?",
+        "options": ["0", "1"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "What is the output when input A is 1 and input B is 0?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "In which scenarios does an OR gate produce a true output?",
+        "options": ["When both inputs are 0", "When at least one input is 1"],
+        "correctAnswer": "When at least one input is 1"
+      }
+    ]
+  },
+  {
+    "name": "NOT Gate",
+    "description": "A NOT gate, also known as an inverter, is a basic digital logic gate that implements logical negation. It inverts the input signal; if the input is true (1), the output will be false (0) and vice versa. NOT gates are crucial in the design of digital systems and are used to create more complex logic circuits.",
+    "truthTable": [
+      { "A": 0, "Output": 1 },
+      { "A": 1, "Output": 0 }
+    ],
+    "simulation": {
+      "inputLabels": ["A"],
+      "outputLabel": "Output"
+    },
+    "questions": [
+      {
+        "question": "What is the output when the input is 0?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "What is the output when the input is 1?",
+        "options": ["0", "1"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "In which scenarios does a NOT gate produce a true output?",
+        "options": ["When the input is 1", "When the input is 0"],
+        "correctAnswer": "When the input is 0"
+      }
+    ]
+  },
+  {
+    "name": "NAND Gate",
+    "description": "A NAND gate is a fundamental logic gate that produces an output which is false only if all its inputs are true; thus its output is the negation of the AND gate. NAND gates are widely used in digital electronics and form the basis for most digital circuits.",
+    "truthTable": [
+      { "A": 0, "B": 0, "Output": 1 },
+      { "A": 0, "B": 1, "Output": 1 },
+      { "A": 1, "B": 0, "Output": 1 },
+      { "A": 1, "B": 1, "Output": 0 }
+    ],
+    "simulation": {
+      "inputLabels": ["A", "B"],
+      "outputLabel": "Output"
+    },
+    "questions": [
+      {
+        "question": "What is the output when both inputs A and B are 1?",
+        "options": ["0", "1"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "What is the output when input A is 0 and input B is 1?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "In which scenarios does a NAND gate produce a false output?",
+        "options": ["When both inputs are 1", "When both inputs are 0"],
+        "correctAnswer": "When both inputs are 1"
+      }
+    ]
+  },
+  {
+    "name": "NOR Gate",
+    "description": "A NOR gate is a fundamental logic gate that produces a true (1) output only when all its inputs are false (0). NOR gates are used in digital circuits to perform logical negation combined with logical OR. They are integral in creating combinational logic circuits.",
+    "truthTable": [
+      { "A": 0, "B": 0, "Output": 1 },
+      { "A": 0, "B": 1, "Output": 0 },
+      { "A": 1, "B": 0, "Output": 0 },
+      { "A": 1, "B": 1, "Output": 0 }
+    ],
+    "simulation": {
+      "inputLabels": ["A", "B"],
+      "outputLabel": "Output"
+    },
+    "questions": [
+      {
+        "question": "What is the output when both inputs A and B are 0?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "What is the output when input A is 1 and input B is 0?",
+        "options": ["0", "1"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "In which scenarios does a NOR gate produce a false output?",
+        "options": ["When both inputs are 0", "When at least one input is 1"],
+        "correctAnswer": "When at least one input is 1"
+      }
+    ]
+  },
+  {
+    "name": "XOR Gate",
+    "description": "An XOR gate, or exclusive OR gate, is a digital logic gate that produces a true (1) output only when the number of true inputs is odd. It is used in various digital circuits to perform addition and other logical operations. XOR gates are essential in creating complex digital systems.",
+    "truthTable": [
+      { "A": 0, "B": 0, "Output": 0 },
+      { "A": 0, "B": 1, "Output": 1 },
+      { "A": 1, "B": 0, "Output": 1 },
+      { "A": 1, "B": 1, "Output": 0 }
+    ],
+    "simulation": {
+      "inputLabels": ["A", "B"],
+      "outputLabel": "Output"
+    },
+    "questions": [
+      {
+        "question": "What is the output when both inputs A and B are 1?",
+        "options": ["0", "1"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "What is the output when input A is 1 and input B is 0?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "In which scenarios does an XOR gate produce a true output?",
+        "options": ["When both inputs are 1", "When the inputs are different"],
+        "correctAnswer": "When the inputs are different"
+      }
+    ]
+  },
+  {
+    "name": "XNOR Gate",
+    "description": "An XNOR gate, or exclusive NOR gate, is a digital logic gate that produces a true (1) output only when the number of true inputs is even. It is used in various digital circuits to perform logical equivalence operations. XNOR gates are fundamental in creating complex digital systems.",
+    "truthTable": [
+      { "A": 0, "B": 0, "Output": 1 },
+      { "A": 0, "B": 1, "Output": 0 },
+      { "A": 1, "B": 0, "Output": 0 },
+      { "A": 1, "B": 1, "Output": 1 }
+    ],
+    "simulation": {
+      "inputLabels": ["A", "B"],
+      "outputLabel": "Output"
+    },
+    "questions": [
+      {
+        "question": "What is the output when both inputs A and B are 0?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "What is the output when input A is 1 and input B is 1?",
+        "options": ["0", "1"],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "In which scenarios does an XNOR gate produce a false output?",
+        "options": ["When both inputs are 0", "When the inputs are different"],
+        "correctAnswer": "When the inputs are different"
+      }
+    ]
+  }
+]

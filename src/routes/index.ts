@@ -22,7 +22,7 @@ import {
 } from "@src/assets/icons";
 
 type IMainRoute = {
-  introduction: IRoute[];
+  introduction: IRoute;
   basicConcepts: IRoute[];
   gates: IRoute[];
   quiz: IRoute[];
@@ -30,11 +30,10 @@ type IMainRoute = {
 };
 
 const ROUTES_URL = {
-  introduction: "/introduction/intro-to-logic-circuits",
-  applicationOfLogicCircuits: "/applications-of-logic-circuits",
-  binarySystem: "/binary-system",
-  booleanAlgebra: "/boolean-algebra",
-  truthTable: "/truth-table",
+  introduction: "/introduction",
+  binarySystem: "/basic-concepts/binary-system",
+  booleanAlgebra: "/basic-concepts/boolean-algebra",
+  truthTable: "/basic-concepts/truth-table",
   andGate: "/gates/and-gate",
   orGate: "/gates/or-gate",
   notGate: "/gates/not-gate",
@@ -51,18 +50,12 @@ const ROUTES_URL = {
 };
 
 const mainRoutes: IMainRoute = {
-  introduction: [
-    {
-      name: "Intro to logic circuits",
-      url: ROUTES_URL.introduction,
-      icon: Presentation,
-    },
-    {
-      name: "Applications of Logic Circuits",
-      url: ROUTES_URL.applicationOfLogicCircuits,
-      icon: ChipCircuit,
-    },
-  ],
+  introduction: {
+    name: "Intro to logic circuits",
+    url: ROUTES_URL.introduction,
+    icon: Presentation,
+  },
+
   basicConcepts: [
     {
       name: "Binary System",

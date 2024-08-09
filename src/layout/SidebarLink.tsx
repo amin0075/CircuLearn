@@ -36,7 +36,7 @@ interface IProps {
 const SidebarLink: React.FC<IProps> = ({ data }) => {
   const router = useRouter();
 
-  const isSelected = router.pathname.includes(data.url);
+  const isSelected = router.asPath.includes(data.url);
   const { sidebarTransparent, primaryColor, sidebarExpand } = useThemeStore(
     (state) => state
   );

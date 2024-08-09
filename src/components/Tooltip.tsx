@@ -19,6 +19,7 @@ interface IProps {
   direction?: "top" | "bottom" | "left" | "right";
   title: string;
   className?: string;
+  parentClassName?: string;
 }
 
 const Tooltip: React.FC<IProps> = ({
@@ -26,6 +27,7 @@ const Tooltip: React.FC<IProps> = ({
   direction = "bottom",
   title,
   className = "",
+  parentClassName = "",
 }) => {
   const router = useRouter();
 
@@ -45,7 +47,7 @@ const Tooltip: React.FC<IProps> = ({
   }, [direction]);
 
   return (
-    <div className="relative group">
+    <div className={`relative group ${parentClassName}`}>
       <Typography
         textTransform="first-letter-capital"
         variant="caption2"
