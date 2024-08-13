@@ -4,7 +4,7 @@ import Typography from "@src/components/Typography";
 import Button from "@src/components/Button";
 import RadioButton from "@src/components/RadioButton";
 import DragAndDrop from "@src/components/global/DragAndDrop";
-import finalEvaluationData from "@src/lib/final-evaluation.json";
+import quiz from "@src/lib/quiz.json";
 import DragAndDropGateQuiz from "@src/components/global/Simulations/DragAndDropGateQuiz";
 
 type Question = {
@@ -13,7 +13,6 @@ type Question = {
   options?: string[]; // for multiple choice
   correctAnswer?: string | string[]; // for multiple choice and drag and drop
   items?: string[]; // for drag and drop
-  correctOrder?: string[]; // for drag and drop
   randomGates: string[]; // for gate simulation
   correctGate: string; // for gate simulation
   inputs: boolean[]; // for gate simulation
@@ -53,90 +52,86 @@ const FinalEvaluationPage: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    const evaluationResults = (
-      finalEvaluationData as FinalEvaluationData
-    ).evaluation.map((section, sectionIndex) => {
-      return section.questions.map((question, questionIndex) => {
-        const userAnswer = answers[`${sectionIndex}-${questionIndex}`];
-        const isCorrect = Array.isArray(userAnswer)
-          ? JSON.stringify(userAnswer) ===
-            JSON.stringify(question.correctAnswer)
-          : userAnswer === question.correctAnswer;
+    const evaluationResults = (quiz as FinalEvaluationData).evaluation.map(
+      (section, sectionIndex) => {
+        return section.questions.map((question, questionIndex) => {
+          const userAnswer = answers[`${sectionIndex}-${questionIndex}`];
+          const isCorrect = Array.isArray(userAnswer)
+            ? JSON.stringify(userAnswer) ===
+              JSON.stringify(question.correctAnswer)
+            : userAnswer === question.correctAnswer;
 
-        return {
-          question: question.question,
-          userAnswer,
-          correctAnswer: question.correctAnswer!,
-          isCorrect,
-        };
-      });
-    });
+          return {
+            question: question.question,
+            userAnswer,
+            correctAnswer: question.correctAnswer!,
+            isCorrect,
+          };
+        });
+      }
+    );
     setResults(evaluationResults);
   };
 
   return (
     <Paper className="p-4 w-full flex flex-col gap-4">
       <Typography variant="h2">Quiz</Typography>
-      {(finalEvaluationData as FinalEvaluationData).evaluation.map(
-        (section, sectionIndex) => (
-          <div key={section.section} className="w-full flex flex-col gap-1">
-            <Typography variant="h4" fontweight="semiBold">
-              {section.section}
-            </Typography>
-            {section.questions.map((question, questionIndex) => (
-              <div key={question.question} className="mb-4 flex flex-col gap-2">
-                <Typography variant="body1">{question.question}</Typography>
-                {question.type === "multiple_choice" && question.options && (
-                  <div className="flex flex-col mt-2">
-                    {question.options.map((option) => (
-                      <RadioButton
-                        key={option}
-                        name={`${sectionIndex}-${questionIndex}`}
-                        value={option}
-                        checked={
-                          answers[`${sectionIndex}-${questionIndex}`] === option
-                        }
-                        onChange={() =>
-                          handleAnswerChange(
-                            sectionIndex,
-                            questionIndex,
-                            option
-                          )
-                        }
-                      >
-                        {option}
-                      </RadioButton>
-                    ))}
-                  </div>
-                )}
-                {question.type === "drag_and_drop" &&
-                  question.items &&
-                  question.correctOrder && (
-                    <DragAndDrop
-                      items={question.items}
-                      correctOrder={question.correctOrder}
-                      onDrop={(order) =>
-                        handleAnswerChange(sectionIndex, questionIndex, order)
+      {(quiz as FinalEvaluationData).evaluation.map((section, sectionIndex) => (
+        <div key={section.section} className="w-full flex flex-col gap-1">
+          <Typography variant="h4" fontweight="semiBold">
+            {section.section}
+          </Typography>
+          {section.questions.map((question, questionIndex) => (
+            <div key={question.question} className="mb-4 flex flex-col gap-2">
+              <Typography variant="body1">
+                {sectionIndex + questionIndex + 1}. {question.question}
+              </Typography>
+              {question.type === "multiple_choice" && question.options && (
+                <div className="flex flex-col mt-2">
+                  {question.options.map((option) => (
+                    <RadioButton
+                      key={option}
+                      name={`${sectionIndex}-${questionIndex}`}
+                      value={option}
+                      checked={
+                        answers[`${sectionIndex}-${questionIndex}`] === option
                       }
-                    />
-                  )}
-
-                {question.type === "gate_simulation" && (
-                  <DragAndDropGateQuiz
-                    randomGates={question.randomGates}
-                    correctGate={question.correctGate}
-                    inputs={question.inputs}
-                    output={question.output}
-                    onDrop={(isCorrect) =>
-                      handleAnswerChange(sectionIndex, questionIndex, isCorrect)
+                      onChange={() =>
+                        handleAnswerChange(sectionIndex, questionIndex, option)
+                      }
+                    >
+                      {option}
+                    </RadioButton>
+                  ))}
+                </div>
+              )}
+              {question.type === "drag_and_drop" &&
+                question.items &&
+                question.correctAnswer && (
+                  <DragAndDrop
+                    items={question.items}
+                    correctOrder={question.correctAnswer as string[]}
+                    onDrop={(order) =>
+                      handleAnswerChange(sectionIndex, questionIndex, order)
                     }
                   />
                 )}
-              </div>
-            ))}
-          </div>
-        )
-      )}
+
+              {question.type === "gate_simulation" && (
+                <DragAndDropGateQuiz
+                  randomGates={question.randomGates}
+                  correctGate={question.correctGate}
+                  inputs={question.inputs}
+                  output={question.output}
+                  onDrop={(isCorrect) =>
+                    handleAnswerChange(sectionIndex, questionIndex, isCorrect)
+                  }
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
       <Button variant="contained" onClick={handleSubmit}>
         Submit
       </Button>
@@ -147,7 +142,7 @@ const FinalEvaluationPage: React.FC = () => {
           {results.map((sectionResults, sectionIndex) => (
             <div key={sectionIndex} className="flex flex-col gap-3">
               <Typography variant="h4" fontweight="semiBold" className="mt-4">
-                {finalEvaluationData.evaluation[sectionIndex].section}
+                {quiz.evaluation[sectionIndex].section}
               </Typography>
               {sectionResults.map((result, questionIndex) => {
                 return (

@@ -12,8 +12,8 @@
         {
           "question": "Arrange the binary digits in the correct order to form the decimal number 5.",
           "type": "drag_and_drop",
-          "items": ["0", "1", "0", "1"],
-          "correctOrder": ["1", "0", "1"]
+          "items": ["1", "1", "0", "0"],
+          "correctAnswer": ["0", "1", "0", "1"]
         }
       ]
     },
