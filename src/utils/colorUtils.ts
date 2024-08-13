@@ -1,6 +1,5 @@
 // types
 import { IColor } from "@src/@types/color";
-import { IInvoiceStatus } from "@src/@types/subscription";
 
 const textColor = (color: IColor) => {
   switch (color) {
@@ -121,24 +120,24 @@ const hexColor = (color: IColor) => {
   }
 };
 
-const invoiceStatusColor = (status: IInvoiceStatus) => {
-  switch (status) {
-    case "waiting":
-      return "orange";
-    case "sending":
-      return "blue";
-    case "rejected":
-      return "red";
-    case "processing":
-      return "blue";
-    case "failed":
-      return "red";
-    case "finished":
-      return "green";
-    default:
-      return "blue";
-  }
-};
+// const invoiceStatusColor = (status: IInvoiceStatus) => {
+//   switch (status) {
+//     case "waiting":
+//       return "orange";
+//     case "sending":
+//       return "blue";
+//     case "rejected":
+//       return "red";
+//     case "processing":
+//       return "blue";
+//     case "failed":
+//       return "red";
+//     case "finished":
+//       return "green";
+//     default:
+//       return "blue";
+//   }
+// };
 
 export {
   bgGradient,
@@ -148,5 +147,5 @@ export {
   textColor,
   borderColor,
   hexColor,
-  invoiceStatusColor,
+  // invoiceStatusColor,
 };
