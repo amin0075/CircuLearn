@@ -9,6 +9,8 @@ import Head from "next/head";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
 import Tooltip from "@src/components/Tooltip";
+import BinaryToDecimalConverter from "@src/components/global/Simulations/BinaryToDecimalConverter";
+import DecimalToBinaryConverter from "@src/components/global/Simulations/DecimalToBinaryConverter";
 
 // components
 
@@ -117,43 +119,11 @@ export default function BinarySystem() {
           and faster compared to decimal operations in digital systems.
         </Typography>
 
-        <Typography variant="h3">Interactive Simulation</Typography>
-        <Typography variant="body1">
-          To reinforce understanding of the binary system, use the following
-          interactive simulation:
-        </Typography>
-        <ul>
-          <li>
-            <Typography variant="body1">
-              <strong>Binary to Decimal Converter</strong>: Input a binary
-              number to see its decimal equivalent.
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1">
-              <strong>Decimal to Binary Converter</strong>: Input a decimal
-              number to see its binary equivalent.
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1">
-              <strong>Practice Problems</strong>: Convert the following binary
-              numbers to decimal and vice versa:
-            </Typography>
-            <ul>
-              <li>
-                <Typography variant="body1">
-                  1010<sub>2</sub> to decimal
-                </Typography>
-              </li>
-              <li>
-                <Typography variant="body1">
-                  23<sub>10</sub> to binary
-                </Typography>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <div className="flex flex-col gap-3">
+          <Typography variant="h3">Convertors</Typography>
+          <BinaryToDecimalConverter />
+          <DecimalToBinaryConverter />
+        </div>
 
         <Typography variant="h3">Practice Questions</Typography>
         <ol>

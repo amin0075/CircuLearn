@@ -1,0 +1,89 @@
+{
+  "evaluation": [
+    {
+      "section": "Binary System",
+      "questions": [
+        {
+          "question": "What is the binary representation of the decimal number 10?",
+          "type": "multiple_choice",
+          "options": ["1010", "1100", "1001", "1111"],
+          "correctAnswer": "1010"
+        },
+        {
+          "question": "Arrange the binary digits in the correct order to form the decimal number 5.",
+          "type": "drag_and_drop",
+          "items": ["0", "1", "0", "1"],
+          "correctOrder": ["1", "0", "1"]
+        }
+      ]
+    },
+    {
+      "section": "Boolean Algebra",
+      "questions": [
+        {
+          "question": "Which of the following is the result of the expression A AND B when A is TRUE and B is FALSE?",
+          "type": "multiple_choice",
+          "options": ["TRUE", "FALSE"],
+          "correctAnswer": "FALSE"
+        },
+        {
+          "question": "Simplify the Boolean expression: A + A'B",
+          "type": "multiple_choice",
+          "options": ["A + B", "A'B", "A", "0"],
+          "correctAnswer": "A + B"
+        }
+      ]
+    },
+    {
+      "section": "Logic Gates",
+      "questions": [
+        {
+          "question": "Drag and drop the correct gate to satisfy the given logic equation.",
+          "type": "gate_simulation",
+          "randomGates": ["AND", "OR", "NAND", "XOR"],
+          "correctAnswer": "AND",
+          "inputs": [true, false],
+          "output": true
+        },
+        {
+          "question": "Drag and drop the correct gate to satisfy the given logic equation.",
+          "type": "gate_simulation",
+          "randomGates": ["AND", "OR", "NOR", "XOR"],
+          "correctAnswer": "AND",
+          "inputs": [true, true],
+          "output": true
+        },
+        {
+          "question": "Drag and drop the correct gate to satisfy the given logic equation.",
+          "type": "gate_simulation",
+          "randomGates": ["AND", "OR", "NOR", "XOR"],
+          "correctAnswer": "OR",
+          "inputs": [false, false],
+          "output": false
+        },
+        {
+          "question": "Drag and drop the correct gate to satisfy the given logic equation.",
+          "type": "gate_simulation",
+          "randomGates": ["AND", "OR", "NOR", "XOR"],
+          "correctAnswer": "XOR",
+          "inputs": [true, true],
+          "output": false
+        },
+        {
+          "question": "Drag and drop the correct gate to satisfy the given logic equation.",
+          "type": "gate_simulation",
+          "randomGates": ["AND", "OR", "NOR", "XOR"],
+          "correctAnswer": "NOR",
+          "inputs": [false, false],
+          "output": true
+        },
+        {
+          "question": "Which gate will output TRUE when both inputs are TRUE?",
+          "type": "multiple_choice",
+          "options": ["AND", "OR", "NAND", "NOR"],
+          "correctAnswer": "AND"
+        }
+      ]
+    }
+  ]
+}

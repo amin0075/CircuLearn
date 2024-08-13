@@ -8,6 +8,8 @@ import Link from "next/link";
 import Head from "next/head";
 import type { NextComponentType } from "next";
 import { ReactNode } from "react";
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 // import type { Page } from "../next-env";
 
 // global css
@@ -40,8 +42,12 @@ const App = ({ Component, pageProps }: Props) => {
           content="minimum-scale=1, initial-scale=1, maximum-scale=1, width=device-width"
         />
       </Head>
+      <DndProvider backend={HTML5Backend}>
       {getLayout(<Component {...pageProps} />)}
       <ToastContainer closeButton={false} />
+
+      </DndProvider>
+
     </>
   );
 };

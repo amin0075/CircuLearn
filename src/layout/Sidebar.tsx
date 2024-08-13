@@ -37,7 +37,7 @@ interface ISection {
   introduction: boolean;
   basicConcepts: boolean;
   gates: boolean;
-  quiz: boolean;
+  finalStep: boolean;
   additionalResources: boolean;
 }
 
@@ -46,7 +46,7 @@ const Sidebar: React.FC<IProps> = () => {
 
   const { sidebarTransparent, primaryColor, sidebarExpand, darkMode } =
     useThemeStore((state) => state);
-  const { additionalResources, basicConcepts, gates, introduction, quiz } =
+  const { additionalResources, basicConcepts, gates, introduction, finalStep } =
     mainRoutes;
   const LogoRef = useRef<SVGElement | null>();
   const [sections, setSections] = useState<ISection>({
@@ -54,7 +54,7 @@ const Sidebar: React.FC<IProps> = () => {
     additionalResources: false,
     basicConcepts: false,
     gates: false,
-    quiz: false,
+    finalStep: false,
   });
 
   // console.log("sections:", sections);
@@ -181,12 +181,12 @@ const Sidebar: React.FC<IProps> = () => {
                 <SidebarLink key={index} data={route} />
               ))}
             </div>
-            {/* quiz routes */}
+            {/* finalStep routes */}
             <div
               onClick={() =>
                 setSections((prevState) => ({
                   ...prevState,
-                  quiz: !prevState.quiz,
+                  finalStep: !prevState.finalStep,
                 }))
               }
               className={`flex items-center justify-between cursor-pointer text-black dark:text-white mt-4 mb-2 ${
@@ -198,20 +198,20 @@ const Sidebar: React.FC<IProps> = () => {
                 fontweight="bold"
                 textTransform="uppercase"
               >
-                Quiz
+                Final step
               </Typography>
               <Arrow
                 className={`w-4 h-4 transition-all duration-300 ease-in-out ${
-                  sections.quiz ? "rotate-[270deg]" : "rotate-90"
+                  sections.finalStep ? "rotate-[270deg]" : "rotate-90"
                 }`}
               />
             </div>
             <div
               className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${
-                sections.quiz ? "max-h-[500px]" : "max-h-0"
+                sections.finalStep ? "max-h-[500px]" : "max-h-0"
               }`}
             >
-              {quiz.map((route, index) => (
+              {finalStep.map((route, index) => (
                 <SidebarLink key={index} data={route} />
               ))}
             </div>

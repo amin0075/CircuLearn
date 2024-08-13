@@ -25,7 +25,7 @@ type IMainRoute = {
   introduction: IRoute;
   basicConcepts: IRoute[];
   gates: IRoute[];
-  quiz: IRoute[];
+  finalStep: IRoute[];
   additionalResources: IRoute[];
 };
 
@@ -41,8 +41,8 @@ const ROUTES_URL = {
   norGate: "/gates/nor-gate",
   xorGate: "/gates/xor-gate",
   xnorGate: "/gates/xnor-gate",
-  quiz: "/quiz",
-  feedback: "/feedback",
+  quiz: "/final-step/quiz",
+  feedback: "final-step/feedback",
   glossary: "/additional-resources/glossary",
   faq: "/additional-resources/faq",
   contact: "/contact",
@@ -82,8 +82,8 @@ const mainRoutes: IMainRoute = {
     { name: "XOR Gate", url: ROUTES_URL.xorGate, icon: LogicGateXor },
     { name: "XNOR Gate", url: ROUTES_URL.xnorGate, icon: LogicGateXnor },
   ],
-  quiz: [
-    { name: "Final Evaluation", url: ROUTES_URL.quiz, icon: Test },
+  finalStep: [
+    { name: "Quiz", url: ROUTES_URL.quiz, icon: Test },
     {
       name: "Feedback about the application",
       url: ROUTES_URL.feedback,

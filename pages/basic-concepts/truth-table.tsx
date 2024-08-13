@@ -142,40 +142,6 @@ export default function TruthTable() {
           </table>
         </div>
 
-        <Typography variant="h3">Interactive Simulation</Typography>
-        <Typography variant="body1">
-          To reinforce understanding of truth tables, use the following
-          interactive simulation:
-        </Typography>
-        <ul>
-          <li>
-            <Typography variant="body1">
-              <strong>Truth Table Generator</strong>: Input different logic
-              expressions to see their truth tables.
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1">
-              <strong>Practice Problems</strong>: Generate the truth tables for
-              the following expressions:
-            </Typography>
-            <ul>
-              <li>
-                <Typography variant="body1">A + B</Typography>
-              </li>
-              <li>
-                <Typography variant="body1">AB</Typography>
-              </li>
-              <li>
-                <Typography variant="body1">A'</Typography>
-              </li>
-              <li>
-                <Typography variant="body1">A'B + AB'</Typography>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
         <Typography variant="h3">Practice Questions</Typography>
         <ol>
           <li>

@@ -42,7 +42,6 @@ export default function BooleanAlgebra() {
           that have two possible values: true or false. It is the foundation of
           digital logic and computer science.
         </Typography>
-
         <Typography variant="h3">Basic Operations</Typography>
         <Typography variant="body1">
           The basic operations in Boolean algebra are AND, OR, and NOT.
@@ -66,7 +65,6 @@ export default function BooleanAlgebra() {
             </Typography>
           </li>
         </ul>
-
         <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
           <div className="text-center">
             <Typography variant="h4">AND Operation (A AND B)</Typography>
@@ -125,7 +123,6 @@ export default function BooleanAlgebra() {
             </div>
           </div>
         </div>
-
         <Typography variant="h3">Laws of Boolean Algebra</Typography>
         <Typography variant="body1">
           Boolean algebra follows certain laws that are used to simplify
@@ -164,35 +161,6 @@ export default function BooleanAlgebra() {
             </Typography>
           </li>
         </ul>
-
-        <Typography variant="h3">Interactive Simulation</Typography>
-        <Typography variant="body1">
-          To reinforce understanding of Boolean algebra, use the following
-          interactive simulation:
-        </Typography>
-        <ul>
-          <li>
-            <Typography variant="body1">
-              <strong>Boolean Expression Evaluator</strong>: Input a Boolean
-              expression to see its evaluation.
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1">
-              <strong>Practice Problems</strong>: Evaluate the following Boolean
-              expressions:
-            </Typography>
-            <ul>
-              <li>
-                <Typography variant="body1">(A + B)(A + C)</Typography>
-              </li>
-              <li>
-                <Typography variant="body1">A' + AB</Typography>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
         <Typography variant="h3">Practice Questions</Typography>
         <ol>
           <li>
