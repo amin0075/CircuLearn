@@ -42,7 +42,7 @@ const ROUTES_URL = {
   xorGate: "/gates/xor-gate",
   xnorGate: "/gates/xnor-gate",
   quiz: "/final-step/quiz",
-  feedback: "final-step/feedback",
+  feedback: "/final-step/feedback",
   glossary: "/additional-resources/glossary",
   faq: "/additional-resources/faq",
   contact: "/contact",

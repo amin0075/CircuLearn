@@ -11,7 +11,7 @@ export default function BasicConcepts() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/basic-concepts/binary-system");
+    router.push("/final-step/quiz");
   }, []);
 
   return <></>;
@@ -20,7 +20,7 @@ export default function BasicConcepts() {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   return {
     redirect: {
-      destination: "/basic-concepts/binary-system",
+      destination: "/final-step/quiz",
       permanent: false,
     },
   };

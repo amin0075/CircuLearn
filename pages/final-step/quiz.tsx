@@ -74,7 +74,7 @@ const FinalEvaluationPage: React.FC = () => {
   };
 
   return (
-    <Paper className="p-4 w-full flex flex-col gap-4">
+    <Paper className="p-4 md:p-6 w-full flex flex-col gap-4">
       <Typography variant="h2">Quiz</Typography>
       {(quiz as FinalEvaluationData).evaluation.map((section, sectionIndex) => (
         <div key={section.section} className="w-full flex flex-col gap-1">
@@ -93,9 +93,9 @@ const FinalEvaluationPage: React.FC = () => {
                       key={option}
                       name={`${sectionIndex}-${questionIndex}`}
                       value={option}
-                      checked={
-                        answers[`${sectionIndex}-${questionIndex}`] === option
-                      }
+                      // checked={
+                      //   answers[`${sectionIndex}-${questionIndex}`] === option
+                      // }
                       onChange={() =>
                         handleAnswerChange(sectionIndex, questionIndex, option)
                       }

@@ -1,0 +1,168 @@
+{
+  "questionnaire": [
+    {
+      "question": "The interactive application was easy to navigate.",
+      "options": [
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree"
+      ]
+    },
+    {
+      "question": "The content of the interactive application was clear and understandable.",
+      "options": [
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree"
+      ]
+    },
+    {
+      "question": "The interactive application effectively demonstrated the principles of simple logic circuits.",
+      "options": [
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree"
+      ]
+    },
+    {
+      "question": "The interactive application increased my understanding of simple logic circuits.",
+      "options": [
+        "Strongly Agree",
+        "Agree",
+        "Neutral",
+        "Disagree",
+        "Strongly Disagree"
+      ]
+    }
+  ],
+  "nielsen": [
+    {
+      "heuristic": "Visibility of System Status",
+      "notes": [
+        "Clear feedback on user actions.",
+        "Instantaneous response to user input.",
+        "Visible loading indicators during data retrieval."
+      ]
+    },
+    {
+      "heuristic": "User Control and Freedom",
+      "notes": [
+        "Easy reversal of actions with 'undo' or 'back' options.",
+        "Clear prompts for irreversible actions.",
+        "Ability to exit or cancel processes at any point."
+      ]
+    },
+    {
+      "heuristic": "Recognition Rather Than Recall",
+      "notes": [
+        "Visible and easily accessible options.",
+        "Contextual cues to guide users through tasks.",
+        "Minimisation of reliance on user memory."
+      ]
+    },
+    {
+      "heuristic": "Match Between System and the Real World",
+      "notes": [
+        "Consistent language and icons with real-world equivalents.",
+        "Actions and options reflect user expectations.",
+        "Familiar terminology for menu items and functions."
+      ]
+    },
+    {
+      "heuristic": "Aesthetic and Minimalist Design",
+      "notes": [
+        "Clean and uncluttered interface.",
+        "Prioritisation of essential information.",
+        "Minimal distractions to focus user attention."
+      ]
+    }
+  ],
+  "gestalt": [
+    {
+      "principle": "Law of Common Region",
+      "notes": [
+        "Elements within a defined boundary are perceived as belonging together.",
+        "Borders or visual separators indicate shared context or purpose."
+      ]
+    },
+    {
+      "principle": "Law of Proximity",
+      "notes": [
+        "Objects near each other are perceived as related or belonging to the same group.",
+        "Spatial proximity implies contextual connection."
+      ]
+    },
+    {
+      "principle": "Law of Prägnanz",
+      "notes": [
+        "Users interpret complex visuals in the simplest way possible to minimize cognitive effort.",
+        "Ambiguous visuals are interpreted as basic shapes or forms.",
+        "Simplification reduces cognitive load for users."
+      ]
+    },
+    {
+      "principle": "Law of Similarity",
+      "notes": [
+        "Similar elements in design are perceived as belonging together.",
+        "Similarity implies shared characteristics or function."
+      ]
+    },
+    {
+      "principle": "Law of Uniform Connectedness",
+      "notes": [
+        "Elements visually connected are seen as more related than those with no connection.",
+        "Users see elements with visual connections as more closely related."
+      ]
+    }
+  ],
+  "wcag": [
+    {
+      "criteria": "Perceivable",
+      "notes": [
+        "Provide alternative text for all non-text content, such as images and icons.",
+        "Ensure sufficient color contrast between text and background elements.",
+        "Implement resizable text and ensure content remains readable when text size is increased."
+      ]
+    },
+    {
+      "criteria": "Operable",
+      "notes": [
+        "Ensure all interactive elements are accessible via keyboard navigation.",
+        "Provide clear and consistent navigation throughout the app.",
+        "Ensure users have enough time to read and interact with content by providing controls to pause, stop, or adjust time limits."
+      ]
+    },
+    {
+      "criteria": "Understandable",
+      "notes": [
+        "Use clear and concise language in all app content, including labels, instructions, and error messages.",
+        "Ensure predictable and consistent behavior of UI components.",
+        "Provide helpful error messages and suggestions for resolving input errors."
+      ]
+    },
+    {
+      "criteria": "Robust",
+      "notes": [
+        "Ensure compatibility with assistive technologies commonly used by individuals with disabilities, such as VoiceOver for screen reading.",
+        "Use semantic HTML elements and ARIA attributes to enhance the accessibility of dynamic content and interactive components."
+      ]
+    }
+  ],
+  "consent": [
+    {
+      "text": "I consent to the collection of my feedback for research purposes."
+    },
+    {
+      "text": "I understand that my participation is voluntary and that I can withdraw at any time without giving a reason."
+    },
+    {
+      "text": "I agree that the data collected will be used for academic purposes and may be published in an anonymous form."
+    }
+  ]
+}

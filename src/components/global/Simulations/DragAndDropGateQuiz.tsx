@@ -136,7 +136,13 @@ const DragAndDropGateQuiz: React.FC<DragAndDropGateQuizProps> = ({
 
         {/* Drop Zone for Gate */}
         <DropZone onDrop={handleDrop}>
-          {selectedGate ? gateIcons[selectedGate] : "Drag Gate Here"}
+          {selectedGate ? (
+            gateIcons[selectedGate]
+          ) : (
+            <Typography className="text-center" variant="caption">
+              Drag Gate Here
+            </Typography>
+          )}
         </DropZone>
 
         {/* Outputs */}
