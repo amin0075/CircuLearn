@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from "react-dnd-touch-backend";
+import { isTouchDevice } from "@src/utils/deviceUtils";
 import {
   LogicGateAnd,
   LogicGateNand,
@@ -10,7 +14,6 @@ import {
   LightBulbOff,
   LightBulbOn,
 } from "@src/assets/icons";
-import { useDrop, useDrag } from "react-dnd";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
 import { useThemeStore } from "@src/zustand_stores/Theme";
@@ -72,7 +75,7 @@ const DropZone: React.FC<{
     <div
       // @ts-ignore
       ref={ref}
-      className="w-[100px] h-[100px] flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg"
+      className="w-[100px] h-[100px] ssm:w-[50px] ssm:h-[50px] flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg"
     >
       {children}
     </div>
@@ -91,80 +94,82 @@ const DragAndDropGateQuiz: React.FC<DragAndDropGateQuizProps> = ({
 
   const handleDrop = (gate: string) => {
     setSelectedGate(gate);
-    const isCorrect = gate === correctGate;
     onDrop(gate);
-    // console.log("Dropped Gate:", gate, "Is Correct:", isCorrect);
   };
 
-  return (
-    <div className="p-4 bg-white rounded-lg shadow dark:bg-gray-800">
-      <div className="flex items-center justify-center gap-4 mb-6">
-        {randomGates.map((gate, index) => (
-          <DraggableGate key={index} gate={gate} />
-        ))}
-      </div>
-      <div className="flex items-center justify-between w-full relative">
-        {/* Input Wires */}
-        {inputs.length === 1 ? (
-          <hr className="border w-[120px] border-black dark:border-white absolute left-[100px] top-[calc(50%-1px)]" />
-        ) : (
-          <>
-            <hr className="border w-[120px] border-black dark:border-white absolute left-[100px] top-[27px] rotate-[12deg]" />
-            <hr className="border w-[120px] border-black dark:border-white absolute left-[100px] bottom-[27px] -rotate-[12deg]" />
-          </>
-        )}
-        {/* Output Wire */}
-        <hr className="border w-[120px] border-black dark:border-white absolute right-[85px] top-[calc(50%-1px)]" />
+  const backend = isTouchDevice() ? TouchBackend : HTML5Backend;
 
-        {/* Inputs */}
-        <div className="flex flex-col items-center gap-6">
-          {inputs.map((input, index) => (
-            <div key={index} className="flex items-center mb-2 gap-1">
-              <Typography fontweight="semiBold" variant="body2">
-                Input {index + 1}
-              </Typography>
-              <div
-                className={`${bgColor(
-                  primaryColor
-                )} w-[20px] h-[30px] flex items-center justify-center`}
-              >
-                {input ? "1" : "0"}
-              </div>
-            </div>
+  return (
+    <DndProvider backend={backend}>
+      <div className="p-4 bg-white rounded-lg shadow dark:bg-gray-800">
+        <div className="flex items-center justify-center flex-wrap gap-4 mb-6">
+          {randomGates.map((gate, index) => (
+            <DraggableGate key={index} gate={gate} />
           ))}
         </div>
-
-        {/* Drop Zone for Gate */}
-        <DropZone onDrop={handleDrop}>
-          {selectedGate ? (
-            gateIcons[selectedGate]
+        <div className="flex items-center justify-between w-full relative">
+          {/* Input Wires */}
+          {inputs.length === 1 ? (
+            <hr className="border w-[120px] slg:w-[90px] smd:w-[50px] ssm:w-[20px] sxs:w-[10px] border-black dark:border-white absolute left-[100px] ssm:left-[75px] top-[calc(50%-1px)]" />
           ) : (
-            <Typography className="text-center" variant="caption">
-              Drag Gate Here
-            </Typography>
+            <>
+              <hr className="border w-[120px] slg:w-[90px] smd:w-[50px] ssm:w-[20px] sxs:w-[10px] border-black dark:border-white absolute left-[100px] ssm:left-[75px] top-[27px] rotate-[12deg]" />
+              <hr className="border w-[120px] slg:w-[90px] smd:w-[50px] ssm:w-[20px] sxs:w-[10px] border-black dark:border-white absolute left-[100px] ssm:left-[75px] bottom-[27px] -rotate-[12deg]" />
+            </>
           )}
-        </DropZone>
+          {/* Output Wire */}
+          <hr className="border w-[120px] slg:w-[90px] smd:w-[50px] ssm:w-[20px] sxs:w-[10px] border-black dark:border-white absolute right-[85px] top-[calc(50%-1px)]" />
 
-        {/* Outputs */}
-        <div className="flex items-center gap-1">
-          <div
-            className={`${bgColor(
-              primaryColor
-            )} w-[20px] h-[30px] flex items-center justify-center`}
-          >
-            {output ? "1" : "0"}
+          {/* Inputs */}
+          <div className="flex flex-col items-center gap-6 smd:gap-2">
+            {inputs.map((input, index) => (
+              <div key={index} className="flex items-center mb-2 gap-1">
+                <Typography fontweight="semiBold" variant="body2">
+                  Input {index + 1}
+                </Typography>
+                <div
+                  className={`${bgColor(
+                    primaryColor
+                  )} w-[20px] h-[30px] flex items-center justify-center`}
+                >
+                  {input ? "1" : "0"}
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-col items-center text-black dark:text-white">
-            {output ? (
-              <LightBulbOn className="w-14 h-14" />
+
+          {/* Drop Zone for Gate */}
+          <DropZone onDrop={handleDrop}>
+            {selectedGate ? (
+              gateIcons[selectedGate]
             ) : (
-              <LightBulbOff className="w-14 h-14" />
+              <Typography className="text-center" variant="caption">
+                Drag Gate Here
+              </Typography>
             )}
-            <Typography className="mt-2 text-sm">Output</Typography>
+          </DropZone>
+
+          {/* Outputs */}
+          <div className="flex items-center gap-1">
+            <div
+              className={`${bgColor(
+                primaryColor
+              )} w-[20px] h-[30px] flex items-center justify-center`}
+            >
+              {output ? "1" : "0"}
+            </div>
+            <div className="flex flex-col items-center text-black dark:text-white">
+              {output ? (
+                <LightBulbOn className="w-14 h-14 ssm:w-10 ssm:h-10" />
+              ) : (
+                <LightBulbOff className="w-14 h-14 ssm:w-10 ssm:h-10" />
+              )}
+              <Typography className="mt-2 text-sm">Output</Typography>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DndProvider>
   );
 };
 

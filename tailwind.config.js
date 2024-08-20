@@ -60,6 +60,24 @@ module.exports = {
 
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
+
+      "3xl": "1780px",
+      // => @media (min-width: 1536px) { ... }
+
+      sxl: { max: "1280px" },
+      // => @media (max-width: 1280px) { ... }
+
+      slg: { max: "1024px" },
+      // => @media (max-width: 1280px) { ... }
+
+      smd: { max: "767px" },
+      // => @media (max-width: 767px) { ... }
+
+      ssm: { max: "640px" },
+      // => @media (max-width: 640px) { ... }
+
+      sxs: { max: "475px" },
+      // => @media (max-width: 475px) { ... }
     },
     extend: {
       colors: {

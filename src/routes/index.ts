@@ -19,6 +19,7 @@ import {
   Feedback,
   Glossary,
   Faq,
+  Reference,
 } from "@src/assets/icons";
 
 type IMainRoute = {
@@ -45,8 +46,10 @@ const ROUTES_URL = {
   feedback: "/final-step/feedback",
   glossary: "/additional-resources/glossary",
   faq: "/additional-resources/faq",
+  references: "/additional-resources/references",
   contact: "/contact",
   privacy: "/privacy",
+  simulator: "/simulator",
 };
 
 const mainRoutes: IMainRoute = {
@@ -93,10 +96,12 @@ const mainRoutes: IMainRoute = {
   additionalResources: [
     { name: "Glossary of terms", url: ROUTES_URL.glossary, icon: Glossary },
     { name: "FAQs", url: ROUTES_URL.faq, icon: Faq },
+    { name: "References", url: ROUTES_URL.references, icon: Reference },
   ],
 };
 
 const navRoutes: IRoute[] = [
+  { name: "simulator", url: ROUTES_URL.simulator },
   { name: "contact", url: ROUTES_URL.contact },
   { name: "privacy", url: ROUTES_URL.privacy },
 ];

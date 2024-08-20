@@ -1,44 +1,64 @@
 {
   "glossary": [
     {
-      "term": "AND Gate",
-      "definition": "A basic logic gate that outputs true (1) only when all its inputs are true. (Example: If A = 1 and B = 1, output = 1)"
+      "term": "Logic Circuit",
+      "definition": "An electrical circuit that performs logical operations on binary inputs to produce a binary output."
     },
     {
       "term": "Binary System",
-      "definition": "A numbering system that represents all numbers using two symbols: 0 and 1. (Example: Decimal 2 in binary is 10)"
+      "definition": "A numeral system that uses only two digits, 0 and 1, as the foundation of digital electronics and computing systems."
     },
     {
-      "term": "Capacitor",
-      "definition": "An electronic component that stores electrical energy in an electric field."
+      "term": "Boolean Algebra",
+      "definition": "A branch of algebra that deals with binary variables and logical operations, forming the theoretical foundation for logic circuits."
     },
     {
-      "term": "Diode",
-      "definition": "A semiconductor device that allows current to flow in one direction only."
+      "term": "Logic Gate",
+      "definition": "A basic building block of logic circuits that performs a simple logical function such as AND, OR, NOT, NAND, NOR, XOR, or XNOR."
     },
     {
-      "term": "Exclusive OR (XOR) Gate",
-      "definition": "A logic gate that outputs true (1) when the number of true inputs is odd."
+      "term": "AND Gate",
+      "definition": "A logic gate that produces a true (1) output only if all its inputs are true."
     },
     {
-      "term": "Frequency",
-      "definition": "The number of times a periodic action occurs in one second."
+      "term": "OR Gate",
+      "definition": "A logic gate that produces a true (1) output if at least one of its inputs is true."
     },
     {
-      "term": "Gate",
-      "definition": "A basic building block of digital circuits that performs a logical operation."
+      "term": "NOT Gate",
+      "definition": "A logic gate that inverts its input signal; true becomes false, and false becomes true."
     },
     {
-      "term": "Hexadecimal",
-      "definition": "A base-16 numbering system using digits 0-9 and letters A-F."
+      "term": "NAND Gate",
+      "definition": "A logic gate that produces a false (0) output only if all its inputs are true, which is the negation of the AND gate."
     },
     {
-      "term": "Inductor",
-      "definition": "A passive electronic component that stores energy in a magnetic field."
+      "term": "NOR Gate",
+      "definition": "A logic gate that produces a true (1) output only when all its inputs are false."
     },
     {
-      "term": "Junction",
-      "definition": "The region where two different semiconductor materials meet in a semiconductor device."
+      "term": "XOR Gate",
+      "definition": "A logic gate that produces a true (1) output only when the number of true inputs is odd."
+    },
+    {
+      "term": "XNOR Gate",
+      "definition": "A logic gate that produces a true (1) output only when the number of true inputs is even."
+    },
+    {
+      "term": "Truth Table",
+      "definition": "A table used to represent the logical relationship between inputs and outputs of a logic gate or circuit."
+    },
+    {
+      "term": "Combinational Circuit",
+      "definition": "A type of logic circuit where the output is determined solely by the current inputs."
+    },
+    {
+      "term": "Sequential Circuit",
+      "definition": "A type of logic circuit where the output depends on both current inputs and previous states, often using memory elements like flip-flops."
+    },
+    {
+      "term": "Flip-Flop",
+      "definition": "A digital memory circuit that can hold one bit of information, used in sequential circuits."
     }
   ]
 }

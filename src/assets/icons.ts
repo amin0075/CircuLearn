@@ -30,6 +30,8 @@ import Send from "@src/assets/icons/send.svg";
 import Setting from "@src/assets/icons/setting.svg";
 import Table from "@src/assets/icons/table.svg";
 import Test from "@src/assets/icons/test.svg";
+import BurgerMenu from "@src/assets/icons/burger-menu.svg";
+import Reference from "@src/assets/icons/reference.svg";
 
 // first:[&>g>path]:fill-darkOrange-500
 
@@ -37,6 +39,7 @@ export {
   Arrow,
   Binary,
   Bot,
+  BurgerMenu,
   Chat,
   ChipCircuit,
   Close,
@@ -59,6 +62,7 @@ export {
   Nightmode,
   Presentation,
   Question,
+  Reference,
   Search,
   Send,
   Setting,

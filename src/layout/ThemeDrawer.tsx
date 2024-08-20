@@ -46,6 +46,7 @@ import Divider from "@src/components/Divider";
 import Switch from "@src/components/Switch";
 import LayoutIcon from "@src/components/global/LayoutIcon";
 import { enterFullscreen, exitFullscreen } from "@src/utils/fullscreen";
+import useMediaQuery from "@src/hooks/useMediaQuery";
 
 interface IProps
   extends React.DetailedHTMLProps<
@@ -75,6 +76,7 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
     sidebarTransparent,
     darkMode,
   } = useThemeStore((state) => state);
+  const windowWidth = useMediaQuery();
 
   const { setIsComponentVisible, isComponentVisible } = props;
 
@@ -90,6 +92,12 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
       setIsFullscreen(true);
     }
   };
+
+  useEffect(() => {
+    if (windowWidth < 767) {
+      changeSidebarBg(false);
+    }
+  }, [windowWidth]);
 
   return (
     <>
@@ -163,31 +171,35 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
         <Divider className="my-5" darkcolor={!darkMode} />
 
         {/* sidebar background option */}
-        <div className="flex flex-col">
-          <Typography variant="body1">Sidebar Type</Typography>
-          <Typography variant="caption" color="gray">
-            Choose between 2 different sidebar type.
-          </Typography>
-          <div className="flex items-center gap-2 w-full pt-3">
-            <Button
-              onClick={() => changeSidebarBg(true)}
-              bgMode="gradient"
-              variant={sidebarTransparent ? "contained" : "bordered"}
-              className={`px-6 py-3 flex-1`}
-            >
-              <Typography variant="caption">Transparent</Typography>
-            </Button>
-            <Button
-              onClick={() => changeSidebarBg(false)}
-              variant={!sidebarTransparent ? "contained" : "bordered"}
-              bgMode="gradient"
-              className={`px-6 py-3 flex-1`}
-            >
-              <Typography variant="caption">Opague</Typography>
-            </Button>
-          </div>
-        </div>
-        <Divider className="my-5" darkcolor={!darkMode} />
+        {windowWidth > 767 && (
+          <>
+            <div className="flex flex-col">
+              <Typography variant="body1">Sidebar Type</Typography>
+              <Typography variant="caption" color="gray">
+                Choose between 2 different sidebar type.
+              </Typography>
+              <div className="flex items-center gap-2 w-full pt-3">
+                <Button
+                  onClick={() => changeSidebarBg(true)}
+                  bgMode="gradient"
+                  variant={sidebarTransparent ? "contained" : "bordered"}
+                  className={`px-6 py-3 flex-1`}
+                >
+                  <Typography variant="caption">Transparent</Typography>
+                </Button>
+                <Button
+                  onClick={() => changeSidebarBg(false)}
+                  variant={!sidebarTransparent ? "contained" : "bordered"}
+                  bgMode="gradient"
+                  className={`px-6 py-3 flex-1`}
+                >
+                  <Typography variant="caption">Opague</Typography>
+                </Button>
+              </div>
+            </div>
+            <Divider className="my-5" darkcolor={!darkMode} />
+          </>
+        )}
 
         {/* sidebar expantion */}
         <div className="flex flex-col gap-2">

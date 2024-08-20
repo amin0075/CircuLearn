@@ -52,11 +52,13 @@ const Switch: React.FC<IProps> = forwardRef((props, ref) => {
   }, [primaryColor]);
 
   return (
-    <label className="inline-flex relative items-center cursor-pointer self-start">
+    <label
+      className={`inline-flex relative items-center cursor-pointer self-start`}
+    >
       <input type="checkbox" className="sr-only peer" {...rest} />
       <div
         className={twMerge(
-          `w-11 h-6 bg-inherit peer-focus:outline-none peer-focus:ring-0 peer-checked:border-0 border rounded-full peer ltr:peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-0 after:content-[''] after:absolute after:top-[2px] ltr:after:left-[2px] ltr:after:right-unset rtl:after:right-[2px] rtl:after:left-unset after:border-0 after:rounded-full after:h-5 after:w-5 after:transition-all dark:after:bg-white after:bg-black ${background}`,
+          `w-11 h-6 bg-inherit peer-focus:outline-none peer-focus:ring-0 peer-checked:border-0 border rounded-full peer ltr:peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-0 after:content-[''] after:absolute ${children ? "after:top-[5px]" : "after:top-[2px]"} ltr:after:left-[2px] ltr:after:right-unset after:border-0 after:rounded-full after:h-5 after:w-5 after:transition-all dark:after:bg-white after:bg-black ${background}`,
           className
         )}
       ></div>

@@ -96,20 +96,20 @@ const GateSimulation: React.FC<GateSimulationProps> = ({
   }, [gate]);
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow dark:bg-gray-800">
+    <div className="p-4 sxs:px-0 bg-transparent rounded-lg">
       <div className="flex items-center justify-between w-full relative">
         {/* inputs wire(s) */}
         {gate === "NOT Gate" ? (
-          <hr className="border w-[120px] border-black dark:border-white absolute left-[100px] top-[calc(50%-1px)]" />
+          <hr className="border w-[120px] ssm:w-[60px] sxs:w-[15px] border-black dark:border-white absolute left-[100px] top-[calc(50%-1px)]" />
         ) : (
           <>
-            <hr className="border w-[120px] border-black dark:border-white absolute left-[100px] top-[27px] rotate-[12deg]" />
-            <hr className="border w-[120px] border-black dark:border-white absolute left-[100px] bottom-[27px] -rotate-[12deg]" />
+            <hr className="border w-[120px] ssm:w-[60px] sxs:w-[15px] border-black dark:border-white absolute left-[100px] top-[27px] rotate-[12deg]" />
+            <hr className="border w-[120px] ssm:w-[60px] sxs:w-[15px] border-black dark:border-white absolute left-[100px] bottom-[27px] -rotate-[12deg]" />
           </>
         )}
 
         {/* output wire */}
-        <hr className="border w-[120px] border-black dark:border-white absolute right-[85px] top-[calc(50%-1px)]" />
+        <hr className="border w-[120px] ssm:w-[60px] sxs:w-[15px] border-black dark:border-white absolute right-[85px] top-[calc(50%-1px)]" />
 
         {/* gate */}
         <div className="flex flex-col items-center gap-6">
@@ -118,8 +118,9 @@ const GateSimulation: React.FC<GateSimulationProps> = ({
               <Switch
                 checked={inputs[index]}
                 onChange={() => handleInputChange(index)}
-              />
-              <Typography fontweight="semiBold">{label}</Typography>
+              >
+                <Typography fontweight="semiBold">{label}</Typography>
+              </Switch>
               <div
                 className={`${bgColor(primaryColor)} w-[20px] h-[30px] flex items-center justify-center`}
               >
@@ -139,13 +140,11 @@ const GateSimulation: React.FC<GateSimulationProps> = ({
           </div>
           <div className="flex flex-col items-center text-black dark:text-white">
             {output ? (
-              <LightBulbOn className="w-14 h-14" />
+              <LightBulbOn className="w-14 h-14 sxs:w-10 sxs:h-10" />
             ) : (
-              <LightBulbOff className="w-14 h-14" />
+              <LightBulbOff className="w-14 h-14 sxs:w-10 sxs:h-10" />
             )}
-            <span className="mt-2 text-sm font-medium text-gray-900 dark:text-gray-100">
-              {outputLabel}
-            </span>
+            <Typography variant="body2">{outputLabel}</Typography>
           </div>
         </div>
       </div>

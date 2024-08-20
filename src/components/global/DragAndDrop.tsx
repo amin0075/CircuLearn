@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from "react-dnd-touch-backend";
+import { isTouchDevice } from "@src/utils/deviceUtils";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
-import { useDrop, useDrag } from "react-dnd";
 import { bgColor } from "@src/utils/colorUtils";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 
@@ -46,14 +49,14 @@ const DropZone: React.FC<{
     <Paper
       // @ts-ignore
       ref={ref}
-      className="m-2 flex items-center justify-center !bg-customGrayDark"
+      className="m-2 flex items-center justify-center dark:!bg-customGrayDark"
     >
       {children}
     </Paper>
   );
 };
 
-// Drag and Drop
+// Drag and Drop Component
 const DragAndDrop: React.FC<{
   items: string[];
   correctOrder: string[];
@@ -69,18 +72,22 @@ const DragAndDrop: React.FC<{
     onDrop(newOrder);
   };
 
+  const backend = isTouchDevice() ? TouchBackend : HTML5Backend;
+
   return (
-    <div className="flex flex-row space-x-2">
-      {currentOrder.map((item, index) => (
-        <DropZone
-          key={index}
-          accept={["item"]}
-          onDrop={(draggedIndex) => handleDrop(draggedIndex, index)}
-        >
-          <DraggableItem item={item} index={index} />
-        </DropZone>
-      ))}
-    </div>
+    <DndProvider backend={backend}>
+      <div className="flex flex-row space-x-2">
+        {currentOrder.map((item, index) => (
+          <DropZone
+            key={index}
+            accept={["item"]}
+            onDrop={(draggedIndex) => handleDrop(draggedIndex, index)}
+          >
+            <DraggableItem item={item} index={index} />
+          </DropZone>
+        ))}
+      </div>
+    </DndProvider>
   );
 };
 

@@ -1,16 +1,40 @@
 {
   "faq": [
     {
-      "question": "What is the capital of France?",
-      "answer": "Paris"
+      "question": "How do I clear my message history with the AI?",
+      "answer": "You can clear your chat history with the AI by clicking the 'Clear chat history' button located in the chat interface. This will remove all previous messages, giving you a fresh start for your next conversation."
     },
     {
-      "question": "What is the capital of Spain?",
-      "answer": "Madrid"
+      "question": "What should I do if I have additional questions about logic circuits?",
+      "answer": "If you have more questions about logic circuits or related topics, you can simply ask them in the chatbot. The AI is designed to assist with questions related to logic circuits, the binary system, Boolean algebra, and other relevant areas."
     },
     {
-      "question": "What is the capital of Italy?",
-      "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumrecusandae alias error harum maxime adipisci amet laborum. Perspiciatis minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur fugiat, temporibus enim commodi iusto libero magni deleniti quod quam consequuntur! Commodi minima excepturi repudiandae velit hic maximedoloremque. Quaerat provident commodi consectetur veniam similique ad earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!"
+      "question": "How can I contribute to the app's results and provide my feedback?",
+      "answer": "You can participate by taking the quizzes and providing feedback through the 'Feedback about the application' section found under the 'Final Step' menu. Your insights and feedback are invaluable in helping me improve the app and tailor it to better suit your needs."
+    },
+    {
+      "question": "How should I use the content in the app? What are the steps?",
+      "answer": "Start by exploring the 'Introduction to Logic Circuits' section to build foundational knowledge. Next, proceed through the 'Basic Concepts' and 'Gates' sections to understand the essential components. You can then test your understanding by using the 'Simulation' features and taking the quizzes in the 'Final Step' section. Finally, if you have any further questions, use the chatbot for additional assistance."
+    },
+    {
+      "question": "How can I contact you for further questions?",
+      "answer": "If you have further questions that are not covered by the app or chatbot, you can reach out to me via the 'Contact' section available in the top navigation bar. I'm here to assist with any inquiries you may have."
+    },
+    {
+      "question": "Is my data anonymous?",
+      "answer": "Yes, all data collected by the app is anonymized. I do not collect or store any personally identifiable information, ensuring that your privacy is fully protected while using the app."
+    },
+    {
+      "question": "Does the app store any personal information?",
+      "answer": "No, the app does not store any personal information. All interactions, including chat history and quiz results, are kept anonymous and are only used to enhance your learning experience."
+    },
+    {
+      "question": "How do I use the quiz section?",
+      "answer": "The quiz section is designed to test your understanding of the concepts covered in the app. To use it, navigate to the 'Final Step' menu and select 'Quiz.' Answer the questions based on your knowledge, and submit your responses to see how well you've understood the material. The quizzes are a great way to reinforce your learning."
+    },
+    {
+      "question": "After seeing all the learning sections, what should I do?",
+      "answer": "Please take the quiz to help me evaluate how effective the application was in teaching the topic. After completing the quiz, I would greatly appreciate it if you could provide feedback on your experience interacting with the app. Your feedback will help me improve the content and enhance the app's overall user experience."
     }
   ]
 }

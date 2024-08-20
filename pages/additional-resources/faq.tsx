@@ -44,13 +44,17 @@ export default function FAQ() {
             key={index}
             className="w-full flex flex-col gap-4 p-4 bg-gray-200 dark:bg-customGrayDark rounded-lg"
           >
-            <div className="w-full flex items-center justify-between gap-2">
+            <div
+              className="w-full flex items-center justify-between gap-2"
+              tabIndex={0}
+              role="button"
+              aria-label="toggle answer"
+              onClick={() => toggleAnswer(index)}
+            >
               <Typography variant="h4">{item.question}</Typography>
-              <IconButton onClick={() => toggleAnswer(index)} className="p-0">
-                <Close
-                  className={`w-8 h-8 text-black dark:text-white transition-all ease-in-out duration-300 ${toggle[index] ? "" : "rotate-45"}`}
-                />
-              </IconButton>
+              <Close
+                className={`w-8 h-8 text-black dark:text-white transition-all ease-in-out duration-300 ${toggle[index] ? "" : "rotate-45"}`}
+              />
             </div>
             <div
               ref={(el) => {

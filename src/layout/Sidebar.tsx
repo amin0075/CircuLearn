@@ -11,13 +11,13 @@ import Image from "next/image";
 // i18next
 
 // utils
-import { textColor } from "@src/utils/colorUtils";
+import { bgColor, textColor } from "@src/utils/colorUtils";
 
 // zustand store
 import { useThemeStore } from "@src/zustand_stores/Theme";
 
 // routes
-import { mainRoutes } from "@src/routes";
+import { mainRoutes, navRoutes } from "@src/routes";
 
 // icons
 import { Arrow } from "@src/assets/icons";
@@ -28,9 +28,13 @@ import Button from "@src/components/Button";
 import Divider from "@src/components/Divider";
 import IconButton from "@src/components/IconButton";
 import SidebarLink from "./SidebarLink";
+import UserGuide from "./Navbar/UserGuide";
+import NavLinks from "./Navbar/NavLinks";
 
 interface IProps {
   children?: ReactNode;
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  sidebarOpen: boolean;
 }
 
 interface ISection {
@@ -41,7 +45,7 @@ interface ISection {
   additionalResources: boolean;
 }
 
-const Sidebar: React.FC<IProps> = () => {
+const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
   const router = useRouter();
 
   const { sidebarTransparent, primaryColor, sidebarExpand, darkMode } =
@@ -84,17 +88,27 @@ const Sidebar: React.FC<IProps> = () => {
 
   return (
     <div
-      className={`flex transition-all duration-200 ease-in-out fixed top-0 left-0 p-4 pr-8 h-screen z-[1] ${
+      className={`flex transition-all duration-200 ease-in-out fixed md:top-0 md:left-0 p-4 md:pr-8 h-screen md:z-[1] smd:z-20 ${sidebarOpen ? "left-0 top-0" : `${sidebarExpand ? "-left-[298px]" : "-left-[170px]"}`} ${
         sidebarExpand ? "w-[298px]" : "w-[170px]"
       }`}
     >
       <div
-        className={`w-full h-full overflow-y-auto flex flex-col justify-between items-center rounded-20 no-scrollbar::-webkit-scrollbar no-scrollbar ${
+        className={`w-full h-full relative overflow-y-auto flex flex-col justify-between items-center rounded-20 no-scrollbar::-webkit-scrollbar no-scrollbar ${
           sidebarTransparent
             ? "bg-transparent"
-            : "dark:bg-gr_card_dark dark:backdrop-blur-xl dark:shadow-none shadow-box-shadow-black-md bg-white/80 dark:bg-transparent"
+            : "dark:bg-gr_card_dark dark:backdrop-blur-xl dark:shadow-none shadow-box-shadow-black-md md:bg-white/80 bg-white dark:bg-transparent"
         } ${textColor(primaryColor)}`}
       >
+        <IconButton
+          onClick={() => setSidebarOpen((prev) => !prev)}
+          className={`${bgColor(primaryColor)} md:hidden p-1 absolute top-3 right-3 text-white`}
+        >
+          <Arrow
+            className={`w-4 h-4 transition-all duration-300 ease-in-out ${
+              sidebarOpen ? "rotate-180" : "rotate-90"
+            }`}
+          />
+        </IconButton>
         <div className="flex flex-col w-full">
           <div className="flex items-center w-full justify-center gap-2 px-8 pt-7 pb-1">
             <Image
@@ -108,6 +122,10 @@ const Sidebar: React.FC<IProps> = () => {
             />
           </div>
           <Divider darkcolor={!darkMode} className="w-full" />
+          {/* nav link in mobile view */}
+          <NavLinks usedInNavbar={false} className="md:hidden" />
+          <Divider darkcolor={!darkMode} className="w-full md:hidden" />
+
           {/* pages links */}
           <div className="flex flex-col w-full px-4">
             <div className="flex flex-col overflow-hidden transition-all duration-300 ease-in-out px-2 py-2">

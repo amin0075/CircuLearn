@@ -1,5 +1,5 @@
 // react
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 // next js
 import type { NextPage } from "next";
@@ -37,7 +37,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
 
   const { darkMode, sidebarExpand } = useThemeStore((state) => state);
   const isHydrated = useHasHydrated();
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { isComponentVisible, ref, setIsComponentVisible } =
     useComponentVisible(false);
 
@@ -48,15 +48,16 @@ const Layout: React.FC<IProps> = ({ children }) => {
         dir="ltr"
         className={`flex w-full min-h-screen text-white dark:bg-[url('/images/dashboard-bg.png')] dark:bg-backgroundDark bg-none bg-gray-200 bg-no-repeat bg-cover font-PlusJakartaSans overflow-x-hidden`}
       >
-        <Sidebar />
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <div
-          className={`flex w-full flex-col pt-[75px] pr-5 transition-all duration-200 ease-in-out ${
-            sidebarExpand ? "pl-[298px]" : "pl-[170px]"
+          className={`flex w-full flex-col pt-[75px] md:pr-5 px-5 transition-all duration-200 ease-in-out ${
+            sidebarExpand ? "md:pl-[298px]" : "md:pl-[170px]"
           }`}
         >
           <Navbar
             isComponentVisible={isComponentVisible}
             setIsComponentVisible={setIsComponentVisible}
+            setSidebarOpen={setSidebarOpen}
           />
           <div className="flex flex-col flex-1 w-full mt-5">{children}</div>
           <Footer />

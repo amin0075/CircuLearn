@@ -25,7 +25,7 @@ const MessageBox: React.FC<IProps> = ({ isBot = false, message }) => {
 
   return (
     <div
-      className={`flex w-full ${isBot ? "bg-gray-200 self-start" : `self-end ${bgColor(primaryColor)}`} rounded-lg w-[240px] p-3 relative`}
+      className={`flex w-full ${isBot ? "bg-gray-200 self-start" : `self-end ${bgColor(primaryColor)}`} rounded-lg w-[230px] p-3 relative`}
     >
       <div
         className={`${
@@ -36,7 +36,7 @@ const MessageBox: React.FC<IProps> = ({ isBot = false, message }) => {
       />
       <Typography
         variant="body2"
-        className={`${isBot ? "text-black dark:text-black" : "text-white"}`}
+        className={`${isBot ? "text-black dark:text-black" : "text-white"} whitespace-pre-wrap`}
       >
         {message}
       </Typography>

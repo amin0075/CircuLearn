@@ -48,25 +48,14 @@ export default function GatePage() {
       <div className="w-full flex flex-col gap-4 min-h-full">
         <div className="flex w-full gap-4 flex-wrap">
           {/* Gate Description */}
-          <Paper className="p-4 md:p-6 w-[calc(50%-8px)] flex flex-col gap-4">
+          <Paper className="p-4 md:p-6 w-[calc(50%-8px)] flex flex-col gap-4 slg:w-full">
             <Typography variant="h2">{gate.name}</Typography>
             <Typography variant="body1">{gate.description}</Typography>
           </Paper>
 
           {/* Simulation */}
-          <Paper className="p-4 md:p-6 w-[calc(50%-8px)] flex flex-col gap-4">
+          <Paper className="p-4 md:p-6 w-[calc(50%-8px)] sm:min-w-[550px] slg:w-full flex flex-col gap-4">
             <Typography variant="h3">Simulation</Typography>
-            {/* <div className="simulation">
-              {gate.simulation.inputLabels.map((label, index) => (
-                <div key={index} className="flex items-center gap-2 mb-2">
-                  <Typography variant="body1">{label}</Typography>
-                  <input type="checkbox" id={label} name={label} />
-                </div>
-              ))}
-              <Typography variant="body1">
-                {gate.simulation.outputLabel}: 1
-              </Typography>
-            </div> */}
             <GateSimulation
               gate={gate.name}
               inputLabels={gate.simulation.inputLabels}
@@ -77,7 +66,7 @@ export default function GatePage() {
 
         <div className="flex w-full gap-4 flex-wrap">
           {/* Truth Table */}
-          <Paper className="p-4 md:p-6 w-[calc(55%-8px)] flex flex-col gap-4">
+          <Paper className="p-4 md:p-6 w-[calc(55%-8px)] flex flex-col gap-4 slg:w-full">
             <Typography variant="h3">Truth Table</Typography>
             <div className="overflow-x-auto">
               <table
@@ -114,7 +103,7 @@ export default function GatePage() {
           </Paper>
 
           {/* Practice Questions */}
-          <Paper className="p-4 md:p-6 w-[calc(45%-8px)] flex flex-col gap-4">
+          <Paper className="p-4 md:p-6 w-[calc(45%-8px)] flex flex-col gap-4 slg:w-full">
             <Typography variant="h3">Practice Questions</Typography>
             {gate.questions.map((question, questionIndex) => (
               <div key={questionIndex} className="mb-4">

@@ -51,7 +51,7 @@ export default function Glossary() {
         >
           <Search className="w-8 h-8 text-black" />
           <TextField
-            className="bg-white rounded-lg placeholder:text-caption px-2 h-[42px]"
+            className="bg-white rounded-lg placeholder:text-caption px-2 h-[42px] dark:text-black"
             type="text"
             placeholder="Search here..."
             value={searchTerm}

@@ -37,18 +37,37 @@ const Contact: React.FC<IProps> = () => {
           1. Initial Contact:
         </Typography>
         <Typography variant="body2">
-          Email: 2314378@chester.ac.uk <br /> Please address any initial
-          concerns or complaints via email. I am committed to responding
-          promptly and appropriately.
+          Email:{" "}
+          <Link
+            href="#"
+            onClick={(e) => {
+              window.location.href = "mailto:2314378@chester.ac.uk";
+              e.preventDefault();
+            }}
+            className="underline"
+          >
+            2314378@chester.ac.uk
+          </Link>{" "}
+          <br /> Please address any initial concerns or complaints via email. I
+          am committed to responding promptly and appropriately.
         </Typography>
         {/* Use of Information */}
         <Typography className="underline" fontweight="semiBold">
           2. Escalation Procedure:{" "}
         </Typography>
         <Typography variant="body2">
-          If necessary, you may escalate the issue to: Kurt Allman Dean of the
-          Faculty of Science, Business & Enterprise University of Chester Email:
-          k.allman@chester.ac.uk
+          If necessary, you may escalate the issue to: Kurt AllmanDean of the
+          Faculty of Science, Business & EnterpriseUniversity of ChesterEmail:{" "}
+          <Link
+            href="#"
+            onClick={(e) => {
+              window.location.href = "mailto:k.allman@chester.ac.uk";
+              e.preventDefault();
+            }}
+            className="underline"
+          >
+            k.allman@chester.ac.uk
+          </Link>
         </Typography>
 
         <Typography variant="body1">
