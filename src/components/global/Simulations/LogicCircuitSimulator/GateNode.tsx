@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Handle, Position, useUpdateNodeInternals } from "react-flow-renderer";
-import * as logic from "@src/utils/gateLogic"; // Import your gate logic
+import React from "react";
+import { Handle, Position, NodeProps } from "react-flow-renderer";
 import {
   LogicGateAnd,
   LogicGateOr,
@@ -9,50 +8,14 @@ import {
   LogicGateNor,
   LogicGateXor,
   LogicGateXnor,
-} from "@src/assets/icons"; // Import icons
+} from "@src/assets/icons";
 
-interface GateNodeProps {
-  id: string;
-  data: {
-    gateType: string;
-    value?: number;
-  };
+interface GateNodeData {
+  gateType: string;
+  value?: number;
 }
 
-const GateNode: React.FC<GateNodeProps> = ({ id, data }) => {
-  const [outputValue, setOutputValue] = useState(0);
-  const updateNodeInternals = useUpdateNodeInternals();
-
-  const calculateGateOutput = (inputs: boolean[]) => {
-    switch (data.gateType) {
-      case "and":
-        return logic.calculateAND(inputs);
-      case "or":
-        return logic.calculateOR(inputs);
-      case "not":
-        return logic.calculateNOT(inputs);
-      case "nand":
-        return logic.calculateNAND(inputs);
-      case "nor":
-        return logic.calculateNOR(inputs);
-      case "xor":
-        return logic.calculateXOR(inputs);
-      case "xnor":
-        return logic.calculateXNOR(inputs);
-      default:
-        return 0;
-    }
-  };
-
-  useEffect(() => {
-    // Logic to determine the inputs to this gate node
-    const inputValues: boolean[] = []; // Fetch the input values from connected nodes
-    const output = calculateGateOutput(inputValues) ? 1 : 0;
-    setOutputValue(output);
-    data.value = output; // Update the output in node data
-    updateNodeInternals(id); // Ensure connections and edges are updated
-  }, [data.gateType, id, updateNodeInternals]);
-
+const GateNode: React.FC<NodeProps<GateNodeData>> = ({ data }) => {
   const renderIcon = () => {
     switch (data.gateType) {
       case "and":

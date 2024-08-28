@@ -3,30 +3,30 @@ import { Edge, Node, Position } from "react-flow-renderer";
 export const initialNodes: Node[] = [
   {
     id: "1",
-    type: "inputNode", // Custom input node type
-    data: { label: "Input A", value: 0 }, // Include value for the input
+    type: "inputNode",
+    data: { label: "Input 1", value: 0 },
     position: { x: 250, y: 5 },
     sourcePosition: Position.Right,
   },
   {
     id: "2",
-    type: "inputNode", // Custom input node type
-    data: { label: "Input B", value: 0 }, // Include value for the input
+    type: "inputNode",
+    data: { label: "Input 2", value: 0 },
     position: { x: 250, y: 100 },
     sourcePosition: Position.Right,
   },
   {
     id: "3",
-    type: "gateNode", // Custom gate node
-    data: { gateType: "and" }, // Specify the gate type here
+    type: "gateNode",
+    data: { gateType: "and", value: 0, label: "AND Gate" },
     position: { x: 440, y: 50 },
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
   },
   {
     id: "4",
-    type: "outputNode", // Custom output node type
-    data: { label: "Lamp", value: 0 },
+    type: "outputNode",
+    data: { label: "Lamp 1", value: 0 },
     position: { x: 600, y: 50 },
     targetPosition: Position.Left,
   },
@@ -39,7 +39,8 @@ export const initialEdges: Edge[] = [
     target: "3",
     sourceHandle: "a",
     targetHandle: "input1",
-    animated: false, // Animation depends on data.value
+    animated: false,
+    label: "0",
   },
   {
     id: "e2-3",
@@ -47,7 +48,8 @@ export const initialEdges: Edge[] = [
     target: "3",
     sourceHandle: "a",
     targetHandle: "input2",
-    animated: false, // Animation depends on data.value
+    animated: false,
+    label: "0",
   },
   {
     id: "e3-4",
@@ -55,6 +57,7 @@ export const initialEdges: Edge[] = [
     target: "4",
     sourceHandle: "output",
     targetHandle: "a",
-    animated: false, // Animation depends on data.value
+    animated: false,
+    label: "0",
   },
 ];

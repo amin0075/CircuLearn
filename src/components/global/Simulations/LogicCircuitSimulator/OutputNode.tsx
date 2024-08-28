@@ -1,6 +1,6 @@
 import React from "react";
 import { Handle, Position } from "react-flow-renderer";
-import { LightBulbOn, LightBulbOff } from "@src/assets/icons"; // Import both icons
+import { LightBulbOn, LightBulbOff } from "@src/assets/icons";
 
 const OutputNode = ({ data }: any) => {
   const isOn = data.value === 1;

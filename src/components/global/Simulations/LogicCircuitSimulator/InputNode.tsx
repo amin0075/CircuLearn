@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Handle, Position, useUpdateNodeInternals } from "react-flow-renderer";
-import Switch from "@src/components/Switch"; // Import the switch component
+import React, { useState } from "react";
+import { Handle, Position, NodeProps } from "react-flow-renderer";
+import Switch from "@src/components/Switch";
 
-const InputNode = ({ id, data }: any) => {
-  const [value, setValue] = useState(data.value);
-  const updateNodeInternals = useUpdateNodeInternals();
+interface InputNodeData {
+  label: string;
+  value?: number;
+}
+
+const InputNode: React.FC<NodeProps<InputNodeData>> = ({ id, data }) => {
+  const [value, setValue] = useState(data.value || 0);
 
   const toggleSwitch = () => {
     const newValue = value === 0 ? 1 : 0;
     setValue(newValue);
-    data.value = newValue; // Update data value
-    updateNodeInternals(id); // Update the node to reflect changes
+    data.value = newValue;
   };
-
-  useEffect(() => {
-    data.value = value; // Ensure the value is in sync with the node data
-    updateNodeInternals(id); // Recalculate connections when value changes
-  }, [value, id, updateNodeInternals, data]);
 
   return (
     <div className="p-2 dark:bg-backgroundDark bg-backgroundLight border border-black dark:border-white dark:text-white text-black rounded shadow">
