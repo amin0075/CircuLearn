@@ -32,6 +32,10 @@ import Table from "@src/assets/icons/table.svg";
 import Test from "@src/assets/icons/test.svg";
 import BurgerMenu from "@src/assets/icons/burger-menu.svg";
 import Reference from "@src/assets/icons/reference.svg";
+import Delete from "@src/assets/icons/delete.svg";
+import Duplicate from "@src/assets/icons/duplicate.svg";
+import Info from "@src/assets/icons/info.svg";
+import Download from "@src/assets/icons/download.svg";
 
 // first:[&>g>path]:fill-darkOrange-500
 
@@ -44,10 +48,14 @@ export {
   ChipCircuit,
   Close,
   ColorPalette,
+  Delete,
+  Download,
+  Duplicate,
   Faq,
   Feedback,
   FullScreenExit,
   FullScreen,
+  Info,
   Glossary,
   LightBulbOff,
   LightBulbOn,

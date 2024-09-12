@@ -121,39 +121,6 @@
       ]
     }
   ],
-  "wcag": [
-    {
-      "criteria": "Perceivable",
-      "notes": [
-        "Provide alternative text for all non-text content, such as images and icons.",
-        "Ensure sufficient color contrast between text and background elements.",
-        "Implement resizable text and ensure content remains readable when text size is increased."
-      ]
-    },
-    {
-      "criteria": "Operable",
-      "notes": [
-        "Ensure all interactive elements are accessible via keyboard navigation.",
-        "Provide clear and consistent navigation throughout the app.",
-        "Ensure users have enough time to read and interact with content by providing controls to pause, stop, or adjust time limits."
-      ]
-    },
-    {
-      "criteria": "Understandable",
-      "notes": [
-        "Use clear and concise language in all app content, including labels, instructions, and error messages.",
-        "Ensure predictable and consistent behavior of UI components.",
-        "Provide helpful error messages and suggestions for resolving input errors."
-      ]
-    },
-    {
-      "criteria": "Robust",
-      "notes": [
-        "Ensure compatibility with assistive technologies commonly used by individuals with disabilities, such as VoiceOver for screen reading.",
-        "Use semantic HTML elements and ARIA attributes to enhance the accessibility of dynamic content and interactive components."
-      ]
-    }
-  ],
   "consent": [
     {
       "text": "I consent to the collection of my feedback for research purposes."

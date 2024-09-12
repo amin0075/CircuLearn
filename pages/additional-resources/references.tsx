@@ -258,6 +258,48 @@ const References = () => {
           </li>
           <li>
             <Typography variant="body2">
+              Delete icon [SVG image]. (n.d.). SVGRepo. Retrieved August 19,
+              2024, from{" "}
+              <Link
+                className="underline"
+                href="https://www.svgrepo.com/svg/502614/delete"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.svgrepo.com/svg/502614/delete
+              </Link>
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              Download icon [SVG image]. (n.d.). SVGRepo. Retrieved August 19,
+              2024, from{" "}
+              <Link
+                className="underline"
+                href="https://www.svgrepo.com/svg/533682/download"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.svgrepo.com/svg/533682/download
+              </Link>
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              Duplicate icon [SVG image]. (n.d.). SVGRepo. Retrieved August 19,
+              2024, from{" "}
+              <Link
+                className="underline"
+                href="https://www.svgrepo.com/svg/522102/duplicate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.svgrepo.com/svg/522102/duplicate
+              </Link>
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
               Digital clock alarm [Digital image]. (n.d.). Wikipedia. Retrieved
               August 19, 2024, from{" "}
               <Link
@@ -337,6 +379,20 @@ const References = () => {
                 rel="noopener noreferrer"
               >
                 https://www.svgrepo.com/svg/521682/full-screen
+              </Link>
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
+              Info icon [SVG image]. (n.d.). SVGRepo. Retrieved August 19, 2024,
+              from{" "}
+              <Link
+                className="underline"
+                href="https://www.svgrepo.com/svg/520799/info"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.svgrepo.com/svg/520799/info
               </Link>
             </Typography>
           </li>

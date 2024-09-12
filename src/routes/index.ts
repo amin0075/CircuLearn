@@ -47,6 +47,7 @@ const ROUTES_URL = {
   glossary: "/additional-resources/glossary",
   faq: "/additional-resources/faq",
   references: "/additional-resources/references",
+  results: "/additional-resources/results",
   contact: "/contact",
   privacy: "/privacy",
   simulator: "/simulator",
@@ -96,6 +97,7 @@ const mainRoutes: IMainRoute = {
   additionalResources: [
     { name: "Glossary of terms", url: ROUTES_URL.glossary, icon: Glossary },
     { name: "FAQs", url: ROUTES_URL.faq, icon: Faq },
+    { name: "Results", url: ROUTES_URL.results, icon: Test },
     { name: "References", url: ROUTES_URL.references, icon: Reference },
   ],
 };

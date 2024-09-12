@@ -4,14 +4,14 @@ export const initialNodes: Node[] = [
   {
     id: "1",
     type: "inputNode",
-    data: { label: "Input 1", value: 0 },
+    data: { label: "Input", value: 0 },
     position: { x: 250, y: 5 },
     sourcePosition: Position.Right,
   },
   {
     id: "2",
     type: "inputNode",
-    data: { label: "Input 2", value: 0 },
+    data: { label: "Input", value: 0 },
     position: { x: 250, y: 100 },
     sourcePosition: Position.Right,
   },
@@ -26,7 +26,7 @@ export const initialNodes: Node[] = [
   {
     id: "4",
     type: "outputNode",
-    data: { label: "Lamp 1", value: 0 },
+    data: { label: "Lamp", value: 0 },
     position: { x: 600, y: 50 },
     targetPosition: Position.Left,
   },

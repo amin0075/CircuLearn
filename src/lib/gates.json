@@ -28,7 +28,13 @@
         "options": ["When both inputs are 1", "When at least one input is 0"],
         "correctAnswer": "When at least one input is 0"
       }
-    ]
+    ],
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/basic-concepts/truth-table",
+    "previousRouteLabel": "Truth Table",
+    "nextRoute": "/gates/or-gate",
+    "nextRouteLabel": "OR Gate"
   },
   {
     "name": "OR Gate",
@@ -59,7 +65,13 @@
         "options": ["When both inputs are 0", "When at least one input is 1"],
         "correctAnswer": "When at least one input is 1"
       }
-    ]
+    ],
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/gates/and-gate",
+    "previousRouteLabel": "AND Gate",
+    "nextRoute": "/gates/not-gate",
+    "nextRouteLabel": "NOT Gate"
   },
   {
     "name": "NOT Gate",
@@ -88,7 +100,13 @@
         "options": ["When the input is 1", "When the input is 0"],
         "correctAnswer": "When the input is 0"
       }
-    ]
+    ],
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/gates/or-gate",
+    "previousRouteLabel": "OR Gate",
+    "nextRoute": "/gates/nand-gate",
+    "nextRouteLabel": "NAND Gate"
   },
   {
     "name": "NAND Gate",
@@ -119,7 +137,13 @@
         "options": ["When both inputs are 1", "When both inputs are 0"],
         "correctAnswer": "When both inputs are 1"
       }
-    ]
+    ],
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/gates/not-gate",
+    "previousRouteLabel": "NOT Gate",
+    "nextRoute": "/gates/nor-gate",
+    "nextRouteLabel": "NOR Gate"
   },
   {
     "name": "NOR Gate",
@@ -150,7 +174,13 @@
         "options": ["When both inputs are 0", "When at least one input is 1"],
         "correctAnswer": "When at least one input is 1"
       }
-    ]
+    ],
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/gates/nand-gate",
+    "previousRouteLabel": "NAND Gate",
+    "nextRoute": "/gates/xor-gate",
+    "nextRouteLabel": "XOR Gate"
   },
   {
     "name": "XOR Gate",
@@ -181,7 +211,13 @@
         "options": ["When both inputs are 1", "When the inputs are different"],
         "correctAnswer": "When the inputs are different"
       }
-    ]
+    ],
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/gates/nor-gate",
+    "previousRouteLabel": "NOR Gate",
+    "nextRoute": "/gates/xnor-gate",
+    "nextRouteLabel": "XNOR Gate"
   },
   {
     "name": "XNOR Gate",
@@ -212,6 +248,12 @@
         "options": ["When both inputs are 0", "When the inputs are different"],
         "correctAnswer": "When the inputs are different"
       }
-    ]
+    ],
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/gates/xor-gate",
+    "previousRouteLabel": "XOR Gate",
+    "nextRoute": "/final-step/quiz",
+    "nextRouteLabel": "Quiz"
   }
 ]

@@ -9,6 +9,7 @@ import Head from "next/head";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
 import Tooltip from "@src/components/Tooltip";
+import HelperNavigation from "@src/components/global/HelperNavigation";
 
 // components
 
@@ -198,6 +199,11 @@ export default function IntroToLogicCircuits() {
             </Typography>
           </li>
         </ol>
+        <HelperNavigation
+          hasPrevious={false}
+          nextRoute={ROUTES_URL.binarySystem}
+          NextRouteLabel="Binary System"
+        />
       </Paper>
     </>
   );

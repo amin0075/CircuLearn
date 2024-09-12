@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import ReactFlow, {
   addEdge,
   MiniMap,
@@ -12,7 +12,10 @@ import ReactFlow, {
   OnConnect,
   OnEdgesChange,
   OnNodesChange,
+  useReactFlow,
+  ReactFlowInstance,
 } from "react-flow-renderer";
+import html2canvas from "html2canvas";
 import { initialNodes, initialEdges } from "./initialData";
 import GateNode from "./GateNode";
 import InputNode from "./InputNode";
@@ -20,25 +23,16 @@ import OutputNode from "./OutputNode";
 import {
   calculateAND,
   calculateOR,
-  calculateNOT,
   calculateNAND,
   calculateNOR,
   calculateXOR,
   calculateXNOR,
 } from "@src/utils/gateLogic";
-import {
-  LogicGateAnd,
-  LogicGateOr,
-  LogicGateNot,
-  LogicGateNand,
-  LogicGateNor,
-  LogicGateXor,
-  LogicGateXnor,
-  LightBulbOff,
-  Close,
-} from "@src/assets/icons";
 import Typography from "@src/components/Typography";
 import Button from "@src/components/Button";
+import SimulatorDrawer from "./SimulatorDrawer";
+import { Close, Delete, Download, Duplicate, Info } from "@src/assets/icons";
+import Tooltip from "@src/components/Tooltip";
 
 const nodeTypes = {
   gateNode: GateNode,
@@ -49,38 +43,57 @@ const nodeTypes = {
 const Simulator: React.FC = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>(initialEdges);
-  const [inputCount, setInputCount] = useState(1);
-  const [outputCount, setOutputCount] = useState(1);
-  const [isDrawerOpen, setDrawerOpen] = useState(false); // State to manage drawer
+  const [selectedNode, setSelectedNode] = useState<Node | null>(null);
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [isFitViewDone, setIsFitViewDone] = useState(false);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
-  const evaluateCircuit = useCallback(
-    (updatedNodes: Node[], updatedEdges: Edge[]) => {
-      const nodesCopy = updatedNodes.map((node) => ({ ...node }));
-      const edgesCopy = updatedEdges.map((edge) => ({ ...edge }));
+  const reactFlowInstance = useReactFlow();
+  const reactFlowWrapper = useRef<HTMLDivElement>(null);
 
-      // Sort nodes in topological order based on edges
-      const sortedNodes = topologicalSort(nodesCopy, edgesCopy);
+  // Initialize the view, ensuring the circuit fits within the screen on load
+  const onInit = useCallback(
+    (instance: ReactFlowInstance) => {
+      if (!isFitViewDone) {
+        instance.fitView({ padding: 0.1 });
+        setIsFitViewDone(true);
+      }
+    },
+    [isFitViewDone]
+  );
 
-      sortedNodes.forEach((node) => {
-        if (node.type === "gateNode") {
-          const inputEdges = edgesCopy.filter(
-            (edge) => edge.target === node.id
-          );
-          const inputValues = inputEdges.map((edge) => {
-            const sourceNode = nodesCopy.find((n) => n.id === edge.source);
-            return sourceNode?.data?.value === 1;
-          });
+  // Evaluate the circuit based on node connections and set the output values
+  const evaluateCircuit = (nodesCopy: Node[], edgesCopy: Edge[]) => {
+    const connectedNodes = new Set<string>();
+    edgesCopy.forEach((edge) => {
+      connectedNodes.add(edge.source);
+      connectedNodes.add(edge.target);
+    });
+    const validNodes = nodesCopy.filter((node) => connectedNodes.has(node.id));
 
-          let outputValue: number;
+    // Perform topological sort to ensure proper evaluation order of nodes
+    const sortedNodes = topologicalSort(validNodes, edgesCopy);
+
+    sortedNodes.forEach((node) => {
+      if (node.type === "gateNode") {
+        const inputEdges = edgesCopy.filter((edge) => edge.target === node.id);
+        const inputValues = inputEdges.map((edge) => {
+          const sourceNode = nodesCopy.find((n) => n.id === edge.source);
+          return sourceNode?.data?.value === 1;
+        });
+
+        let outputValue = 0;
+
+        // Evaluate gate node logic
+        if (node.data?.gateType === "not") {
+          outputValue = inputValues[0] === false ? 1 : 0;
+        } else if (inputValues.length >= 2) {
           switch (node.data?.gateType) {
             case "and":
               outputValue = calculateAND(inputValues) ? 1 : 0;
               break;
             case "or":
               outputValue = calculateOR(inputValues) ? 1 : 0;
-              break;
-            case "not":
-              outputValue = calculateNOT(inputValues) ? 1 : 0;
               break;
             case "nand":
               outputValue = calculateNAND(inputValues) ? 1 : 0;
@@ -97,111 +110,256 @@ const Simulator: React.FC = () => {
             default:
               outputValue = 0;
           }
-          node.data = { ...node.data, value: outputValue };
+        } else {
+          outputValue = 0;
         }
 
-        if (node.type === "outputNode") {
-          const inputEdge = edgesCopy.find((edge) => edge.target === node.id);
-          if (inputEdge) {
-            const sourceNode = nodesCopy.find((n) => n.id === inputEdge.source);
-            node.data = { ...node.data, value: sourceNode?.data?.value || 0 };
-          }
+        node.data = { ...node.data, value: outputValue };
+      }
+
+      // Update output node values
+      if (node.type === "outputNode") {
+        const inputEdge = edgesCopy.find((edge) => edge.target === node.id);
+        if (inputEdge) {
+          const sourceNode = nodesCopy.find((n) => n.id === inputEdge.source);
+          node.data = { ...node.data, value: sourceNode?.data?.value || 0 };
+        } else {
+          node.data = { ...node.data, value: 0 };
         }
-      });
+      }
+    });
 
-      edgesCopy.forEach((edge) => {
-        const sourceNode = nodesCopy.find((n) => n.id === edge.source);
-        edge.animated = sourceNode?.data?.value === 1;
-        edge.label = sourceNode?.data?.value === 1 ? "1" : "0"; // Label the wire
-      });
+    // Update edge labels and animations
+    edgesCopy.forEach((edge) => {
+      const sourceNode = nodesCopy.find((n) => n.id === edge.source);
+      edge.animated = sourceNode?.data?.value === 1;
+      edge.label = sourceNode?.data?.value === 1 ? "1" : "0";
+    });
 
-      // Force a re-render by updating the nodes and edges states
-      setNodes((nds) =>
-        nds.map((node) => {
-          const updatedNode = nodesCopy.find((n) => n.id === node.id);
-          return updatedNode ? { ...node, data: updatedNode.data } : node;
-        })
-      );
-      setEdges(edgesCopy);
-    },
-    [setNodes, setEdges]
-  );
+    // Set updated nodes and edges in state
+    setNodes((nds) =>
+      nds.map((node) => {
+        const updatedNode = validNodes.find((n) => n.id === node.id);
+        return updatedNode ? { ...node, data: updatedNode.data } : node;
+      })
+    );
 
+    setEdges(edgesCopy);
+  };
+
+  // Handle connecting nodes
   const onConnect: OnConnect = useCallback(
     (params: Edge<any> | Connection) => {
-      const updatedEdges = addEdge(params, edges);
-      evaluateCircuit(nodes, updatedEdges);
-    },
-    [nodes, edges, evaluateCircuit]
-  );
+      setEdges((eds) => {
+        // Remove existing edges connected to the same source or target
+        const updatedEdges = eds.filter(
+          (edge) =>
+            !(
+              edge.target === params.target &&
+              edge.targetHandle === params.targetHandle
+            ) &&
+            !(
+              edge.source === params.source &&
+              edge.sourceHandle === params.sourceHandle
+            )
+        );
 
-  const onNodesChangeHandler: OnNodesChange = useCallback(
-    (changes) => {
-      onNodesChange(changes);
-      evaluateCircuit(nodes, edges);
-    },
-    [onNodesChange, nodes, edges, evaluateCircuit]
-  );
+        const newEdges = addEdge(params, updatedEdges);
 
-  const onEdgesChangeHandler: OnEdgesChange = useCallback(
-    (changes) => {
-      onEdgesChange(changes);
-      evaluateCircuit(nodes, edges);
-    },
-    [onEdgesChange, nodes, edges, evaluateCircuit]
-  );
-
-  const addNode = (nodeType: string, gateType?: string) => {
-    let label;
-    if (nodeType === "inputNode") {
-      label = `Input ${inputCount}`;
-      setInputCount(inputCount + 1);
-    } else if (nodeType === "outputNode") {
-      label = `Lamp ${outputCount}`;
-      setOutputCount(outputCount + 1);
-    } else {
-      label = gateType ? `${gateType.toUpperCase()} Gate` : "";
-    }
-
-    const newNode: Node = {
-      id: (Math.random() * 10000).toFixed(0),
-      type: nodeType,
-      data: { gateType: gateType || "", value: 0, label },
-      position: { x: Math.random() * 400, y: Math.random() * 400 },
-      draggable: true, // Ensures that the node is draggable
-    };
-    setNodes((nds) => nds.concat(newNode));
-
-    // Close the drawer after adding the node
-    setDrawerOpen(false);
-  };
-
-  // Helper function to topologically sort the nodes based on edges
-  const topologicalSort = (nodes: Node[], edges: Edge[]): Node[] => {
-    const sorted: Node[] = [];
-    const visited = new Set<string>();
-
-    const visit = (node: Node) => {
-      if (visited.has(node.id)) return;
-      visited.add(node.id);
-
-      const outgoingEdges = edges.filter((edge) => edge.source === node.id);
-      outgoingEdges.forEach((edge) => {
-        const targetNode = nodes.find((n) => n.id === edge.target);
-        if (targetNode) visit(targetNode);
+        evaluateCircuit([...nodes], newEdges);
+        return newEdges;
       });
+    },
+    [nodes, evaluateCircuit]
+  );
 
-      sorted.push(node);
-    };
+  // Handle node changes (e.g., addition or removal)
+  const onNodesChangeHandler: OnNodesChange = (changes) => {
+    onNodesChange(changes);
 
-    nodes.forEach((node) => visit(node));
-
-    return sorted.reverse();
+    changes.forEach((change) => {
+      if (change.type === "remove") {
+        setIsDeleting(true);
+      }
+    });
+    evaluateCircuit([...nodes], [...edges]);
   };
+
+  // Handle edge changes
+  const onEdgesChangeHandler: OnEdgesChange = (changes) => {
+    onEdgesChange(changes);
+  };
+
+  // Handle node selection
+  const onNodeClick = useCallback((_: any, node: Node) => {
+    setSelectedNode(node);
+  }, []);
+
+  // Re-evaluate circuit when nodes are deleted
+  useEffect(() => {
+    if (isDeleting) {
+      evaluateCircuit([...nodes], [...edges]);
+      setIsDeleting(false);
+    }
+  }, [isDeleting]);
+
+  // Add new node to the circuit
+  const addNode = useCallback(
+    (nodeType: string, gateType: string = "") => {
+      let label;
+      if (nodeType === "inputNode") {
+        label = `Input`;
+      } else if (nodeType === "outputNode") {
+        label = `Lamp`;
+      } else {
+        label = gateType ? `${gateType.toUpperCase()} Gate` : "";
+      }
+
+      const centerX = window.innerWidth / 4;
+      const centerY = window.innerHeight / 4;
+      const { x, y } = reactFlowInstance.project({ x: centerX, y: centerY });
+
+      const newNode: Node = {
+        id: (Math.random() * 10000).toFixed(0),
+        type: nodeType,
+        data: { gateType, value: 0, label },
+        position: { x, y },
+        draggable: true,
+      };
+
+      setNodes((nds) => nds.concat(newNode));
+      setDrawerOpen(false);
+    },
+    [reactFlowInstance, setNodes]
+  );
+
+  // Duplicate selected node
+  const duplicateNode = useCallback(() => {
+    if (!selectedNode) return;
+
+    const { type, data } = selectedNode;
+    if (type && data?.gateType !== undefined) {
+      addNode(type, data.gateType);
+    } else {
+      addNode(type || "inputNode");
+    }
+  }, [selectedNode, addNode]);
+
+  // Delete selected node
+  const deleteNode = useCallback(() => {
+    if (!selectedNode) return;
+
+    setNodes((nds) => {
+      const updatedNodes = nds.filter((node) => node.id !== selectedNode.id);
+      return updatedNodes;
+    });
+
+    setEdges((eds) => {
+      const updatedEdges = eds.filter(
+        (edge) =>
+          edge.source !== selectedNode.id && edge.target !== selectedNode.id
+      );
+      return updatedEdges;
+    });
+    setIsDeleting(true);
+    evaluateCircuit([...nodes], [...edges]);
+    setSelectedNode(null);
+  }, [selectedNode, edges, evaluateCircuit, setNodes, setEdges]);
+
+  // Perform topological sorting of nodes for correct evaluation order
+  const topologicalSort = useCallback(
+    (nodes: Node[], edges: Edge[]): Node[] => {
+      const sorted: Node[] = [];
+      const visited = new Set<string>();
+
+      const visit = (node: Node) => {
+        if (visited.has(node.id)) return;
+        visited.add(node.id);
+
+        const outgoingEdges = edges.filter((edge) => edge.source === node.id);
+        outgoingEdges.forEach((edge) => {
+          const targetNode = nodes.find((n) => n.id === edge.target);
+          if (targetNode) visit(targetNode);
+        });
+
+        sorted.push(node);
+      };
+
+      nodes.forEach((node) => visit(node));
+
+      return sorted.reverse();
+    },
+    []
+  );
+
+  useEffect(() => {
+    evaluateCircuit([...nodes], [...edges]);
+  }, []);
+
+  // Download the current canvas as an image
+  const downloadCanvasImage = async () => {
+    if (!reactFlowWrapper.current) return;
+
+    const canvas = await html2canvas(reactFlowWrapper.current);
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "circuit-snapshot.png";
+    link.click();
+  };
+
+  // Convert touch events to mouse events for mobile compatibility
+  const simulateTouchToMouse = (e: TouchEvent) => {
+    const touch = e.touches[0];
+    if (!touch || !e.target) return; // Add a guard clause to handle null
+
+    const simulatedEvent = new MouseEvent("mousedown", {
+      bubbles: true,
+      clientX: touch.clientX,
+      clientY: touch.clientY,
+    });
+    (e.target as HTMLElement).dispatchEvent(simulatedEvent);
+  };
+
+  // Handle touch end events for mobile compatibility
+  const simulateTouchEndToMouse = (e: TouchEvent) => {
+    const touch = e.changedTouches[0];
+    if (!touch || !e.target) return; // Add a guard clause to handle null
+
+    const simulatedEvent = new MouseEvent("mouseup", {
+      bubbles: true,
+      clientX: touch.clientX,
+      clientY: touch.clientY,
+    });
+    (e.target as HTMLElement).dispatchEvent(simulatedEvent);
+  };
+
+  // Add event listeners for touch events on component mount
+  useEffect(() => {
+    const reactFlowContainer = reactFlowWrapper.current;
+    if (reactFlowContainer) {
+      reactFlowContainer.addEventListener("touchstart", simulateTouchToMouse);
+      reactFlowContainer.addEventListener("touchend", simulateTouchEndToMouse);
+
+      return () => {
+        reactFlowContainer.removeEventListener(
+          "touchstart",
+          simulateTouchToMouse
+        );
+        reactFlowContainer.removeEventListener(
+          "touchend",
+          simulateTouchEndToMouse
+        );
+      };
+    }
+  }, []);
+
+  // Deselect nodes when clicking on empty space
+  const onPaneClick = useCallback(() => {
+    setSelectedNode(null);
+  }, []);
 
   return (
     <div className="flex h-[calc(100vh-175px)] relative">
-      {/* Drawer for Mobile/Tablet */}
       <div className="md:hidden absolute top-4 left-4 z-10">
         <Button
           variant="contained"
@@ -214,121 +372,85 @@ const Simulator: React.FC = () => {
           <Close className="rotate-45 w-6 h-6" />
         </Button>
       </div>
-      <div
-        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity ${isDrawerOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-        onClick={() => setDrawerOpen(false)}
-      ></div>
-      <div
-        className={`fixed inset-y-0 left-0 w-64 bg-backgroundDark dark:bg-white p-4 z-50 transition-transform transform ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:relative md:flex md:flex-col`}
-      >
-        <aside className="md:w-[240px] p-4 bg-backgroundDark dark:bg-white text-white rounded-l-10 max-h-full overflow-y-auto">
-          <Typography variant="h4" className="mb-2 text-white dark:text-black">
-            Elements
+
+      <div className="absolute top-4 right-4 z-10 flex items-center gap-2 ssm:flex-col-reverse">
+        {selectedNode && (
+          <>
+            <Tooltip title="Duplicate Node" className="text-nowrap">
+              <Button
+                variant="contained"
+                className="px-2"
+                onClick={duplicateNode}
+              >
+                <Duplicate className="w-6 h-6" />
+              </Button>
+            </Tooltip>
+
+            <Tooltip title="Delete Node" className="text-nowrap">
+              <Button variant="contained" className="px-2" onClick={deleteNode}>
+                <Delete className="w-6 h-6" />
+              </Button>
+            </Tooltip>
+            {selectedNode.type === "gateNode" && (
+              <Tooltip title="Gate Information" className="text-nowrap">
+                <Button
+                  variant="contained"
+                  className="px-2"
+                  onClick={() => {
+                    const gateType = selectedNode.data?.gateType || "";
+                    const gateUrlMap: Record<string, string> = {
+                      and: "/gates/and-gate",
+                      or: "/gates/or-gate",
+                      not: "/gates/not-gate",
+                      nand: "/gates/nand-gate",
+                      nor: "/gates/nor-gate",
+                      xor: "/gates/xor-gate",
+                      xnor: "/gates/xnor-gate",
+                    };
+                    const infoUrl = gateUrlMap[gateType];
+                    if (infoUrl) {
+                      window.open(infoUrl, "_blank");
+                    }
+                  }}
+                >
+                  <Info className="w-6 h-6" />
+                </Button>
+              </Tooltip>
+            )}
+          </>
+        )}
+        <Button
+          variant="contained"
+          className="px-2 flex items-center gap-1"
+          onClick={downloadCanvasImage}
+        >
+          <Download className="w-6 h-6" />
+          <Typography variant="caption" className="text-white smd:hidden">
+            Download
           </Typography>
-          <Typography
-            variant="caption"
-            className="mb-2 text-white dark:text-black"
-          >
-            Click on the buttons to add elements to the canvas to create your
-            customized logic circuit.
-          </Typography>
-          <ul>
-            <li className="mb-2">
-              <button
-                className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("inputNode")}
-              >
-                Add Input
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("gateNode", "and")}
-              >
-                <LogicGateAnd className="mr-2 w-6 h-6" />
-                Add AND Gate
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("gateNode", "or")}
-              >
-                <LogicGateOr className="mr-2 w-6 h-6" />
-                Add OR Gate
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-purple-500 hover:bg-purple-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("gateNode", "not")}
-              >
-                <LogicGateNot className="mr-2 w-6 h-6" />
-                Add NOT Gate
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("gateNode", "nand")}
-              >
-                <LogicGateNand className="mr-2 w-6 h-6" />
-                Add NAND Gate
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-pink-500 hover:bg-pink-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("gateNode", "nor")}
-              >
-                <LogicGateNor className="mr-2 w-6 h-6" />
-                Add NOR Gate
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("gateNode", "xor")}
-              >
-                <LogicGateXor className="mr-2 w-6 h-6" />
-                Add XOR Gate
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-teal-500 hover:bg-teal-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("gateNode", "xnor")}
-              >
-                <LogicGateXnor className="mr-2 w-6 h-6" />
-                Add XNOR Gate
-              </button>
-            </li>
-            <li className="mb-2">
-              <button
-                className="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 px-4 rounded flex items-center justify-center"
-                onClick={() => addNode("outputNode")}
-              >
-                <LightBulbOff className="mr-2 w-6 h-6" />
-                Add Output (Lamp)
-              </button>
-            </li>
-          </ul>
-        </aside>
+        </Button>
       </div>
 
-      <div className="flex-grow">
+      <SimulatorDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        addNode={addNode}
+      />
+
+      <div className="flex-grow" ref={reactFlowWrapper}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChangeHandler}
           onEdgesChange={onEdgesChangeHandler}
           onConnect={onConnect}
+          onInit={onInit}
+          onNodeClick={onNodeClick}
+          onPaneClick={onPaneClick}
           className="bg-white dark:bg-customGrayDark rounded-r-10 z-0"
           nodeTypes={nodeTypes}
-          nodesDraggable={true} // Enable dragging for all nodes
         >
-          <MiniMap className="bg-white border rounded" />
+          <MiniMap className="bg-white dark:bg-customGrayDark border rounded w-40 h-28" />
           <Controls className="bg-white border rounded" />
           <Background color="#aaa" gap={16} />
         </ReactFlow>

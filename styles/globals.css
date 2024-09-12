@@ -83,3 +83,16 @@ a {
   border-color: #e91e63;
   background-color: #fce4ec;
 }
+
+/* CSS to increase handle size on mobile */
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+@media (max-width: 768px) {
+  .react-flow__handle {
+    width: 13px !important;
+    height: 13px !important;
+  }
+}

@@ -4,6 +4,8 @@ import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import { textColor, bgColor } from "@src/utils/colorUtils";
+import HelperNavigation from "@src/components/global/HelperNavigation";
+import { ROUTES_URL } from "@src/routes";
 
 export default function BooleanAlgebra() {
   const [selectedAnswers, setSelectedAnswers] = useState({
@@ -318,6 +320,12 @@ export default function BooleanAlgebra() {
             )}
           </li>
         </ol>
+        <HelperNavigation
+          previousRoute={ROUTES_URL.binarySystem}
+          previousRouteLabel="Binary System"
+          nextRoute={ROUTES_URL.truthTable}
+          NextRouteLabel="Truth Table"
+        />
       </Paper>
     </>
   );

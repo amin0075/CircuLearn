@@ -5,6 +5,8 @@ import Typography from "@src/components/Typography";
 import Link from "next/link";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import { textColor, bgColor } from "@src/utils/colorUtils";
+import HelperNavigation from "@src/components/global/HelperNavigation";
+import { ROUTES_URL } from "@src/routes";
 
 export default function TruthTable() {
   const [selectedAnswers, setSelectedAnswers] = useState({
@@ -300,6 +302,12 @@ export default function TruthTable() {
             )}
           </li>
         </ol>
+        <HelperNavigation
+          previousRoute={ROUTES_URL.booleanAlgebra}
+          previousRouteLabel="Boolean Algebra"
+          nextRoute={ROUTES_URL.andGate}
+          NextRouteLabel="AND Gate"
+        />
       </Paper>
     </>
   );

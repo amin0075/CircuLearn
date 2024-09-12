@@ -68,10 +68,10 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
     changeDarkMode,
     changePrimaryColor,
     changeSidebarBg,
-    changeHideSensitiveValue,
     changeSidebarExpantion,
     sidebarExpand,
-    hideSensitiveValue,
+    fullscreen,
+    setFullscreen,
     primaryColor,
     sidebarTransparent,
     darkMode,
@@ -80,18 +80,31 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
 
   const { setIsComponentVisible, isComponentVisible } = props;
 
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
   const handleFullscreenToggle = () => {
-    if (isFullscreen) {
+    if (fullscreen) {
       exitFullscreen();
-      setIsFullscreen(false);
+      setFullscreen(false); // Update Zustand state
     } else {
-      // pass the body element to the function
       enterFullscreen(document.body);
-      setIsFullscreen(true);
+      setFullscreen(true); // Update Zustand state
     }
   };
+
+  // Handle fullscreen change via system or ESC
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        setFullscreen(false);
+      } else {
+        setFullscreen(true);
+      }
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, [setFullscreen]);
 
   useEffect(() => {
     if (windowWidth < 767) {
@@ -235,11 +248,11 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
         </div>
         <Divider className="my-5" darkcolor={!darkMode} />
 
-        {/* full screen section  */}
-        <div className="flex gap-2 justify-between items-center">
+        {/* Fullscreen Toggle (hidden on mobile/tablet) */}
+        <div className="flex justify-between items-center smd:hidden">
           <Typography variant="body1">Full screen</Typography>
           <IconButton onClick={handleFullscreenToggle}>
-            {isFullscreen ? (
+            {fullscreen ? (
               <FullScreenExit className="w-8 h-8 dark:text-white text-black" />
             ) : (
               <FullScreen className="w-8 h-8 dark:text-white text-black" />

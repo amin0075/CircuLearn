@@ -1,5 +1,7 @@
 import React from "react";
 import { Handle, Position, NodeProps } from "react-flow-renderer";
+import { useThemeStore } from "@src/zustand_stores/Theme";
+import { borderColor } from "@src/utils/colorUtils";
 import {
   LogicGateAnd,
   LogicGateOr,
@@ -15,7 +17,8 @@ interface GateNodeData {
   value?: number;
 }
 
-const GateNode: React.FC<NodeProps<GateNodeData>> = ({ data }) => {
+const GateNode: React.FC<NodeProps<GateNodeData>> = ({ data, selected }) => {
+  const { primaryColor } = useThemeStore();
   const renderIcon = () => {
     switch (data.gateType) {
       case "and":
@@ -38,7 +41,9 @@ const GateNode: React.FC<NodeProps<GateNodeData>> = ({ data }) => {
   };
 
   return (
-    <div className="bg-white p-2 border rounded shadow">
+    <div
+      className={`bg-white p-2 border rounded shadow ${selected ? borderColor(primaryColor) : ""}`}
+    >
       {data.gateType !== "not" && (
         <>
           <Handle

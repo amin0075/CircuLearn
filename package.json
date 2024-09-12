@@ -19,6 +19,7 @@
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.2.5",
     "flowbite": "^2.4.1",
+    "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.5",
     "next": "14.2.5",
     "next-transpile-modules": "^10.0.1",

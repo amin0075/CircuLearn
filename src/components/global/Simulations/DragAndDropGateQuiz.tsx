@@ -141,7 +141,10 @@ const DragAndDropGateQuiz: React.FC<DragAndDropGateQuizProps> = ({
           {/* Drop Zone for Gate */}
           <DropZone onDrop={handleDrop}>
             {selectedGate ? (
-              gateIcons[selectedGate]
+              <div className="flex flex-col items-center gap-1">
+                {gateIcons[selectedGate]}
+                <Typography variant="caption2">{selectedGate}</Typography>
+              </div>
             ) : (
               <Typography className="text-center" variant="caption">
                 Drag Gate Here

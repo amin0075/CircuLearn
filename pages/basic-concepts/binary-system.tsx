@@ -11,6 +11,7 @@ import Typography from "@src/components/Typography";
 import Tooltip from "@src/components/Tooltip";
 import BinaryToDecimalConverter from "@src/components/global/Simulations/BinaryToDecimalConverter";
 import DecimalToBinaryConverter from "@src/components/global/Simulations/DecimalToBinaryConverter";
+import HelperNavigation from "@src/components/global/HelperNavigation";
 
 // components
 
@@ -378,6 +379,12 @@ export default function BinarySystem() {
             )}
           </li>
         </ol>
+        <HelperNavigation
+          previousRoute={ROUTES_URL.introduction}
+          previousRouteLabel="Introduction"
+          nextRoute={ROUTES_URL.booleanAlgebra}
+          NextRouteLabel="Boolean Algebra"
+        />
       </Paper>
     </>
   );

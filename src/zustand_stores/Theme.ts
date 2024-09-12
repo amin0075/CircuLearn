@@ -9,11 +9,13 @@ interface ThemeState {
   sidebarTransparent: boolean;
   hideSensitiveValue: boolean;
   sidebarExpand: boolean;
+  fullscreen: boolean; // New state for fullscreen
   changePrimaryColor: (color: IColor) => void;
   changeDarkMode: () => void;
   changeSidebarBg: (value: boolean) => void;
   changeHideSensitiveValue: () => void;
   changeSidebarExpantion: (value: boolean) => void;
+  setFullscreen: (value: boolean) => void; // New setter for fullscreen
 }
 
 const useThemeStore = create<ThemeState>()(
@@ -25,6 +27,7 @@ const useThemeStore = create<ThemeState>()(
         sidebarTransparent: false,
         hideSensitiveValue: false,
         sidebarExpand: true,
+        fullscreen: false, // Initialize as false
         changePrimaryColor: (color: IColor) =>
           set((_) => ({ primaryColor: color })),
         changeDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
@@ -34,6 +37,7 @@ const useThemeStore = create<ThemeState>()(
           set((_) => ({ sidebarTransparent: value })),
         changeSidebarExpantion: (value: boolean) =>
           set((_) => ({ sidebarExpand: value })),
+        setFullscreen: (value: boolean) => set((_) => ({ fullscreen: value })), // Setter for fullscreen
       }),
       {
         name: "theme-storage",

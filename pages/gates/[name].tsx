@@ -9,6 +9,7 @@ import Button from "@src/components/Button";
 import { bgColor } from "@src/utils/colorUtils";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import GateSimulation from "@src/components/global/Simulations/GateSimulation";
+import HelperNavigation from "@src/components/global/HelperNavigation";
 
 export default function GatePage() {
   const router = useRouter();
@@ -148,6 +149,14 @@ export default function GatePage() {
               Check Answers
             </Button>
           </Paper>
+          <HelperNavigation
+            hasPrevious={gate.hasPrevious}
+            hasNext={gate.hasNext}
+            previousRoute={gate.previousRoute}
+            previousRouteLabel={gate.previousRouteLabel}
+            NextRouteLabel={gate.nextRouteLabel}
+            nextRoute={gate.nextRoute}
+          />
         </div>
       </div>
     </>
