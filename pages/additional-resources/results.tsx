@@ -45,10 +45,14 @@ const ResultsPage: React.FC = () => {
         setQuizResults(sortedQuizResults);
 
         // Fetch feedback entries
-        const feedbackResponse = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/feedback`
+        const feedbackResponse = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/feedback`,
+          {
+            credentials: "include",
+          }
         );
-        setFeedbackEntries(feedbackResponse.data);
+        const feedbackData = await feedbackResponse.json();
+        setFeedbackEntries(feedbackData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
