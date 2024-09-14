@@ -107,16 +107,15 @@ const FinalEvaluationPage: React.FC = () => {
     if (validateAnswers()) {
       try {
         // axios.defaults.withCredentials = true;
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/quiz`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/quiz`,
+          {
             answers,
-          }),
-          credentials: "same-origin",
-        });
+          },
+          {
+            withCredentials: true,
+          }
+        );
         notify({
           message: "Quiz submitted successfully",
           router,
