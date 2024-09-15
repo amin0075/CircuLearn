@@ -6,6 +6,9 @@ import Button from "@src/components/Button";
 import IconButton from "@src/components/IconButton";
 import Modal from "@src/components/Modal";
 import { Close } from "@src/assets/icons";
+import { textColor } from "@src/utils/colorUtils";
+import { useThemeStore } from "@src/zustand_stores/Theme";
+import { ROUTES_URL } from "@src/routes";
 
 interface IProps {
   children?: ReactNode;
@@ -14,6 +17,7 @@ interface IProps {
 }
 
 const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
+  const { primaryColor } = useThemeStore((state) => state);
   return (
     <Modal className="max-w-[471px] relative" isOpen={isModalOpen}>
       <div className="flex flex-col gap-1 mt-4">
@@ -73,7 +77,14 @@ const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
 
         {/* Simulator */}
         <Typography variant="body2" fontweight="semiBold">
-          Explore the Simulator:
+          Explore the{" "}
+          <Link
+            href="/simulator"
+            className={`${textColor(primaryColor)} underline`}
+          >
+            Simulator
+          </Link>
+          :
         </Typography>
         <Typography variant="caption">
           After the quiz, try the Simulator to create and experiment with your

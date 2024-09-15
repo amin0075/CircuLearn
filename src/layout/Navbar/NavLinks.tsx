@@ -28,7 +28,16 @@ interface IProps {
 const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { primaryColor } = useThemeStore((state) => state);
+  const { primaryColor, isFirstVisit, setFirstVisit } = useThemeStore(
+    (state) => state
+  );
+
+  useEffect(() => {
+    if (isFirstVisit) {
+      setIsModalOpen(true);
+      setFirstVisit(false);
+    }
+  }, [isFirstVisit, setFirstVisit]);
 
   return (
     <div

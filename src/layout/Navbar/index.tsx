@@ -45,15 +45,7 @@ const Navbar: React.FC<IProps> = ({
   setSidebarOpen,
 }) => {
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const {
-    primaryColor,
-    hideSensitiveValue,
-    changeHideSensitiveValue,
-    sidebarExpand,
-    darkMode,
-  } = useThemeStore((state) => state);
+  const { sidebarExpand } = useThemeStore();
 
   return (
     <>
