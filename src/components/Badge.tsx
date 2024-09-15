@@ -1,12 +1,7 @@
 // react
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 
-// next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";
@@ -16,10 +11,6 @@ import { bgColor, borderColor } from "@src/utils/colorUtils";
 
 // zustand store
 import { useThemeStore } from "@src/zustand_stores/Theme";
-
-// components
-import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
 
 interface IProps
   extends React.DetailedHTMLProps<

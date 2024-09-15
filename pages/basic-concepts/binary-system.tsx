@@ -1,14 +1,10 @@
 import { useState } from "react";
-import Image from "next/image";
 
 // utils
-import Button from "@src/components/Button";
-import Link from "next/link";
 import { ROUTES_URL } from "@src/routes";
 import Head from "next/head";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
-import Tooltip from "@src/components/Tooltip";
 import BinaryToDecimalConverter from "@src/components/global/Simulations/BinaryToDecimalConverter";
 import DecimalToBinaryConverter from "@src/components/global/Simulations/DecimalToBinaryConverter";
 import HelperNavigation from "@src/components/global/HelperNavigation";

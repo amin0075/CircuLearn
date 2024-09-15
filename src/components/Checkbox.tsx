@@ -1,12 +1,5 @@
-// react
-import { ReactNode, useEffect } from "react";
-
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";

@@ -45,7 +45,7 @@ export default async function handler(
       aiResult.choices[0]?.message?.content?.trim() || "No response";
     res.status(200).json({ text: response });
   } catch (error) {
-    console.error("Error calling OpenAI API:", error);
+    // console.error("Error calling OpenAI API:", error);
     res.status(500).json({ text: "Error generating response" });
   }
 }

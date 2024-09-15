@@ -73,7 +73,3 @@ export default function FAQ() {
     </>
   );
 }
-
-// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-//   return {};
-// };

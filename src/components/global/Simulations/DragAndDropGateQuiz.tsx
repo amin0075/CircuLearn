@@ -84,7 +84,6 @@ const DropZone: React.FC<{
 
 const DragAndDropGateQuiz: React.FC<DragAndDropGateQuizProps> = ({
   randomGates,
-  correctGate,
   inputs,
   output,
   onDrop,

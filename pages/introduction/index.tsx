@@ -1,9 +1,6 @@
-import { useRef, useEffect } from "react";
 import Image from "next/image";
 
 // utils
-import Button from "@src/components/Button";
-import Link from "next/link";
 import { ROUTES_URL } from "@src/routes";
 import Head from "next/head";
 import Paper from "@src/components/Paper";
@@ -121,7 +118,7 @@ export default function IntroToLogicCircuits() {
             <Tooltip
               direction="right"
               parentClassName="w-full max-w-[400px] aspect-[1.33] relative"
-              title="https://en.wikipedia.org/wiki/Pentium_4"
+              title="wikipedia.org, n.d."
             >
               <Image
                 src="/images/intel-cpu.jpeg"
@@ -139,7 +136,7 @@ export default function IntroToLogicCircuits() {
             <Tooltip
               direction="right"
               parentClassName="w-full max-w-[400px] aspect-[1.33] relative"
-              title="https://en.wikipedia.org/wiki/Digital_clock"
+              title="wikipedia.org, n.d."
             >
               <Image
                 src="/images/Digital-clock-alarm.jpg"
@@ -158,7 +155,7 @@ export default function IntroToLogicCircuits() {
             <Tooltip
               direction="right"
               parentClassName="w-full max-w-[400px] aspect-[0.7] relative"
-              title="https://en.wikipedia.org/wiki/Traffic_light"
+              title="wikipedia.org, n.d."
             >
               <Image
                 src="/images/Modern_British_LED_Traffic_Light.jpg"

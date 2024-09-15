@@ -1,12 +1,8 @@
 // react
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // i18next
 
@@ -20,8 +16,6 @@ import { useThemeStore } from "@src/zustand_stores/Theme";
 import useComponentVisible from "@src/hooks/useComponentVisible";
 
 // components
-import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
 import Navbar from "@src/layout/Navbar";
 import Sidebar from "@src/layout/Sidebar";
 import ThemeDrawer from "@src/layout/ThemeDrawer";

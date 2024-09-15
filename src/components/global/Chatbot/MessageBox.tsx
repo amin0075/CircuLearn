@@ -1,17 +1,11 @@
 // react
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 import Typography from "@src/components/Typography";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import { bgColor } from "@src/utils/colorUtils";
-
-// components
 
 interface IProps {
   children?: ReactNode;
@@ -20,7 +14,6 @@ interface IProps {
 }
 
 const MessageBox: React.FC<IProps> = ({ isBot = false, message }) => {
-  const router = useRouter();
   const { primaryColor } = useThemeStore((state) => state);
 
   return (

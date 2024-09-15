@@ -3,7 +3,7 @@ import Head from "next/head";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
 import { useThemeStore } from "@src/zustand_stores/Theme";
-import { textColor, bgColor } from "@src/utils/colorUtils";
+import { bgColor } from "@src/utils/colorUtils";
 import HelperNavigation from "@src/components/global/HelperNavigation";
 import { ROUTES_URL } from "@src/routes";
 

@@ -2,9 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
-import Link from "next/link";
 import { useThemeStore } from "@src/zustand_stores/Theme";
-import { textColor, bgColor } from "@src/utils/colorUtils";
 import HelperNavigation from "@src/components/global/HelperNavigation";
 import { ROUTES_URL } from "@src/routes";
 

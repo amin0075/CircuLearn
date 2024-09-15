@@ -6,7 +6,6 @@ import Typography from "@src/components/Typography";
 import gatesData from "@src/lib/gates.json"; // Make sure to create this file
 import { useState } from "react";
 import Button from "@src/components/Button";
-import { bgColor } from "@src/utils/colorUtils";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import GateSimulation from "@src/components/global/Simulations/GateSimulation";
 import HelperNavigation from "@src/components/global/HelperNavigation";

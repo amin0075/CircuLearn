@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 /*
 * this is the handler function that will act as a proxy to the actual API endpoints process.env.NEXT_PUBLIC_API_URL
 * all the requests will be proxied to the actual API endpoint
- @see https://developers.google.com/privacy-sandbox/cookies/prepare/overview
+ for more information: https://developers.google.com/privacy-sandbox/cookies/prepare/overview
 */
 export default async function handler(
   req: NextApiRequest,

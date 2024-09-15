@@ -2,11 +2,7 @@
 import { ReactNode, forwardRef } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";
@@ -15,7 +11,6 @@ import { twMerge } from "tailwind-merge";
 import { Arrow, Faq } from "@src/assets/icons";
 
 // hooks
-import useComponentVisible from "@src/hooks/useComponentVisible";
 import Typography from "./Typography";
 
 interface IProps

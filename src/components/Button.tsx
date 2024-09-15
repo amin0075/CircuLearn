@@ -1,12 +1,4 @@
-// react
-import React, { useMemo } from "react";
-
-// next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // utils
 import { bgColor, bgGradient, borderColor } from "@src/utils/colorUtils";

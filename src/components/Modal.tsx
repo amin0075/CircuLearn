@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, forwardRef, Ref, useRef } from "react";
+import React, { ReactNode, useEffect, forwardRef, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface IProps

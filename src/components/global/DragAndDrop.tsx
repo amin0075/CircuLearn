@@ -5,8 +5,6 @@ import { TouchBackend } from "react-dnd-touch-backend";
 import { isTouchDevice } from "@src/utils/deviceUtils";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
-import { bgColor } from "@src/utils/colorUtils";
-import { useThemeStore } from "@src/zustand_stores/Theme";
 
 // Draggable Item
 const DraggableItem: React.FC<{ item: string; index: number }> = ({

@@ -1,17 +1,9 @@
 // react
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
-
-// i18next
-
-// utils
-import { textColor } from "@src/utils/colorUtils";
 
 // types
 import { IRoute } from "@src/@types/route";
@@ -24,9 +16,6 @@ import { bgColor } from "@src/utils/colorUtils";
 
 // components
 import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
-import Divider from "@src/components/Divider";
-import IconButton from "@src/components/IconButton";
 
 interface IProps {
   children?: ReactNode;
@@ -37,9 +26,7 @@ const SidebarLink: React.FC<IProps> = ({ data }) => {
   const router = useRouter();
 
   const isSelected = router.asPath.includes(data.url);
-  const { sidebarTransparent, primaryColor, sidebarExpand } = useThemeStore(
-    (state) => state
-  );
+  const { primaryColor, sidebarExpand } = useThemeStore((state) => state);
 
   return (
     <Link href={data.url}>

@@ -1,12 +1,8 @@
 // react
-import { ReactNode, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";
@@ -46,7 +42,6 @@ interface IProps
 }
 
 const Typography: React.FC<IProps> = (props) => {
-  const router = useRouter();
   const {
     children,
     fontweight = "regular",

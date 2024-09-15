@@ -8,8 +8,8 @@ import Link from "next/link";
 import Head from "next/head";
 import type { NextComponentType } from "next";
 import { ReactNode } from "react";
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 // import type { Page } from "../next-env";
 
 // global css
@@ -35,22 +35,23 @@ const App = ({ Component, pageProps }: Props) => {
   return (
     <>
       <Head>
-        <meta name="description" content="The Helper Link" />
+        <meta
+          name="description"
+          content="CircuLearn - learn simple logic circuits"
+        />
         <meta name="theme-color" content="#fff" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, maximum-scale=1, width=device-width"
         />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <DndProvider backend={HTML5Backend}>
-      {getLayout(<Component {...pageProps} />)}
-      <ToastContainer closeButton={false} />
-
+        {getLayout(<Component {...pageProps} />)}
+        <ToastContainer closeButton={false} />
       </DndProvider>
-
     </>
   );
 };
 
-// export default withAuth(appWithTranslation(React.memo(App), nextI18NextConfig));
 export default App;

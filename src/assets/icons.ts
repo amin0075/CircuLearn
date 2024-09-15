@@ -37,8 +37,6 @@ import Duplicate from "@src/assets/icons/duplicate.svg";
 import Info from "@src/assets/icons/info.svg";
 import Download from "@src/assets/icons/download.svg";
 
-// first:[&>g>path]:fill-darkOrange-500
-
 export {
   Arrow,
   Binary,

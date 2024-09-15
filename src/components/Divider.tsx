@@ -1,9 +1,4 @@
-// react
-import { useEffect } from "react";
-
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 
 // tailwind merge in order to merge added classes

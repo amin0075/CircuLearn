@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect } from "react";
 
 const useMediaQuery = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -7,9 +7,9 @@ const useMediaQuery = () => {
     const resize = () => {
       setWindowWidth(window.innerWidth);
     };
-    window.addEventListener('resize', resize);
+    window.addEventListener("resize", resize);
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize);
     };
   }, []);
 

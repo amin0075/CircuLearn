@@ -42,14 +42,6 @@ const gateIcons: { [key: string]: JSX.Element } = {
 };
 
 const gateFunctions = (gate: string, newInputs: boolean[]) => {
-  // AND: calculateAND,
-  // NAND: calculateNAND,
-  // NOR: calculateNOR,
-  // NOT: calculateNOT,
-  // OR: calculateOR,
-  // XNOR: calculateXNOR,
-  // XOR: calculateXOR,
-  // make switch operator to check the gate
   switch (gate) {
     case "AND":
       return calculateAND(newInputs);
@@ -58,7 +50,6 @@ const gateFunctions = (gate: string, newInputs: boolean[]) => {
     case "NOR":
       return calculateNOR(newInputs);
     case "NOT":
-      console.log("here");
       return calculateNOT(newInputs);
     case "OR":
       return calculateOR(newInputs);
@@ -81,8 +72,6 @@ const GateSimulation: React.FC<GateSimulationProps> = ({
     new Array(inputLabels.length).fill(false)
   );
   const [output, setOutput] = useState<boolean>(false);
-
-  // console.log("gate: ", gate);
 
   const handleInputChange = (index: number) => {
     const newInputs = [...inputs];

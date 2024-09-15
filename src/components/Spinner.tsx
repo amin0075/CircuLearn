@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import { twMerge } from "tailwind-merge";
 

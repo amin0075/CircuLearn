@@ -1,27 +1,16 @@
 // react
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // i18next
 
 // utils
-import {
-  bgColor,
-  bgGradient,
-  borderColor,
-  fillColor,
-  hexColor,
-} from "@src/utils/colorUtils";
+import { bgGradient } from "@src/utils/colorUtils";
 
 // icons
 import {
-  Setting,
   Close,
   ColorPalette,
   Nightmode,
@@ -31,9 +20,6 @@ import {
 
 // zustand store
 import { useThemeStore } from "@src/zustand_stores/Theme";
-
-// hooks
-import useComponentVisible from "@src/hooks/useComponentVisible";
 
 // types
 import { IColor } from "@src/@types/color";
@@ -114,18 +100,6 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
 
   return (
     <>
-      {/* theme setting button */}
-      {/* {!isComponentVisible && (
-        <IconButton
-          onClick={() => setIsComponentVisible((prevState) => !prevState)}
-          borderRadius="full"
-          variant="contained"
-          className={`fixed bottom-5 ltr:right-5 ltr:left-unset rtl:left-5 rtl:right-unset group`}
-        >
-          <Setting className="w-6 h-6 group-hover:rotate-180 transition-all duration-500 ease-in-out" />
-        </IconButton>
-      )} */}
-      {/* theme drawer */}
       <div
         ref={ref}
         className={`max-w-[300px] fixed top-0 ltr:right-0 ltr:left-unset rtl:left-0 rtl:right-unset md:min-w-[350px] h-screen flex flex-col overflow-y-auto p-6 dark:bg-gr_card_dark dark:bg-transparent bg-backgroundLight dark:shadow-none shadow-box-shadow-black-md z-10 backdrop-blur-xl ${
@@ -157,15 +131,6 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
           <Typography variant="body1">Primary Color</Typography>
           <div className="flex gap-2 flex-wrap">
             {colors.map((color, index) => (
-              // <span
-              //   onClick={() => changePrimaryColor(color)}
-              //   key={index}
-              //   className={`min-w-[24px] min-h-[24px] transition-all duration-200 ease-in-out rounded-full cursor-pointer ${
-              //     primaryColor === color
-              //       ? "border-none scale-[1.3]"
-              //       : "border dark:border-white border-black hover:border-none hover:scale-[0.95]"
-              //   } ${bgGradient(color)}`}
-              // />
               <IconButton
                 className={`transition-all duration-200 ease-in-out border-2 border-solid min-w-[92px] min-h-[44px] ${
                   primaryColor === color

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
 import Head from "next/head";

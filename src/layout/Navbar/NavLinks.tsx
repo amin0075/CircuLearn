@@ -2,18 +2,11 @@
 import React, { ReactNode, useEffect, useState } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 
 // components
 import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
-import IconButton from "@src/components/IconButton";
-import { Close } from "@src/assets/icons";
-import Modal from "@src/components/Modal";
 import { navRoutes } from "@src/routes";
 import { textColor } from "@src/utils/colorUtils";
 import { useThemeStore } from "@src/zustand_stores/Theme";

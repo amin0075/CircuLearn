@@ -2,10 +2,7 @@
 import { ReactNode, useEffect, useState, useRef } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Image from "next/image";
 
 // i18next
@@ -17,7 +14,7 @@ import { bgColor, textColor } from "@src/utils/colorUtils";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 
 // routes
-import { mainRoutes, navRoutes } from "@src/routes";
+import { mainRoutes } from "@src/routes";
 
 // icons
 import { Arrow } from "@src/assets/icons";
@@ -28,7 +25,6 @@ import Button from "@src/components/Button";
 import Divider from "@src/components/Divider";
 import IconButton from "@src/components/IconButton";
 import SidebarLink from "./SidebarLink";
-import UserGuide from "./Navbar/UserGuide";
 import NavLinks from "./Navbar/NavLinks";
 
 interface IProps {
@@ -61,14 +57,10 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
     finalStep: false,
   });
 
-  // console.log("sections:", sections);
-
   // function for detecting routes
   const routeDetector = () => `/${router.pathname.split("/")[1]}`;
-  // console.log("routeDetector:", routeDetector());
   useEffect(() => {
     Object.keys(sections).forEach((key, index) => {
-      // console.log("key.toString(): ", key.toString());
       if (
         routeDetector().replace("/", "").replace("-", "").toLowerCase() ===
         key.toString().toLowerCase()

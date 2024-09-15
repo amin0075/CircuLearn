@@ -1,25 +1,16 @@
 // react
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 
 // next js
-import type { NextPage } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
 // tailwind merge in order to merge added classes
 import { twMerge } from "tailwind-merge";
-
-// utils
-import { bgColor, borderColor } from "@src/utils/colorUtils";
 
 // hooks
 import useComponentVisible from "@src/hooks/useComponentVisible";
 
 // components
-import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import Paper from "../Paper";
 
@@ -35,7 +26,6 @@ const Dropdown: React.FC<IProps> = (props) => {
   const router = useRouter();
 
   const { dropdownModal, children, className, ...rest } = props;
-  const { primaryColor } = useThemeStore((state) => state);
   const { isComponentVisible, ref, setIsComponentVisible } =
     useComponentVisible(false);
 

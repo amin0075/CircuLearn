@@ -1,16 +1,13 @@
 // react
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode } from "react";
 
 // next js
-import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 
 // components
 import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
 import Paper from "@src/components/Paper";
 
 interface IProps {

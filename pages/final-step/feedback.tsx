@@ -10,7 +10,6 @@ import * as yup from "yup";
 
 // Components
 import Button from "@src/components/Button";
-import Checkbox from "@src/components/Checkbox";
 import RadioButton from "@src/components/RadioButton";
 import Paper from "@src/components/Paper";
 

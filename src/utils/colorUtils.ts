@@ -120,25 +120,6 @@ const hexColor = (color: IColor) => {
   }
 };
 
-// const invoiceStatusColor = (status: IInvoiceStatus) => {
-//   switch (status) {
-//     case "waiting":
-//       return "orange";
-//     case "sending":
-//       return "blue";
-//     case "rejected":
-//       return "red";
-//     case "processing":
-//       return "blue";
-//     case "failed":
-//       return "red";
-//     case "finished":
-//       return "green";
-//     default:
-//       return "blue";
-//   }
-// };
-
 export {
   bgGradient,
   strokeColor,
@@ -147,5 +128,4 @@ export {
   textColor,
   borderColor,
   hexColor,
-  // invoiceStatusColor,
 };

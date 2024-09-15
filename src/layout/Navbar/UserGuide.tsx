@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import Head from "next/head";
 import Link from "next/link";
 import Typography from "@src/components/Typography";
 import Button from "@src/components/Button";
@@ -8,7 +7,6 @@ import Modal from "@src/components/Modal";
 import { Close } from "@src/assets/icons";
 import { textColor } from "@src/utils/colorUtils";
 import { useThemeStore } from "@src/zustand_stores/Theme";
-import { ROUTES_URL } from "@src/routes";
 
 interface IProps {
   children?: ReactNode;
