@@ -260,6 +260,7 @@ const FinalEvaluationPage: React.FC = () => {
               "I consent to the collection of my feedback for research purposes.",
               "I understand that my participation is voluntary and that I can withdraw at any time without giving a reason.",
               "I agree that the data collected will be used for academic purposes and may be published in an anonymous form.",
+              "I confirm that before lessons in this application I did not have any knowledge about the logic gates.",
             ].map((text, index) => (
               <div key={index}>
                 <Checkbox

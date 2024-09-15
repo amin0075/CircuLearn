@@ -33,6 +33,8 @@ import Button from "@src/components/Button";
 import SimulatorDrawer from "./SimulatorDrawer";
 import { Close, Delete, Download, Duplicate, Info } from "@src/assets/icons";
 import Tooltip from "@src/components/Tooltip";
+import { notify } from "@src/utils/notify";
+import { useRouter } from "next/router";
 
 const nodeTypes = {
   gateNode: GateNode,
@@ -47,6 +49,7 @@ const Simulator: React.FC = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isFitViewDone, setIsFitViewDone] = useState(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const router = useRouter();
 
   const reactFlowInstance = useReactFlow();
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
@@ -150,6 +153,16 @@ const Simulator: React.FC = () => {
   // Handle connecting nodes
   const onConnect: OnConnect = useCallback(
     (params: Edge<any> | Connection) => {
+      // Prevent connecting a gate to itself
+      if (params.source === params.target) {
+        notify({
+          message: "Cannot connect a gate to itself",
+          type: "error",
+          router,
+        });
+        return;
+      }
+
       setEdges((eds) => {
         // Remove existing edges connected to the same source or target
         const updatedEdges = eds.filter(
