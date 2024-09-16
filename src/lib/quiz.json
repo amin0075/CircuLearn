@@ -14,7 +14,7 @@
         {
           "num": 2,
           "id": "binary_q2",
-          "question": "Arrange the binary digits in the correct order to form the decimal number 5.",
+          "question": "Arrange the binary digits in the correct order to form the decimal number 5 (switch the digits with drag and drop feature).",
           "type": "drag_and_drop",
           "items": ["1", "1", "0", "0"],
           "correctAnswer": ["0", "1", "0", "1"]
