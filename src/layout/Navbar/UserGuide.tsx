@@ -17,7 +17,11 @@ interface IProps {
 const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
   const { primaryColor } = useThemeStore((state) => state);
   return (
-    <Modal className="max-w-[471px] relative" isOpen={isModalOpen}>
+    <Modal
+      className="max-w-[471px] relative"
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+    >
       <div className="flex flex-col gap-1 mt-4">
         <Typography variant="h4" className="text-center">
           Welcome to CircuLearn!

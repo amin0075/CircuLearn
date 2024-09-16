@@ -1,5 +1,5 @@
 // react
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
 
 // next js
 import { useRouter } from "next/router";
@@ -25,13 +25,14 @@ const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
     (state) => state
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isFirstVisit) {
       setIsModalOpen(true);
       setFirstVisit(false);
     }
-  }, [isFirstVisit, setFirstVisit]);
+  }, [isFirstVisit]);
 
+  console.log("isModalOpen: ", isModalOpen);
   return (
     <div
       className={`flex gap-5 ${usedInNavbar ? "gap-5 items-center flex-row" : "flex-col items-start px-7 gap-3"} ${className}`}
@@ -64,9 +65,7 @@ const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
       </span>
 
       {/* modal for user guide */}
-      {isModalOpen && (
-        <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      )}
+      <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </div>
   );
 };

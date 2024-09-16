@@ -59,6 +59,10 @@ a {
   stroke-dashoffset: 200;
 }
 
+.custom-backdrop::backdrop {
+  @apply backdrop-blur-md;
+}
+
 /* react flow */
 .react-flow__node-default {
   padding: 10px;

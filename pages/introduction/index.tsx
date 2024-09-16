@@ -8,8 +8,6 @@ import Typography from "@src/components/Typography";
 import Tooltip from "@src/components/Tooltip";
 import HelperNavigation from "@src/components/global/HelperNavigation";
 
-// components
-
 export default function IntroToLogicCircuits() {
   return (
     <>
