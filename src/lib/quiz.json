@@ -18,6 +18,14 @@
           "type": "drag_and_drop",
           "items": ["1", "1", "0", "0"],
           "correctAnswer": ["0", "1", "0", "1"]
+        },
+        {
+          "num": 3,
+          "id": "binary_q3",
+          "question": "What is the decimal representation of the binary number 10101 ?",
+          "type": "multiple_choice",
+          "options": ["21", "40", "59", "10"],
+          "correctAnswer": "21"
         }
       ]
     },
@@ -25,7 +33,7 @@
       "section": "Boolean Algebra",
       "questions": [
         {
-          "num": 3,
+          "num": 4,
           "id": "boolean_q1",
           "question": "Which of the following is the result of the expression A AND B when A is TRUE and B is FALSE?",
           "type": "multiple_choice",
@@ -33,7 +41,7 @@
           "correctAnswer": "FALSE"
         },
         {
-          "num": 4,
+          "num": 5,
           "id": "boolean_q2",
           "question": "Simplify the Boolean expression: A + A'B",
           "type": "multiple_choice",
@@ -46,7 +54,7 @@
       "section": "Logic Gates",
       "questions": [
         {
-          "num": 5,
+          "num": 6,
           "id": "logic_gates_q1",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -56,7 +64,7 @@
           "output": true
         },
         {
-          "num": 6,
+          "num": 7,
           "id": "logic_gates_q2",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -66,7 +74,7 @@
           "output": false
         },
         {
-          "num": 7,
+          "num": 8,
           "id": "logic_gates_q3",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -76,7 +84,7 @@
           "output": false
         },
         {
-          "num": 8,
+          "num": 9,
           "id": "logic_gates_q4",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -86,7 +94,7 @@
           "output": true
         },
         {
-          "num": 9,
+          "num": 10,
           "id": "logic_gates_q5",
           "question": "Which gate will output TRUE when both inputs are TRUE?",
           "type": "multiple_choice",
