@@ -91,10 +91,10 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
             : "dark:bg-gr_card_dark dark:backdrop-blur-xl dark:shadow-none shadow-box-shadow-black-md md:bg-white/80 bg-white dark:bg-transparent"
         } ${textColor(primaryColor)}`}
       >
-        <div className="w-full flex justify-end px-5 sticky top-3">
+        <div className="w-full flex justify-end px-5 sticky top-3 md:hidden">
           <IconButton
             onClick={() => setSidebarOpen((prev) => !prev)}
-            className={`${bgColor(primaryColor)} md:hidden p-1 text-white`}
+            className={`${bgColor(primaryColor)} p-1 text-white`}
           >
             <Arrow
               className={`w-4 h-4 transition-all duration-300 ease-in-out ${
