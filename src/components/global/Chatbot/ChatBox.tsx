@@ -38,7 +38,6 @@ const ChatBox: React.FC = () => {
             message={message.content}
           />
         ))}
-        {/* This div will help us scroll to the bottom */}
         <div ref={chatEndRef} />
       </div>
     </div>
