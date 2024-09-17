@@ -91,16 +91,18 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
             : "dark:bg-gr_card_dark dark:backdrop-blur-xl dark:shadow-none shadow-box-shadow-black-md md:bg-white/80 bg-white dark:bg-transparent"
         } ${textColor(primaryColor)}`}
       >
-        <IconButton
-          onClick={() => setSidebarOpen((prev) => !prev)}
-          className={`${bgColor(primaryColor)} md:hidden p-1 absolute top-3 right-3 text-white`}
-        >
-          <Arrow
-            className={`w-4 h-4 transition-all duration-300 ease-in-out ${
-              sidebarOpen ? "rotate-180" : "rotate-90"
-            }`}
-          />
-        </IconButton>
+        <div className="w-full flex justify-end px-5 sticky top-3">
+          <IconButton
+            onClick={() => setSidebarOpen((prev) => !prev)}
+            className={`${bgColor(primaryColor)} md:hidden p-1 text-white`}
+          >
+            <Arrow
+              className={`w-4 h-4 transition-all duration-300 ease-in-out ${
+                sidebarOpen ? "rotate-180" : "rotate-90"
+              }`}
+            />
+          </IconButton>
+        </div>
         <div className="flex flex-col w-full">
           <div className="flex items-center w-full justify-center gap-2 px-8 pt-7 pb-1">
             <Image

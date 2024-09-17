@@ -83,6 +83,9 @@ const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
           <Link
             href="/simulator"
             className={`${textColor(primaryColor)} underline`}
+            onClick={() => {
+              setIsModalOpen(false);
+            }}
           >
             Simulator
           </Link>
