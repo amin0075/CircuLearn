@@ -15,12 +15,19 @@ interface IProps {
 }
 
 const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
-  const { primaryColor } = useThemeStore((state) => state);
+  const { primaryColor, setFirstVisit } = useThemeStore((state) => state);
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+    if (setFirstVisit) {
+      setFirstVisit(false);
+    }
+  };
   return (
     <Modal
       className="max-w-[471px] relative"
       isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
+      onClose={handleClose}
     >
       <div className="flex flex-col gap-1 mt-4">
         <Typography variant="h4" className="text-center">
@@ -83,9 +90,7 @@ const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
           <Link
             href="/simulator"
             className={`${textColor(primaryColor)} underline`}
-            onClick={() => {
-              setIsModalOpen(false);
-            }}
+            onClick={handleClose}
           >
             Simulator
           </Link>
@@ -119,9 +124,7 @@ const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
         <Button
           variant="contained"
           className="max-w-[140px] self-center mt-3"
-          onClick={() => {
-            setIsModalOpen(false);
-          }}
+          onClick={handleClose}
         >
           <Typography className="text-white" variant="body2">
             Close
@@ -129,9 +132,7 @@ const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
         </Button>
       </div>
       <IconButton
-        onClick={() => {
-          setIsModalOpen(false);
-        }}
+        onClick={handleClose}
         className="absolute top-2 right-2 p-0 dark:text-white text-black"
       >
         <Close className="w-8 h-8" />

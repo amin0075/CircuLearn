@@ -1,5 +1,5 @@
 // react
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 // next js
 import { useRouter } from "next/router";
@@ -21,6 +21,7 @@ import Sidebar from "@src/layout/Sidebar";
 import ThemeDrawer from "@src/layout/ThemeDrawer";
 import Footer from "@src/layout/Footer";
 import Chatbot from "@src/components/global/Chatbot";
+import CookiePolicyModal from "@src/components/global/CookiePolicyModal";
 
 interface IProps {
   children?: ReactNode;
@@ -34,6 +35,17 @@ const Layout: React.FC<IProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { isComponentVisible, ref, setIsComponentVisible } =
     useComponentVisible(false);
+
+  const { hasAcceptedCookies, isFirstVisit } = useThemeStore((state) => state);
+  const [isCookieModalOpen, setIsCookieModalOpen] = useState(
+    !hasAcceptedCookies && !isFirstVisit
+  );
+
+  useEffect(() => {
+    if (!hasAcceptedCookies && !isFirstVisit) {
+      setIsCookieModalOpen(true);
+    }
+  }, [hasAcceptedCookies, isFirstVisit]);
 
   if (!isHydrated) return <></>;
   return (
@@ -63,6 +75,12 @@ const Layout: React.FC<IProps> = ({ children }) => {
         />
         <Chatbot />
       </div>
+      {isCookieModalOpen && (
+        <CookiePolicyModal
+          isModalOpen={isCookieModalOpen}
+          setIsModalOpen={setIsCookieModalOpen}
+        />
+      )}
     </div>
   );
 };

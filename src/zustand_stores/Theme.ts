@@ -10,7 +10,8 @@ interface ThemeState {
   hideSensitiveValue: boolean;
   sidebarExpand: boolean;
   fullscreen: boolean;
-  isFirstVisit: boolean; // New state for tracking first visit
+  isFirstVisit: boolean;
+  hasAcceptedCookies: boolean; // New state for tracking cookie acceptance
   changePrimaryColor: (color: IColor) => void;
   changeDarkMode: () => void;
   changeSidebarBg: (value: boolean) => void;
@@ -18,6 +19,7 @@ interface ThemeState {
   changeSidebarExpantion: (value: boolean) => void;
   setFullscreen: (value: boolean) => void;
   setFirstVisit: (value: boolean) => void;
+  setHasAcceptedCookies: (value: boolean) => void; // New setter function for cookie state
 }
 
 const useThemeStore = create<ThemeState>()(
@@ -31,6 +33,7 @@ const useThemeStore = create<ThemeState>()(
         sidebarExpand: true,
         fullscreen: false,
         isFirstVisit: true,
+        hasAcceptedCookies: false,
         changePrimaryColor: (color: IColor) =>
           set((_) => ({ primaryColor: color })),
         changeDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
@@ -43,6 +46,8 @@ const useThemeStore = create<ThemeState>()(
         setFullscreen: (value: boolean) => set((_) => ({ fullscreen: value })),
         setFirstVisit: (value: boolean) =>
           set((_) => ({ isFirstVisit: value })),
+        setHasAcceptedCookies: (value: boolean) =>
+          set((_) => ({ hasAcceptedCookies: value })),
       }),
       {
         name: "theme-storage", // Persist data to localStorage
