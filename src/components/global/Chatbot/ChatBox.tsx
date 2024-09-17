@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useChatStore } from "@src/zustand_stores/chat";
 import { Bot } from "@src/assets/icons";
 import Typography from "@src/components/Typography";
@@ -6,6 +6,18 @@ import MessageBox from "./MessageBox";
 
 const ChatBox: React.FC = () => {
   const messages = useChatStore((state) => state.messages);
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  // Function to scroll to the bottom of the chat
+  const scrollToBottom = () => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <div className="flex flex-col gap-3 w-full flex-1">
@@ -17,7 +29,7 @@ const ChatBox: React.FC = () => {
       <div className="flex flex-col flex-1 gap-4 md:max-h-[330px] max-h-[200px] overflow-y-auto px-2">
         <MessageBox
           isBot
-          message="How can I assist you today? The Questions has to be related to Logic circuits."
+          message="How can I assist you today? The Questions have to be related to Logic circuits."
         />
         {messages.map((message) => (
           <MessageBox
@@ -26,6 +38,8 @@ const ChatBox: React.FC = () => {
             message={message.content}
           />
         ))}
+        {/* This div will help us scroll to the bottom */}
+        <div ref={chatEndRef} />
       </div>
     </div>
   );
