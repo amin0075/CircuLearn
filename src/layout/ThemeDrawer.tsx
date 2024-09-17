@@ -102,7 +102,7 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
     <>
       <div
         ref={ref}
-        className={`max-w-[300px] fixed top-0 ltr:right-0 ltr:left-unset rtl:left-0 rtl:right-unset md:min-w-[350px] h-screen flex flex-col overflow-y-auto p-6 dark:bg-gr_card_dark dark:bg-transparent bg-backgroundLight dark:shadow-none shadow-box-shadow-black-md z-10 backdrop-blur-xl ${
+        className={`max-w-[300px] fixed top-0 ltr:right-0 ltr:left-unset rtl:left-0 rtl:right-unset md:min-w-[350px] h-screen flex flex-col overflow-y-auto p-6 dark:bg-gr_card_dark dark:bg-transparent bg-backgroundLight dark:shadow-none shadow-box-shadow-black-md z-[11] backdrop-blur-xl ${
           isComponentVisible
             ? "lrt:translate-x-0 rtl:-translate-x-0 opacity-100"
             : "ltr:translate-x-[100%] rtl:-translate-x-[100%] opacity-0"
