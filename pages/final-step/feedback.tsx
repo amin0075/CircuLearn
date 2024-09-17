@@ -198,10 +198,10 @@ const EvaluationForm: React.FC = () => {
             ))}
           </section>
 
-          {/* Nielsen's 10 Usability Heuristics Section */}
+          {/* Nielsen's Usability Heuristics Section */}
           <section className="flex flex-col gap-2 mb-4">
             <Typography variant="h4" className={`${textColor(primaryColor)}`}>
-              Nielsen's 10 Usability Heuristics
+              Nielsen's Usability Heuristics
             </Typography>
             {nielsenFields.map((item, index) => (
               <div key={index} className="flex flex-col gap-2">

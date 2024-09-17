@@ -7,6 +7,7 @@ import Modal from "@src/components/Modal";
 import { Close } from "@src/assets/icons";
 import { textColor } from "@src/utils/colorUtils";
 import { useThemeStore } from "@src/zustand_stores/Theme";
+import { useRouter } from "next/router";
 
 interface IProps {
   children?: ReactNode;
@@ -15,14 +16,19 @@ interface IProps {
 }
 
 const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
-  const { primaryColor, setFirstVisit } = useThemeStore((state) => state);
+  const { primaryColor, setFirstVisit, isFirstVisit } = useThemeStore(
+    (state) => state
+  );
+  const router = useRouter();
 
   const handleClose = () => {
     setIsModalOpen(false);
-    if (setFirstVisit) {
+    if (isFirstVisit) {
       setFirstVisit(false);
+      router.reload();
     }
   };
+
   return (
     <Modal
       className="max-w-[471px] relative"

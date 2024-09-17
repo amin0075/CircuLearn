@@ -109,6 +109,20 @@ const References = () => {
               (Revised and expanded ed.). Basic Books.
             </Typography>
           </li>
+          <li>
+            <Typography variant="body2">
+              Todorovic, D. (2008). Gestalt principles. <em>Scholarpedia, 3</em>
+              (12), 5345.{" "}
+              <Link
+                className="underline"
+                href="https://doi.org/10.4249/scholarpedia.5345"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.4249/scholarpedia.5345
+              </Link>
+            </Typography>
+          </li>
         </ul>
 
         {/* Icons and Images */}

@@ -248,11 +248,9 @@ const ResultsPage: React.FC = () => {
 
         <Divider />
 
-        {/* Nielsen's 10 Usability Heuristics Table */}
+        {/* Nielsen's Usability Heuristics Table */}
         <section>
-          <Typography variant="h4">
-            Nielsen's 10 Usability Heuristics
-          </Typography>
+          <Typography variant="h4">Nielsen's Usability Heuristics</Typography>
           <Table
             tableHeads={
               <>

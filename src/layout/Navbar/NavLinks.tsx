@@ -29,7 +29,6 @@ const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
     }
   }, [isFirstVisit]);
 
-  console.log("isModalOpen: ", isModalOpen);
   return (
     <div
       className={`flex gap-5 ${usedInNavbar ? "gap-5 items-center flex-row" : "flex-col items-start px-7 gap-3"} ${className}`}
@@ -62,7 +61,9 @@ const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
       </span>
 
       {/* modal for user guide */}
-      <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      {isModalOpen && (
+        <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      )}
     </div>
   );
 };
