@@ -23,7 +23,7 @@ const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { primaryColor, isFirstVisit } = useThemeStore((state) => state);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isFirstVisit) {
       setIsModalOpen(true);
     }
@@ -61,9 +61,7 @@ const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
       </span>
 
       {/* modal for user guide */}
-      {isModalOpen && (
-        <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      )}
+      <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </div>
   );
 };

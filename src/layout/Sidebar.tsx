@@ -26,6 +26,7 @@ import Divider from "@src/components/Divider";
 import IconButton from "@src/components/IconButton";
 import SidebarLink from "./SidebarLink";
 import NavLinks from "./Navbar/NavLinks";
+import useMediaQuery from "@src/hooks/useMediaQuery";
 
 interface IProps {
   children?: ReactNode;
@@ -56,6 +57,7 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
     gates: false,
     finalStep: false,
   });
+  const width = useMediaQuery();
 
   // function for detecting routes
   const routeDetector = () => `/${router.pathname.split("/")[1]}`;
@@ -117,7 +119,9 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
           </div>
           <Divider darkcolor={!darkMode} className="w-full" />
           {/* nav link in mobile view */}
-          <NavLinks usedInNavbar={false} className="md:hidden" />
+          {width < 767 && (
+            <NavLinks usedInNavbar={false} className="md:hidden" />
+          )}
           <Divider darkcolor={!darkMode} className="w-full md:hidden" />
 
           {/* pages links */}

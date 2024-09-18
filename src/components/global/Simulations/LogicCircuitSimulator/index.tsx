@@ -386,7 +386,7 @@ const Simulator: React.FC = () => {
         </Button>
       </div>
 
-      <div className="absolute top-4 right-4 z-10 flex items-center gap-2 ssm:flex-col-reverse">
+      <div className="absolute top-4 right-4 z-[9] flex items-center gap-2 ssm:flex-col-reverse">
         {selectedNode && (
           <>
             <Tooltip title="Duplicate Node" className="text-nowrap">

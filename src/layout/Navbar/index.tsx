@@ -12,6 +12,7 @@ import IconButton from "@src/components/IconButton";
 import Tooltip from "@src/components/Tooltip";
 import { BurgerMenu, Setting } from "@src/assets/icons";
 import NavLinks from "./NavLinks";
+import useMediaQuery from "@src/hooks/useMediaQuery";
 
 interface IProps {
   children?: ReactNode;
@@ -26,6 +27,7 @@ const Navbar: React.FC<IProps> = ({
 }) => {
   const router = useRouter();
   const { sidebarExpand } = useThemeStore();
+  const width = useMediaQuery();
 
   return (
     <>
@@ -43,7 +45,7 @@ const Navbar: React.FC<IProps> = ({
         >
           <BurgerMenu className="w-7 h-7" />
         </IconButton>
-        <NavLinks className="smd:hidden" />
+        {width > 767 && <NavLinks className="smd:hidden" />}
         <div className="flex items-center gap-4">
           {/* theme setting */}
           <Tooltip className="whitespace-nowrap" title="Theme configuration">

@@ -12,48 +12,56 @@ interface IProps
     React.HTMLAttributes<HTMLDialogElement>,
     HTMLDialogElement
   > {
-  children?: ReactNode;
   isOpen: boolean;
-  onClose: () => void;
+  onClose: () => void; // Add this to trigger parent close function
 }
 
-const Modal = forwardRef<HTMLDialogElement, IProps>(
-  ({ children, className = "", isOpen, onClose, ...rest }, ref) => {
-    const dialogRef = useRef<HTMLDialogElement>(null);
-
-    useLayoutEffect(() => {
-      if (isOpen) {
-        document.body.style.overflow = "hidden";
-        if (dialogRef.current) {
-          dialogRef.current.showModal();
-        }
-      } else {
-        document.body.style.overflow = "auto";
-        if (dialogRef.current) {
-          dialogRef.current.close();
-          onClose();
-        }
+const Modal: React.FC<React.PropsWithChildren<IProps>> = ({
+  children,
+  className = "",
+  isOpen,
+  onClose,
+  ...rest
+}) => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (isOpen) {
+      // document.body.style.overflow = "hidden";
+      if (dialog && !dialog.hasAttribute("open")) {
+        console.log("here", dialog);
+        dialog.showModal();
       }
-      return () => {
-        document.body.style.overflow = "auto";
-      };
-    }, [isOpen]);
+    } else {
+      // document.body.style.overflow = "auto";
 
-    return (
-      <dialog
-        ref={dialogRef}
-        className={twMerge(
-          `transition-all duration-300 ease-in-out p-5 items-center justify-center rounded-10 bg-white dark:bg-backgroundDark shadow-box-shadow-black-md custom-backdrop`,
-          className,
-          "backdrop:bg-black/50"
-        )}
-        {...rest}
-      >
-        {children}
-      </dialog>
-    );
-  }
-);
+      if (dialog && dialog.hasAttribute("open")) {
+        console.log("closed", dialog, isOpen);
+        dialog.close();
+        onClose();
+      }
+    }
+
+    return () => {
+      // document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
+  return (
+    <dialog
+      ref={dialogRef}
+      id="modal"
+      className={twMerge(
+        `transition-all duration-300 ease-in-out p-5 items-center justify-center rounded-10 bg-white dark:bg-backgroundDark shadow-box-shadow-black-md custom-backdrop`,
+        className,
+        "backdrop:bg-black/50"
+      )}
+      {...rest}
+    >
+      {children}
+    </dialog>
+  );
+};
 
 Modal.displayName = "Modal";
 

@@ -15,7 +15,7 @@ const Chatbot: React.FC = () => {
   const { clearMessages, messages } = useChatStore((state) => state);
 
   return (
-    <div className="fixed md:bottom-7 md:right-7 right-2 bottom-2 left-unset flex flex-col md:gap-3 gap-1 z-[10]">
+    <div className="fixed md:bottom-7 md:right-7 right-2 bottom-2 left-unset flex flex-col md:gap-3 gap-1 z-[9]">
       {/* Chat Box */}
       <Paper
         className={`w-[300px] flex flex-col gap-2 relative transition-all ease-in-out duration-300 ${

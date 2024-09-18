@@ -23,9 +23,11 @@ const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
 
   const handleClose = () => {
     setIsModalOpen(false);
+    const dialog = document.querySelector<HTMLDialogElement>("#modal");
+    dialog?.close();
     if (isFirstVisit) {
       setFirstVisit(false);
-      router.reload();
+      // router.reload();
     }
   };
 
