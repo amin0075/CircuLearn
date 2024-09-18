@@ -32,8 +32,8 @@ const SimulatorDrawer: React.FC<DrawerProps> = ({
         onClick={onClose}
       ></div>
       <div
-        className={`fixed inset-y-0 left-0 w-64 md:rounded-l-10 dark:bg-backgroundDark z-[9] bg-gray-300 p-4 transition-transform transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full z-0"
+        className={`fixed inset-y-0 left-0 w-64 md:rounded-l-10 dark:bg-backgroundDark bg-gray-300 p-4 z-10 transition-transform transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 md:relative md:flex md:flex-col`}
       >
         <aside className="md:w-[240px] p-4 dark:bg-backgroundDark bg-gray-300 max-h-full overflow-y-auto">
