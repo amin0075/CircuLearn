@@ -48,8 +48,8 @@ const References = () => {
           </li>
           <li>
             <Typography variant="body2">
-              de Jong, T., & van Joolingen, W. R. (1998). Discovery learning
-              with computer simulations of conceptual domains.{" "}
+              de Jong, T., & van Joolingen, W. R. (1998). Scientific Discovery
+              Learning with Computer Simulations of Conceptual Domains.{" "}
               <em>Review of Educational Research, 68</em>(2), 179–201.{" "}
               <Link
                 className="underline"
