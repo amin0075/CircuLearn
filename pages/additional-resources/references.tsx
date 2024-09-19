@@ -21,23 +21,6 @@ const References = () => {
         <ul className="list-decimal pl-6 flex flex-col gap-4">
           <li>
             <Typography variant="body2">
-              Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal,
-              P., ... & Amodei, D. (2020). Language models are few-shot
-              learners.{" "}
-              <em>Advances in Neural Information Processing Systems, 33</em>,
-              1877-1901.{" "}
-              <Link
-                className="underline"
-                href="https://arxiv.org/abs/2005.14165"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                https://arxiv.org/abs/2005.14165
-              </Link>
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body2">
               Clark, R. C., & Mayer, R. E. (2016).{" "}
               <em>
                 E-learning and the science of instruction: Proven guidelines for
