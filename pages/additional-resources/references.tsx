@@ -78,20 +78,6 @@ const References = () => {
           </li>
           <li>
             <Typography variant="body2">
-              Long, P., & Siemens, G. (2011). Penetrating the fog: Analytics in
-              learning and education. <em>EDUCAUSE review, 46</em>(5), 31-40.{" "}
-              <Link
-                className="underline"
-                href="https://er.educause.edu/articles/2011/9/penetrating-the-fog-analytics-in-learning-and-education"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                https://er.educause.edu/articles/2011/9/penetrating-the-fog-analytics-in-learning-and-education
-              </Link>
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body2">
               Mano, M. M., Kime, C. R., & Martin, T. (2015).{" "}
               <em>Logic and computer design fundamentals</em> (5th ed.).
               Pearson.
