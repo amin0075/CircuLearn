@@ -119,10 +119,16 @@ const UserGuide: React.FC<IProps> = ({ isModalOpen, setIsModalOpen }) => {
 
         {/* Help Section */}
         <Typography variant="body2" fontweight="semiBold">
-          Need Help?
+          Need Help or Have Questions About Logic Gates?
         </Typography>
         <Typography variant="caption">
-          Contact me at{" "}
+          If you have additional questions about the lessons or concepts related
+          to logic gates, use the chatbot in the bottom-right corner of the
+          website. The chatbot can provide further explanations or clarify
+          doubts as you progress through the learning material.
+        </Typography>
+        <Typography variant="caption">
+          Alternatively, you can still reach out to me at{" "}
           <Link href="mailto:2314378@chester.ac.uk" className="underline">
             2314378@chester.ac.uk
           </Link>{" "}
