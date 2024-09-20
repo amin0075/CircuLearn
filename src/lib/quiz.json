@@ -25,7 +25,7 @@
       "section": "Boolean Algebra",
       "questions": [
         {
-          "num": 4,
+          "num": 3,
           "id": "boolean_q1",
           "question": "Which of the following is the result of the expression A AND B when A is TRUE and B is FALSE?",
           "type": "multiple_choice",
@@ -33,7 +33,7 @@
           "correctAnswer": "FALSE"
         },
         {
-          "num": 5,
+          "num": 4,
           "id": "boolean_q2",
           "question": "Simplify the Boolean expression: A + A'B",
           "type": "multiple_choice",
@@ -46,7 +46,7 @@
       "section": "Logic Gates",
       "questions": [
         {
-          "num": 6,
+          "num": 5,
           "id": "logic_gates_q1",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -56,7 +56,7 @@
           "output": true
         },
         {
-          "num": 7,
+          "num": 6,
           "id": "logic_gates_q2",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -66,7 +66,7 @@
           "output": false
         },
         {
-          "num": 8,
+          "num": 7,
           "id": "logic_gates_q3",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -76,7 +76,7 @@
           "output": false
         },
         {
-          "num": 9,
+          "num": 8,
           "id": "logic_gates_q4",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
@@ -86,7 +86,7 @@
           "output": true
         },
         {
-          "num": 10,
+          "num": 9,
           "id": "logic_gates_q5",
           "question": "Which gate will output TRUE when both inputs are TRUE?",
           "type": "multiple_choice",
