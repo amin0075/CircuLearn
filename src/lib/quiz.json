@@ -50,9 +50,9 @@
           "id": "logic_gates_q1",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
-          "randomGates": ["AND", "OR", "NAND", "XOR"],
+          "randomGates": ["AND", "NAND", "XOR", "NOR"],
           "correctAnswer": "AND",
-          "inputs": [true, false],
+          "inputs": [true, true],
           "output": true
         },
         {
@@ -60,19 +60,19 @@
           "id": "logic_gates_q2",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
-          "randomGates": ["AND", "OR", "NOR", "XOR"],
+          "randomGates": ["OR", "NOR", "XOR", "NAND"],
           "correctAnswer": "OR",
-          "inputs": [false, false],
-          "output": false
+          "inputs": [true, true],
+          "output": true
         },
         {
           "num": 7,
           "id": "logic_gates_q3",
           "question": "Drag and drop the correct gate to satisfy the given logic equation.",
           "type": "gate_simulation",
-          "randomGates": ["AND", "OR", "NOR", "XOR"],
+          "randomGates": ["XOR", "NAND", "NOR", "XNOR"],
           "correctAnswer": "XOR",
-          "inputs": [true, true],
+          "inputs": [false, false],
           "output": false
         },
         {
@@ -90,7 +90,7 @@
           "id": "logic_gates_q5",
           "question": "Which gate will output TRUE when both inputs are TRUE?",
           "type": "multiple_choice",
-          "options": ["AND", "OR", "NAND", "NOR"],
+          "options": ["AND", "NAND", "NOR", "XOR"],
           "correctAnswer": "AND"
         }
       ]
