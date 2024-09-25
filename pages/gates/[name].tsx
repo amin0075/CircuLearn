@@ -1,10 +1,9 @@
-// pages/gates/[name].tsx
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Paper from "@src/components/Paper";
 import Typography from "@src/components/Typography";
 import gatesData from "@src/lib/gates.json"; // Make sure to create this file
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@src/components/Button";
 import { useThemeStore } from "@src/zustand_stores/Theme";
 import GateSimulation from "@src/components/global/Simulations/GateSimulation";
@@ -19,10 +18,17 @@ export default function GatePage() {
     (g) => g.name.toLowerCase().replace(/ /g, "-") === name
   );
 
-  const [selectedAnswers, setSelectedAnswers] = useState(
-    gate?.questions.map(() => "") || []
-  );
+  // State initialization
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [showAnswers, setShowAnswers] = useState(false);
+
+  // Reset state when the route changes
+  useEffect(() => {
+    if (gate) {
+      setSelectedAnswers(gate.questions.map(() => ""));
+      setShowAnswers(false);
+    }
+  }, [name]); // Dependency on `name` (route param)
 
   const handleAnswerChange = (questionIndex: number, option: string) => {
     const newAnswers = [...selectedAnswers];
@@ -69,9 +75,7 @@ export default function GatePage() {
           <Paper className="p-4 md:p-6 w-[calc(55%-8px)] flex flex-col gap-4 slg:w-full">
             <Typography variant="h3">Truth Table</Typography>
             <div className="overflow-x-auto">
-              <table
-                className={`bg-white min-w-full dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-black dark:text-white`}
-              >
+              <table className="bg-white min-w-full dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-black dark:text-white">
                 <thead>
                   <tr>
                     {Object.keys(gate.truthTable[0]).map((header) => (
@@ -131,7 +135,11 @@ export default function GatePage() {
                 {showAnswers && (
                   <Typography
                     variant="body2"
-                    className={`mt-2 ${selectedAnswers[questionIndex] === question.correctAnswer ? "text-green-500" : "text-red-500"}`}
+                    className={`mt-2 ${
+                      selectedAnswers[questionIndex] === question.correctAnswer
+                        ? "text-green-500"
+                        : "text-red-500"
+                    }`}
                   >
                     {selectedAnswers[questionIndex] === question.correctAnswer
                       ? "Correct!"

@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useEffect } from "react";
+// components/global/Simulations/GateSimulation.tsx
+import React, { useState, useEffect, useMemo } from "react";
 import {
   calculateAND,
   calculateNAND,
@@ -68,9 +69,14 @@ const GateSimulation: React.FC<GateSimulationProps> = ({
   outputLabel,
 }) => {
   const { primaryColor } = useThemeStore((state) => state);
-  const [inputs, setInputs] = useState<boolean[]>(
-    new Array(inputLabels.length).fill(false)
+
+  // Initialize state based on inputLabels length
+  const initialInputs = useMemo(
+    () => new Array(inputLabels.length).fill(false),
+    [inputLabels.length]
   );
+
+  const [inputs, setInputs] = useState<boolean[]>(initialInputs);
   const [output, setOutput] = useState<boolean>(false);
 
   const handleInputChange = (index: number) => {
@@ -81,8 +87,11 @@ const GateSimulation: React.FC<GateSimulationProps> = ({
   };
 
   useEffect(() => {
-    setOutput(gateFunctions(gate.replace(" Gate", ""), inputs));
-  }, [gate]);
+    // Reset inputs when the gate changes
+    const resetInputs = new Array(inputLabels.length).fill(false);
+    setInputs(resetInputs);
+    setOutput(gateFunctions(gate.replace(" Gate", ""), resetInputs));
+  }, [gate, inputLabels.length]);
 
   return (
     <div className="p-4 sxs:px-0 bg-transparent rounded-lg">
