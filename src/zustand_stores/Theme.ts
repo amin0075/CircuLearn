@@ -11,7 +11,7 @@ interface ThemeState {
   sidebarExpand: boolean;
   fullscreen: boolean;
   isFirstVisit: boolean;
-  hasAcceptedCookies: boolean; // New state for tracking cookie acceptance
+  hasAcceptedCookies: boolean;
   changePrimaryColor: (color: IColor) => void;
   changeDarkMode: () => void;
   changeSidebarBg: (value: boolean) => void;
@@ -19,7 +19,7 @@ interface ThemeState {
   changeSidebarExpantion: (value: boolean) => void;
   setFullscreen: (value: boolean) => void;
   setFirstVisit: (value: boolean) => void;
-  setHasAcceptedCookies: (value: boolean) => void; // New setter function for cookie state
+  setHasAcceptedCookies: (value: boolean) => void;
 }
 
 const useThemeStore = create<ThemeState>()(
