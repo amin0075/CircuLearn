@@ -30,7 +30,11 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = ({
     >
       <Handle type="source" position={Position.Right} id="a" />
       <div className="flex items-center gap-2">
-        <Switch checked={value === 1} onChange={toggleSwitch} />
+        <Switch
+          aria-label="Toggle switch"
+          checked={value === 1}
+          onChange={toggleSwitch}
+        />
         <Typography variant="body2">{data.label}</Typography>
         <Typography
           variant="body2"

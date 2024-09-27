@@ -42,6 +42,7 @@ const Navbar: React.FC<IProps> = ({
         <IconButton
           onClick={() => setSidebarOpen((prev) => !prev)}
           className="p-1 md:hidden text-black dark:text-white bg-transparent"
+          aria-label="Toggle sidebar"
         >
           <BurgerMenu className="w-7 h-7" />
         </IconButton>
@@ -50,6 +51,7 @@ const Navbar: React.FC<IProps> = ({
           {/* theme setting */}
           <Tooltip className="whitespace-nowrap" title="Theme configuration">
             <IconButton
+              aria-label="Theme configuration"
               onClick={() => setIsComponentVisible(true)}
               className={`p-1 group dark:text-white text-black`}
               borderRadius="full"

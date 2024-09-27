@@ -29,7 +29,7 @@ const SidebarLink: React.FC<IProps> = ({ data }) => {
   const { primaryColor, sidebarExpand } = useThemeStore((state) => state);
 
   return (
-    <Link href={data.url}>
+    <Link href={data.url} aria-label={`go to ${data.name}`}>
       <div
         className={`flex gap-3 items-center rounded-10 py-2 transition-all duration-200 ease-in-out ${
           !sidebarExpand ? "justify-center" : ""

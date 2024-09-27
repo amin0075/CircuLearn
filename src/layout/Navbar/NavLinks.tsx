@@ -34,7 +34,11 @@ const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
       className={`flex gap-5 ${usedInNavbar ? "gap-5 items-center flex-row" : "flex-col items-start px-7 gap-3"} ${className}`}
     >
       {navRoutes.map((route) => (
-        <Link href={route.url} key={route.url}>
+        <Link
+          href={route.url}
+          key={route.url}
+          aria-label={`go to ${route.name}`}
+        >
           <Typography
             textTransform="first-letter-capital"
             variant="base"

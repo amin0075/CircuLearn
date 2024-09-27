@@ -97,6 +97,7 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
           <IconButton
             onClick={() => setSidebarOpen((prev) => !prev)}
             className={`${bgColor(primaryColor)} p-1 text-white`}
+            aria-label="Toggle sidebar"
           >
             <Arrow
               className={`w-4 h-4 transition-all duration-300 ease-in-out ${
@@ -114,7 +115,6 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
               alt="logo"
               width={120}
               height={120}
-              // className="bg-white"
             />
           </div>
           <Divider darkcolor={!darkMode} className="w-full" />

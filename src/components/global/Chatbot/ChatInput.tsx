@@ -81,11 +81,13 @@ const ChatInput: React.FC = () => {
         disabled={isLoading}
         className="bg-white rounded-lg placeholder:text-caption px-2 h-[42px] dark:text-black"
         placeholder="Type a message..."
+        aria-label="Type a message"
       />
       <IconButton
         className={`text-white p-0`}
         onClick={sendMessage}
         disabled={isLoading}
+        aria-label="Send message"
       >
         {isLoading ? <Spinner /> : <Send className="w-8 h-8" />}
       </IconButton>

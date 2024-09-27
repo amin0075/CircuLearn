@@ -50,6 +50,7 @@ const Chatbot: React.FC = () => {
             onClick={() => setIsOpen(false)}
             borderRadius="full"
             className="p-0"
+            aria-label="Close chat"
           >
             <Close className="w-8 h-8 text-black dark:text-white" />
           </IconButton>
@@ -63,6 +64,7 @@ const Chatbot: React.FC = () => {
 
       {/* Chatbot button */}
       <IconButton
+        aria-label="Open chat"
         borderRadius="full"
         variant="contained"
         className="self-end text-white"
