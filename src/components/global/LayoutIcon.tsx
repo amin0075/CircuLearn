@@ -60,7 +60,12 @@ const LayoutIcon: React.FC<IProps> = (props) => {
 
   return (
     <label className="flex h-[46px] w-[70px] bg-white shadow-box-shadow-black-md p-1 rounded-[4px] cursor-pointer">
-      <input type="checkbox" className="sr-only peer" {...rest} />
+      <input
+        aria-label="collape/expand sidebar"
+        type="checkbox"
+        className="sr-only peer"
+        {...rest}
+      />
       <span
         className={`bg-backgroundDark rounded-[2px] transition-all duration-200 ease-in-out peer ${background} ${
           mode === "expand" ? `w-4 ltr:mr-1 rtl:ml-1` : "w-2 ltr:mr-1 rtl:ml-1"

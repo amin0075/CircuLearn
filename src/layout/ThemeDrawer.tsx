@@ -121,6 +121,7 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
           <IconButton
             onClick={() => setIsComponentVisible((prevState) => !prevState)}
             className="p-2 self-start"
+            aria-label="Close theme configurator"
           >
             <Close className="w-9 h-9 dark:text-customGray text-black" />
           </IconButton>
@@ -132,6 +133,7 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
           <div className="flex gap-2 flex-wrap">
             {colors.map((color, index) => (
               <IconButton
+                aria-label={`Change primary color to ${color}`}
                 className={`transition-all duration-200 ease-in-out border-2 border-solid min-w-[92px] min-h-[44px] ${
                   primaryColor === color
                     ? "dark:border-white border-black scale-110"
@@ -158,6 +160,7 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
               </Typography>
               <div className="flex items-center gap-2 w-full pt-3">
                 <Button
+                  aria-label="Change sidebar background to transparent"
                   onClick={() => changeSidebarBg(true)}
                   bgMode="gradient"
                   variant={sidebarTransparent ? "contained" : "bordered"}
@@ -166,6 +169,7 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
                   <Typography variant="caption">Transparent</Typography>
                 </Button>
                 <Button
+                  aria-label="Change sidebar background to opaque"
                   onClick={() => changeSidebarBg(false)}
                   variant={!sidebarTransparent ? "contained" : "bordered"}
                   bgMode="gradient"
@@ -209,14 +213,21 @@ const ThemeDrawer: React.FC<IProps> = React.forwardRef((props, ref) => {
             <Nightmode className="w-10 h-w-10 dark:text-white text-black" />
             <Typography variant="body1">Dark Mode</Typography>
           </div>
-          <Switch checked={darkMode} onChange={() => changeDarkMode()} />
+          <Switch
+            aria-label="Toggle dark mode"
+            checked={darkMode}
+            onChange={() => changeDarkMode()}
+          />
         </div>
         <Divider className="my-5" darkcolor={!darkMode} />
 
         {/* Fullscreen Toggle (hidden on mobile/tablet) */}
         <div className="flex justify-between items-center smd:hidden">
           <Typography variant="body1">Full screen</Typography>
-          <IconButton onClick={handleFullscreenToggle}>
+          <IconButton
+            aria-label="Toggle fullscreen"
+            onClick={handleFullscreenToggle}
+          >
             {fullscreen ? (
               <FullScreenExit className="w-8 h-8 dark:text-white text-black" />
             ) : (
