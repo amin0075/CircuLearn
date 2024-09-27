@@ -42,8 +42,9 @@ const App = ({ Component, pageProps }: Props) => {
         <meta name="theme-color" content="#fff" />
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, maximum-scale=1, width=device-width"
+          content="width=device-width, initial-scale=1, maximum-scale=3"
         />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <DndProvider backend={HTML5Backend}>
