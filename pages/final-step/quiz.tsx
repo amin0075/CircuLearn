@@ -106,7 +106,6 @@ const FinalEvaluationPage: React.FC = () => {
   const onSubmit = async () => {
     if (validateAnswers()) {
       try {
-        // axios.defaults.withCredentials = true;
         await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/quiz`,
           {
@@ -121,17 +120,24 @@ const FinalEvaluationPage: React.FC = () => {
           router,
           type: "success",
         });
-        // fill out the reuslt with answers
+        const arraysEqual = (arr1: string[], arr2: string[]) => {
+          if (arr1.length !== arr2.length) return false;
+          for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) return false;
+          }
+          return true;
+        };
+
         const newResults = (quiz as FinalEvaluationData).evaluation.map(
           (section, sectionIndex) => {
             return section.questions.map((question, questionIndex) => {
               const userAnswer = answers[
                 `${sectionIndex}-${questionIndex}`
-              ] as string;
+              ] as string[];
               const correctAnswer = question.correctAnswer;
               const isCorrect = Array.isArray(correctAnswer)
-                ? correctAnswer.includes(userAnswer)
-                : correctAnswer === userAnswer;
+                ? arraysEqual(correctAnswer, userAnswer)
+                : (correctAnswer as string | string[]) === userAnswer;
               return {
                 question: question.question,
                 userAnswer,
