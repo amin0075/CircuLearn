@@ -4,6 +4,22 @@ import Typography from "@src/components/Typography";
 import Head from "next/head";
 import Divider from "@src/components/Divider";
 import Table from "@src/components/Table";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+  Legend,
+  PieChart,
+  Pie,
+  Cell,
+  Label,
+} from "recharts";
+import { bgColor } from "@src/utils/colorUtils"; // For dynamic background color
+import { useThemeStore } from "@src/zustand_stores/Theme"; // Assuming you have a theme store
 
 interface QuizResult {
   score: number;
@@ -25,6 +41,18 @@ const ResultsPage: React.FC = () => {
   const [quizResults, setQuizResults] = useState<QuizResult[]>([]);
   const [feedbackEntries, setFeedbackEntries] = useState<FeedbackEntry[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Fetch the primary color from the theme store
+  const { primaryColor } = useThemeStore((state) => state);
+
+  // Likert scale value mapping
+  const likertScaleValues: { [key: string]: number } = {
+    "Strongly Agree": 5,
+    Agree: 4,
+    Neutral: 3,
+    Disagree: 2,
+    "Strongly Disagree": 1,
+  };
 
   // Fetch quiz results and feedback entries
   useEffect(() => {
@@ -66,6 +94,23 @@ const ResultsPage: React.FC = () => {
     return <Typography>Loading...</Typography>;
   }
 
+  // Data preparation for quiz chart
+  const quizChartData = quizResults.map((result, index) => ({
+    name: `Student ${index + 1}`,
+    score: result.score,
+  }));
+
+  // Prepare data for the pass/fail pie chart
+  const passCount = quizResults.filter((result) => result.score >= 5).length;
+  const failCount = quizResults.length - passCount;
+
+  const pieChartData = [
+    { name: "Pass", value: passCount },
+    { name: "Fail", value: failCount },
+  ];
+
+  const pieColors = ["#4CAF50", "#F44336"]; // Custom colors for pass/fail
+
   // Flatten the quiz result structure to ensure 9 question columns
   const formatResultColumns = (result: any) => {
     const flattenedResults = result.flat();
@@ -86,13 +131,21 @@ const ResultsPage: React.FC = () => {
     "The interactive application increased my understanding of simple logic circuits.",
   ];
 
-  const generalFeedbackOptions = [
-    "Strongly Agree",
-    "Agree",
-    "Neutral",
-    "Disagree",
-    "Strongly Disagree",
-  ];
+  // Calculate the average Likert-scale score for each question
+  const calculateLikertAverage = (qIndex: number) => {
+    let totalScore = 0;
+    let responseCount = 0;
+
+    feedbackEntries.forEach((entry) => {
+      const answer = entry.feedback.questionnaire[qIndex].answer;
+      if (likertScaleValues[answer]) {
+        totalScore += likertScaleValues[answer];
+        responseCount += 1;
+      }
+    });
+
+    return responseCount > 0 ? (totalScore / responseCount).toFixed(2) : "N/A";
+  };
 
   const generalFeedbackSummary = generalFeedbackQuestions.map(
     (question, qIndex) => {
@@ -111,7 +164,9 @@ const ResultsPage: React.FC = () => {
         }
       });
 
-      return { question, optionCounts };
+      const averageScore = calculateLikertAverage(qIndex);
+
+      return { question, optionCounts, averageScore };
     }
   );
 
@@ -180,32 +235,100 @@ const ResultsPage: React.FC = () => {
             Quiz Results (Max Score: {MAX_SCORE})
           </Typography>
           {quizResults.length > 0 ? (
-            <Table
-              tableHeads={
-                <>
-                  <th scope="col" className="px-6 py-3">
-                    <Typography variant="body2" className="text-nowrap">
-                      Score
-                    </Typography>
-                  </th>
-                  {[...Array(9)].map((_, index) => (
-                    <th key={index} scope="col" className="px-6 py-3">
-                      <Typography variant="caption" className="text-nowrap">
-                        Question {index + 1}
+            <>
+              {/* Quiz Results Table */}
+              <Table
+                tableHeads={
+                  <>
+                    <th scope="col" className="px-6 py-3">
+                      <Typography variant="body2" className="text-nowrap">
+                        Score
                       </Typography>
                     </th>
-                  ))}
-                </>
-              }
-              tableRows={quizResults.map((result, index) => (
-                <tr key={index} className="border-b">
-                  <td className="px-6 py-4">
-                    {result.score} / {MAX_SCORE}
-                  </td>
-                  {formatResultColumns(result.result)}
-                </tr>
-              ))}
-            />
+                    {[...Array(9)].map((_, index) => (
+                      <th key={index} scope="col" className="px-6 py-3">
+                        <Typography variant="caption" className="text-nowrap">
+                          Question {index + 1}
+                        </Typography>
+                      </th>
+                    ))}
+                  </>
+                }
+                tableRows={quizResults.map((result, index) => (
+                  <tr key={index} className="border-b">
+                    <td className="px-6 py-4">
+                      {result.score} / {MAX_SCORE}
+                    </td>
+                    {formatResultColumns(result.result)}
+                  </tr>
+                ))}
+              />
+
+              {/* Quiz Results Chart */}
+              <Typography variant="h4" className="mt-10 mb-4">
+                Quiz Score Distribution
+              </Typography>
+              <ResponsiveContainer width="100%" height={250}>
+                <BarChart data={quizChartData}>
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    vertical={false}
+                    horizontal={false}
+                  />{" "}
+                  {/* Removed grid borders */}
+                  <XAxis dataKey="name" tickLine={false} axisLine={false} />
+                  <YAxis
+                    tickLine={false}
+                    axisLine={false}
+                    domain={[0, 9]}
+                  />{" "}
+                  {/* Max set to 9 */}
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="score" fill={primaryColor} />
+                </BarChart>
+              </ResponsiveContainer>
+
+              {/* Pass/Fail Pie Chart */}
+              <Typography variant="h4" className="mt-4">
+                Pass/Fail Distribution
+              </Typography>
+              <div className="flex flex-col items-center">
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={pieChartData}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={100}
+                      fill={primaryColor}
+                    >
+                      {pieChartData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={pieColors[index]} />
+                      ))}
+                      <Label
+                        value={`${passCount} Pass`}
+                        position="left"
+                        // offset={-10}
+                        fill="#fff"
+                      />
+                      <Label
+                        value={`${failCount} Fail`}
+                        position="centerBottom"
+                        // offset={-10}
+                        fill="#fff"
+                      />
+                    </Pie>
+                    <Tooltip />
+                  </PieChart>
+                </ResponsiveContainer>
+                <Typography variant="caption">
+                  Total Students: {passCount + failCount}
+                </Typography>
+              </div>
+            </>
           ) : (
             <Typography variant="body2">No quiz results found.</Typography>
           )}
@@ -224,23 +347,41 @@ const ResultsPage: React.FC = () => {
                     Question
                   </Typography>
                 </th>
-                {generalFeedbackOptions.map((option) => (
+                {[
+                  "Strongly Agree (5)",
+                  "Agree (4)",
+                  "Neutral (3)",
+                  "Disagree (2)",
+                  "Strongly Disagree (1)",
+                ].map((option) => (
                   <th key={option} scope="col" className="px-6 py-3">
                     <Typography variant="caption" className="text-nowrap">
                       {option}
                     </Typography>
                   </th>
                 ))}
+                <th scope="col" className="px-6 py-3">
+                  <Typography variant="caption" className="text-nowrap">
+                    Average Score (out of 5)
+                  </Typography>
+                </th>
               </>
             }
             tableRows={generalFeedbackSummary.map((summary, index) => (
               <tr key={index} className="border-b">
                 <td className="px-6 py-4">{summary.question}</td>
-                {generalFeedbackOptions.map((option) => (
+                {[
+                  "Strongly Agree",
+                  "Agree",
+                  "Neutral",
+                  "Disagree",
+                  "Strongly Disagree",
+                ].map((option) => (
                   <td key={option} className="px-6 py-4">
                     {summary.optionCounts[option]}
                   </td>
                 ))}
+                <td className="px-6 py-4">{summary.averageScore}</td>
               </tr>
             ))}
           />
@@ -265,7 +406,7 @@ const ResultsPage: React.FC = () => {
                   </Typography>
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  <Typography variant="body2" className="text-nowrap">
+                  <Typography variant="caption" className="text-nowrap">
                     Fail
                   </Typography>
                 </th>
