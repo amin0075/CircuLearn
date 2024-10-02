@@ -78,11 +78,6 @@ const mainRoutes: IMainRoute = {
       url: ROUTES_URL.binarySystem,
       icon: Binary,
     },
-    // {
-    //   name: "Boolean Algebra",
-    //   url: ROUTES_URL.booleanAlgebra,
-    //   icon: Boolean,
-    // },
     {
       name: "Truth Table",
       url: ROUTES_URL.truthTable,
@@ -91,7 +86,7 @@ const mainRoutes: IMainRoute = {
   ],
   BooleanAlgebra: [
     {
-      name: "introduction",
+      name: "Introduction",
       url: ROUTES_URL.booleanAlgebraIntro,
       icon: Boolean,
     },
