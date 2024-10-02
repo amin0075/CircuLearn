@@ -115,14 +115,15 @@ const InputNode: React.FC<NodeProps<InputNodeData>> = ({
             onChange={toggleSwitch}
           />
         ) : (
-          <Typography
-            variant="body2"
-            className={`dark:bg-white p-1 px-2 bg-black rounded-md text-white dark:text-black`}
-          >
-            {data.value}
-          </Typography>
+          <></>
         )}
         <Typography variant="body2">{data.label}</Typography>
+        <Typography
+          variant="body2"
+          className={`${data.value ? "text-green-500 dark:text-green-500" : "text-red-500 dark:text-red-500"} dark:bg-white p-1 px-2 bg-black rounded-md`}
+        >
+          {data.value}
+        </Typography>
       </div>
     </div>
   );
