@@ -254,6 +254,7 @@ const Simulator: React.FC<SimulatorProps> = ({ initialData, isReadOnly }) => {
         }
       } else if (nodeType === "outputNode") {
         label = "Lamp";
+        value = 0;
       } else {
         label = gateType ? `${gateType.toUpperCase()} Gate` : "";
       }
