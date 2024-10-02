@@ -79,7 +79,9 @@ export default function BooleanAlgebra() {
                   className={`absolute w-24 h-24 border border-black dark:border-white rounded-full top-12 right-3`}
                 ></div>
                 <div
-                  className={`absolute w-[52px] h-[52px] ${bgColor(primaryColor)} border border-black dark:border-white rounded-tl-full rounded-br-full -rotate-[45deg] top-[70px] left-[70px]`}
+                  className={`absolute w-[52px] h-[52px] ${bgColor(
+                    primaryColor
+                  )} border border-black dark:border-white rounded-tl-full rounded-br-full -rotate-[45deg] top-[70px] left-[70px]`}
                 ></div>
                 <div className="absolute top-32 left-8 transform translate-x-2 -translate-y-6">
                   <Typography variant="body1">A</Typography>
@@ -94,10 +96,14 @@ export default function BooleanAlgebra() {
             <Typography variant="h4">OR Operation (A OR B)</Typography>
             <div className="relative w-48 h-48 mt-4 border border-black dark:border-white rounded-lg">
               <div
-                className={`absolute w-24 h-24 ${bgColor(primaryColor)} border border-black dark:border-white rounded-full top-12 left-4 opacity-50`}
+                className={`absolute w-24 h-24 ${bgColor(
+                  primaryColor
+                )} border border-black dark:border-white rounded-full top-12 left-4 opacity-50`}
               ></div>
               <div
-                className={`absolute w-24 h-24 ${bgColor(primaryColor)} border border-black dark:border-white rounded-full top-12 left-16 opacity-50`}
+                className={`absolute w-24 h-24 ${bgColor(
+                  primaryColor
+                )} border border-black dark:border-white rounded-full top-12 left-16 opacity-50`}
               ></div>
               <div className="absolute top-32 left-8 transform translate-x-2 -translate-y-6">
                 <Typography variant="body1">A</Typography>
@@ -110,7 +116,9 @@ export default function BooleanAlgebra() {
           <div className="text-center">
             <Typography variant="h4">NOT Operation (NOT A)</Typography>
             <div
-              className={`relative w-48 h-48 mt-4 border border-black dark:border-white rounded-lg ${bgColor(primaryColor)}`}
+              className={`relative w-48 h-48 mt-4 border border-black dark:border-white rounded-lg ${bgColor(
+                primaryColor
+              )}`}
             >
               <div
                 className={`absolute w-24 h-24 bg-white border border-black dark:border-white rounded-full top-12 left-12`}
@@ -160,6 +168,28 @@ export default function BooleanAlgebra() {
           <li>
             <Typography variant="body1">
               <strong>Complement Law</strong>: A + A' = 1 and AA' = 0
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              <strong>Double Negation Law</strong>: A'' = A
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              <strong>Absorptive Law</strong>: A + (A · B) = A and A · (A + B) =
+              A
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              <strong>De Morgan's Theorem</strong>: (A · B)' = A' + B' and (A +
+              B)' = A' · B'
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body1">
+              <strong>Idempotent Law</strong>: A + A = A and A · A = A
             </Typography>
           </li>
         </ul>
@@ -321,10 +351,10 @@ export default function BooleanAlgebra() {
           </li>
         </ol>
         <HelperNavigation
-          previousRoute={ROUTES_URL.binarySystem}
-          previousRouteLabel="Binary System"
-          nextRoute={ROUTES_URL.truthTable}
-          NextRouteLabel="Truth Table"
+          previousRoute={ROUTES_URL.truthTable}
+          previousRouteLabel="Truth Table"
+          nextRoute={ROUTES_URL.AnnulmentLaw}
+          NextRouteLabel="Annulment Law"
         />
       </Paper>
     </>

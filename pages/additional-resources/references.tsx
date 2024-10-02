@@ -401,6 +401,20 @@ const References = () => {
           </li>
           <li>
             <Typography variant="body2">
+              Law icon [SVG image]. (n.d.). SVGRepo. Retrieved August 19, 2024,
+              from{" "}
+              <Link
+                className="underline"
+                href="https://www.svgrepo.com/svg/347783/law"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.svgrepo.com/svg/347783/law
+              </Link>
+            </Typography>
+          </li>
+          <li>
+            <Typography variant="body2">
               Layers reference icon [SVG image]. (n.d.). SVGRepo. Retrieved
               August 19, 2024, from{" "}
               <Link

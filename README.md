@@ -58,6 +58,7 @@ Here's a quick overview of the project hierarchy:
 │   ├── additional-resources
 │   ├── api
 │   ├── basic-concepts
+|   ├── boolean algebra
 │   ├── final-step
 │   ├── gates
 │   ├── introduction
@@ -97,7 +98,7 @@ Here's a quick overview of the project hierarchy:
 
 ## Usage
 
-- **Explore Sections**: Navigate through different sections like "Basic Concepts," "Gates," and "Final Step" using the sidebar or top menu.
+- **Explore Sections**: Navigate through different sections like "Basic Concepts", "Boolean Algebra", "Gates", and "Final Step" using the sidebar or top menu.
 - **Take the Quiz**: After going through the learning material, head over to the "Final Step" to complete the quiz.
 - **Provide Feedback**: Help improve the app by submitting feedback after completing the quiz.
 - **Use the Simulator**: After completing the final step, explore the simulator to build and experiment with your own logic circuits.

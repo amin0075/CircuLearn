@@ -301,10 +301,10 @@ export default function TruthTable() {
           </li>
         </ol>
         <HelperNavigation
-          previousRoute={ROUTES_URL.booleanAlgebra}
-          previousRouteLabel="Boolean Algebra"
-          nextRoute={ROUTES_URL.andGate}
-          NextRouteLabel="AND Gate"
+          previousRoute={ROUTES_URL.binarySystem}
+          previousRouteLabel="Binary System"
+          nextRoute={ROUTES_URL.booleanAlgebraIntro}
+          NextRouteLabel="Boolean Algebra"
         />
       </Paper>
     </>

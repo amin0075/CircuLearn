@@ -38,6 +38,7 @@ interface ISection {
   introduction: boolean;
   basicConcepts: boolean;
   gates: boolean;
+  booleanAlgebra: boolean;
   finalStep: boolean;
   additionalResources: boolean;
 }
@@ -47,13 +48,20 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
 
   const { sidebarTransparent, primaryColor, sidebarExpand, darkMode } =
     useThemeStore((state) => state);
-  const { additionalResources, basicConcepts, gates, introduction, finalStep } =
-    mainRoutes;
+  const {
+    additionalResources,
+    basicConcepts,
+    gates,
+    BooleanAlgebra,
+    introduction,
+    finalStep,
+  } = mainRoutes;
   const LogoRef = useRef<SVGElement | null>();
   const [sections, setSections] = useState<ISection>({
     introduction: false,
     additionalResources: false,
     basicConcepts: false,
+    booleanAlgebra: false,
     gates: false,
     finalStep: false,
   });
@@ -160,6 +168,40 @@ const Sidebar: React.FC<IProps> = ({ setSidebarOpen, sidebarOpen }) => {
               }`}
             >
               {basicConcepts.map((route, index) => (
+                <SidebarLink key={index} data={route} />
+              ))}
+            </div>
+            {/* Boolean Algebra routes */}
+            <div
+              onClick={() =>
+                setSections((prevState) => ({
+                  ...prevState,
+                  booleanAlgebra: !prevState.booleanAlgebra,
+                }))
+              }
+              className={`flex items-center justify-between cursor-pointer text-black dark:text-white mt-4 mb-2 ${
+                sidebarExpand ? "px-2" : "px-0"
+              }`}
+            >
+              <Typography
+                variant={sidebarExpand ? "body2" : "caption2"}
+                fontweight="bold"
+                textTransform="uppercase"
+              >
+                Boolean Algebra
+              </Typography>
+              <Arrow
+                className={`w-4 h-4 transition-all duration-300 ease-in-out ${
+                  sections.booleanAlgebra ? "rotate-[270deg]" : "rotate-90"
+                }`}
+              />
+            </div>
+            <div
+              className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${
+                sections.booleanAlgebra ? "max-h-[650px]" : "max-h-0"
+              }`}
+            >
+              {BooleanAlgebra.map((route, index) => (
                 <SidebarLink key={index} data={route} />
               ))}
             </div>

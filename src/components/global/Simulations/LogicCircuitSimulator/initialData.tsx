@@ -4,14 +4,14 @@ export const initialNodes: Node[] = [
   {
     id: "1",
     type: "inputNode",
-    data: { label: "Input", value: 0 },
+    data: { label: "Input", value: 0, isDynamic: true },
     position: { x: 250, y: 5 },
     sourcePosition: Position.Right,
   },
   {
     id: "2",
     type: "inputNode",
-    data: { label: "Input", value: 0 },
+    data: { label: "Input", value: 0, isDynamic: true },
     position: { x: 250, y: 100 },
     sourcePosition: Position.Right,
   },

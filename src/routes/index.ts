@@ -20,11 +20,13 @@ import {
   Glossary,
   Faq,
   Reference,
+  LawIcon,
 } from "@src/assets/icons";
 
 type IMainRoute = {
   introduction: IRoute;
   basicConcepts: IRoute[];
+  BooleanAlgebra: IRoute[];
   gates: IRoute[];
   finalStep: IRoute[];
   additionalResources: IRoute[];
@@ -33,7 +35,17 @@ type IMainRoute = {
 const ROUTES_URL = {
   introduction: "/introduction",
   binarySystem: "/basic-concepts/binary-system",
-  booleanAlgebra: "/basic-concepts/boolean-algebra",
+  booleanAlgebraIntro: "/boolean-algebra/introduction",
+  IdentityLaw: "/boolean-algebra/identity-law",
+  AnnulmentLaw: "/boolean-algebra/annulment-law",
+  IdempotentLaw: "/boolean-algebra/idempotent-law",
+  ComplementLaw: "/boolean-algebra/complement-law",
+  CommutativeLaw: "/boolean-algebra/commutative-law",
+  DoubleNegationLaw: "/boolean-algebra/double-negation-law",
+  deMorganTheorem: "/boolean-algebra/de-morgan's-theorem",
+  DistributiveLaw: "/boolean-algebra/distributive-law",
+  AbsorptiveLaw: "/boolean-algebra/absorptive-law",
+  AssociativeLaw: "/boolean-algebra/associative-law",
   truthTable: "/basic-concepts/truth-table",
   andGate: "/gates/and-gate",
   orGate: "/gates/or-gate",
@@ -66,15 +78,72 @@ const mainRoutes: IMainRoute = {
       url: ROUTES_URL.binarySystem,
       icon: Binary,
     },
-    {
-      name: "Boolean Algebra",
-      url: ROUTES_URL.booleanAlgebra,
-      icon: Boolean,
-    },
+    // {
+    //   name: "Boolean Algebra",
+    //   url: ROUTES_URL.booleanAlgebra,
+    //   icon: Boolean,
+    // },
     {
       name: "Truth Table",
       url: ROUTES_URL.truthTable,
       icon: Table,
+    },
+  ],
+  BooleanAlgebra: [
+    {
+      name: "introduction",
+      url: ROUTES_URL.booleanAlgebraIntro,
+      icon: Boolean,
+    },
+    {
+      name: "Annulment Law",
+      url: ROUTES_URL.AnnulmentLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "Identity Law",
+      url: ROUTES_URL.IdentityLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "Idempotent Law",
+      url: ROUTES_URL.IdempotentLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "Complement Law",
+      url: ROUTES_URL.ComplementLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "Commutative Law",
+      url: ROUTES_URL.CommutativeLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "Double Negation Law",
+      url: ROUTES_URL.DoubleNegationLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "de Morgan´s Theorem",
+      url: ROUTES_URL.deMorganTheorem,
+      icon: LawIcon,
+    },
+    {
+      name: "Distributive Law",
+      url: ROUTES_URL.DistributiveLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "Absorptive Law",
+      url: ROUTES_URL.AbsorptiveLaw,
+      icon: LawIcon,
+    },
+    {
+      name: "Associative Law",
+      url: ROUTES_URL.AssociativeLaw,
+      icon: LawIcon,
     },
   ],
   gates: [

@@ -378,8 +378,8 @@ export default function BinarySystem() {
         <HelperNavigation
           previousRoute={ROUTES_URL.introduction}
           previousRouteLabel="Introduction"
-          nextRoute={ROUTES_URL.booleanAlgebra}
-          NextRouteLabel="Boolean Algebra"
+          nextRoute={ROUTES_URL.truthTable}
+          NextRouteLabel="Truth Table"
         />
       </Paper>
     </>

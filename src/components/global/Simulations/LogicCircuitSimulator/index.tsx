@@ -14,6 +14,7 @@ import ReactFlow, {
   OnNodesChange,
   useReactFlow,
   ReactFlowInstance,
+  KeyCode,
 } from "react-flow-renderer";
 import html2canvas from "html2canvas";
 import { initialNodes, initialEdges } from "./initialData";
@@ -42,9 +43,18 @@ const nodeTypes = {
   outputNode: OutputNode,
 };
 
-const Simulator: React.FC = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>(initialEdges);
+interface SimulatorProps {
+  isReadOnly?: boolean;
+  initialData?: { nodes: Node[]; edges: Edge[] };
+}
+
+const Simulator: React.FC<SimulatorProps> = ({ initialData, isReadOnly }) => {
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>(
+    initialData?.nodes || initialNodes
+  );
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>(
+    initialData?.edges || initialEdges
+  );
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isFitViewDone, setIsFitViewDone] = useState(false);
@@ -153,6 +163,9 @@ const Simulator: React.FC = () => {
   // Handle connecting nodes
   const onConnect: OnConnect = useCallback(
     (params: Edge<any> | Connection) => {
+      if (isReadOnly) {
+        return; // Prevent connections in read-only mode
+      }
       // Prevent connecting a gate to itself
       if (params.source === params.target) {
         notify({
@@ -183,24 +196,27 @@ const Simulator: React.FC = () => {
         return newEdges;
       });
     },
-    [nodes, evaluateCircuit]
+    [nodes, evaluateCircuit, isReadOnly, router]
   );
 
   // Handle node changes (e.g., addition or removal)
   const onNodesChangeHandler: OnNodesChange = (changes) => {
     onNodesChange(changes);
-
     changes.forEach((change) => {
       if (change.type === "remove") {
         setIsDeleting(true);
       }
     });
+
     evaluateCircuit([...nodes], [...edges]);
   };
 
   // Handle edge changes
   const onEdgesChangeHandler: OnEdgesChange = (changes) => {
-    onEdgesChange(changes);
+    if (!isReadOnly) {
+      onEdgesChange(changes);
+      evaluateCircuit([...nodes], [...edges]);
+    }
   };
 
   // Handle node selection
@@ -220,10 +236,24 @@ const Simulator: React.FC = () => {
   const addNode = useCallback(
     (nodeType: string, gateType: string = "") => {
       let label;
+      let value;
+      let isDynamic = true; // Default is dynamic input
+
       if (nodeType === "inputNode") {
-        label = `Input`;
+        if (gateType === "high") {
+          label = "High (1)";
+          value = 1;
+          isDynamic = false;
+        } else if (gateType === "low") {
+          label = "Low (0)";
+          value = 0;
+          isDynamic = false;
+        } else {
+          label = "Input";
+          value = 0;
+        }
       } else if (nodeType === "outputNode") {
-        label = `Lamp`;
+        label = "Lamp";
       } else {
         label = gateType ? `${gateType.toUpperCase()} Gate` : "";
       }
@@ -235,7 +265,7 @@ const Simulator: React.FC = () => {
       const newNode: Node = {
         id: (Math.random() * 10000).toFixed(0),
         type: nodeType,
-        data: { gateType, value: 0, label },
+        data: { gateType, value, label, isDynamic },
         position: { x, y },
         draggable: true,
       };
@@ -386,72 +416,81 @@ const Simulator: React.FC = () => {
         </Button>
       </div>
 
-      <div className="absolute top-4 right-4 z-[9] flex items-center gap-2 ssm:flex-col-reverse">
-        {selectedNode && (
-          <>
-            <Tooltip title="Duplicate Node" className="text-nowrap">
-              <Button
-                variant="contained"
-                className="px-2"
-                onClick={duplicateNode}
-              >
-                <Duplicate className="w-6 h-6" />
-              </Button>
-            </Tooltip>
-
-            <Tooltip title="Delete Node" className="text-nowrap">
-              <Button variant="contained" className="px-2" onClick={deleteNode}>
-                <Delete className="w-6 h-6" />
-              </Button>
-            </Tooltip>
-            {selectedNode.type === "gateNode" && (
-              <Tooltip title="Gate Information" className="text-nowrap">
+      {!isReadOnly && (
+        <div className="absolute top-4 right-4 z-[9] flex items-center gap-2 ssm:flex-col-reverse">
+          {selectedNode && (
+            <>
+              <Tooltip title="Duplicate Node" className="text-nowrap">
                 <Button
                   variant="contained"
                   className="px-2"
-                  onClick={() => {
-                    const gateType = selectedNode.data?.gateType || "";
-                    const gateUrlMap: Record<string, string> = {
-                      and: "/gates/and-gate",
-                      or: "/gates/or-gate",
-                      not: "/gates/not-gate",
-                      nand: "/gates/nand-gate",
-                      nor: "/gates/nor-gate",
-                      xor: "/gates/xor-gate",
-                      xnor: "/gates/xnor-gate",
-                    };
-                    const infoUrl = gateUrlMap[gateType];
-                    if (infoUrl) {
-                      window.open(infoUrl, "_blank");
-                    }
-                  }}
+                  onClick={duplicateNode}
                 >
-                  <Info className="w-6 h-6" />
+                  <Duplicate className="w-6 h-6" />
                 </Button>
               </Tooltip>
-            )}
-          </>
-        )}
-        <Button
-          variant="contained"
-          className="px-2 flex items-center gap-1"
-          onClick={downloadCanvasImage}
-        >
-          <Download className="w-6 h-6" />
-          <Typography variant="caption" className="text-white smd:hidden">
-            Download
-          </Typography>
-        </Button>
-      </div>
 
-      <SimulatorDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        addNode={addNode}
-      />
+              <Tooltip title="Delete Node" className="text-nowrap">
+                <Button
+                  variant="contained"
+                  className="px-2"
+                  onClick={deleteNode}
+                >
+                  <Delete className="w-6 h-6" />
+                </Button>
+              </Tooltip>
+              {selectedNode.type === "gateNode" && (
+                <Tooltip title="Gate Information" className="text-nowrap">
+                  <Button
+                    variant="contained"
+                    className="px-2"
+                    onClick={() => {
+                      const gateType = selectedNode.data?.gateType || "";
+                      const gateUrlMap: Record<string, string> = {
+                        and: "/gates/and-gate",
+                        or: "/gates/or-gate",
+                        not: "/gates/not-gate",
+                        nand: "/gates/nand-gate",
+                        nor: "/gates/nor-gate",
+                        xor: "/gates/xor-gate",
+                        xnor: "/gates/xnor-gate",
+                      };
+                      const infoUrl = gateUrlMap[gateType];
+                      if (infoUrl) {
+                        window.open(infoUrl, "_blank");
+                      }
+                    }}
+                  >
+                    <Info className="w-6 h-6" />
+                  </Button>
+                </Tooltip>
+              )}
+            </>
+          )}
+          <Button
+            variant="contained"
+            className="px-2 flex items-center gap-1"
+            onClick={downloadCanvasImage}
+          >
+            <Download className="w-6 h-6" />
+            <Typography variant="caption" className="text-white smd:hidden">
+              Download
+            </Typography>
+          </Button>
+        </div>
+      )}
+
+      {!isReadOnly && (
+        <SimulatorDrawer
+          isOpen={isDrawerOpen}
+          onClose={() => setDrawerOpen(false)}
+          addNode={addNode}
+        />
+      )}
 
       <div className="flex-grow" ref={reactFlowWrapper}>
         <ReactFlow
+          {...(isReadOnly ? { deleteKeyCode: null } : {})}
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChangeHandler}
@@ -460,7 +499,7 @@ const Simulator: React.FC = () => {
           onInit={onInit}
           onNodeClick={onNodeClick}
           onPaneClick={onPaneClick}
-          className="bg-white dark:bg-customGrayDark rounded-r-10 z-0"
+          className={`bg-white dark:bg-customGrayDark rounded-r-10 z-0 ${isReadOnly ? "rounded-l-10" : ""}`}
           nodeTypes={nodeTypes}
         >
           <MiniMap className="bg-white dark:bg-customGrayDark border rounded w-40 h-28" />

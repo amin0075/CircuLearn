@@ -36,6 +36,7 @@ import Delete from "@src/assets/icons/delete.svg";
 import Duplicate from "@src/assets/icons/duplicate.svg";
 import Info from "@src/assets/icons/info.svg";
 import Download from "@src/assets/icons/download.svg";
+import LawIcon from "@src/assets/icons/law.svg";
 
 export {
   Arrow,
@@ -58,6 +59,7 @@ export {
   LightBulbOff,
   LightBulbOn,
   Boolean,
+  LawIcon,
   LogicGateAnd,
   LogicGateNand,
   LogicGateNor,

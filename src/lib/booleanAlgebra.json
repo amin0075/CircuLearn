@@ -1,0 +1,2037 @@
+[
+  {
+    "name": "Annulment Law",
+    "description": "The Annulment Law states that a variable ANDed with 0 or ORed with 1 will always produce 0 and 1 respectively. This expresses that the extreme values nullify the input in Boolean logic.",
+    "equation": {
+      "or": "A + 1 = 1",
+      "and": "A · 0 = 0"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/introduction",
+    "previousRouteLabel": "Introduction",
+    "nextRoute": "/boolean-algebra/identity-law",
+    "nextRouteLabel": "Identity Law",
+    "circuitDesign": {
+      "description": "In circuit design, an input ANDed with 0 produces a 0, and ORed with 1 gives a constant 1 regardless of the input.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "highInput",
+            "type": "inputNode",
+            "data": { "label": "High (1)", "value": 1, "isDynamic": false },
+            "position": { "x": 0, "y": 150 }
+          },
+          {
+            "id": "orGate",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 100 }
+          },
+          {
+            "id": "outputOR",
+            "type": "outputNode",
+            "data": { "label": "Output OR", "value": 0 },
+            "position": { "x": 400, "y": 100 }
+          },
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 300 }
+          },
+          {
+            "id": "lowInput",
+            "type": "inputNode",
+            "data": { "label": "Low (0)", "value": 0, "isDynamic": false },
+            "position": { "x": 0, "y": 400 }
+          },
+          {
+            "id": "andGate",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 350 }
+          },
+          {
+            "id": "outputAND",
+            "type": "outputNode",
+            "data": { "label": "Output AND", "value": 0 },
+            "position": { "x": 400, "y": 350 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA1",
+            "target": "orGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2",
+            "source": "highInput",
+            "target": "orGate",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3",
+            "source": "orGate",
+            "target": "outputOR",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+          {
+            "id": "edge4",
+            "source": "inputA2",
+            "target": "andGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge5",
+            "source": "lowInput",
+            "target": "andGate",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge6",
+            "source": "andGate",
+            "target": "outputAND",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "A + 1": 1, "A · 0": 0 },
+      { "A": 1, "A + 1": 1, "A · 0": 0 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of A · 0?",
+        "options": ["A", "0"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "What is the result of A + 1?",
+        "options": ["1", "A"],
+        "correctAnswer": "1"
+      }
+    ]
+  },
+  {
+    "name": "Identity Law",
+    "description": "The Identity Law in Boolean algebra states that a variable ANDed with 1 or ORed with 0 will always result in the variable itself. This law expresses that certain operations with these identities leave the variable unchanged.",
+    "equation": {
+      "or": "A + 0 = A",
+      "and": "A · 1 = A"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/annulment-law",
+    "previousRouteLabel": "Annulment Law",
+    "nextRoute": "/boolean-algebra/idempotent-law",
+    "nextRouteLabel": "Idempotent Law",
+    "circuitDesign": {
+      "description": "In circuits, when you OR a variable with 0 or AND it with 1, the circuit simply passes the input without any change. These identities are useful in simplifying digital circuits.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "lowInput",
+            "type": "inputNode",
+            "data": { "label": "Low (0)", "value": 0, "isDynamic": false },
+            "position": { "x": 0, "y": 150 }
+          },
+          {
+            "id": "orGate",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 100 }
+          },
+          {
+            "id": "outputOR",
+            "type": "outputNode",
+            "data": { "label": "Output OR", "value": 0 },
+            "position": { "x": 400, "y": 100 }
+          },
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 300 }
+          },
+          {
+            "id": "highInput",
+            "type": "inputNode",
+            "data": { "label": "High (1)", "value": 1, "isDynamic": false },
+            "position": { "x": 0, "y": 400 }
+          },
+          {
+            "id": "andGate",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 350 }
+          },
+          {
+            "id": "outputAND",
+            "type": "outputNode",
+            "data": { "label": "Output AND", "value": 0 },
+            "position": { "x": 400, "y": 350 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA1",
+            "target": "orGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2",
+            "source": "lowInput",
+            "target": "orGate",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3",
+            "source": "orGate",
+            "target": "outputOR",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+          {
+            "id": "edge4",
+            "source": "inputA2",
+            "target": "andGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge5",
+            "source": "highInput",
+            "target": "andGate",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge6",
+            "source": "andGate",
+            "target": "outputAND",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "A + 0": 0, "A · 1": 0 },
+      { "A": 1, "A + 0": 1, "A · 1": 1 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of A + 0?",
+        "options": ["A", "0"],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "What is the result of A · 1?",
+        "options": ["A", "1"],
+        "correctAnswer": "A"
+      }
+    ]
+  },
+  {
+    "name": "Complement Law",
+    "description": "The Complement Law states that a variable ANDed with its complement equals 0, and ORed with its complement equals 1. This captures the essence of negation in Boolean algebra.",
+    "equation": {
+      "or": "A + A' = 1",
+      "and": "A · A' = 0"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/idempotent-law",
+    "previousRouteLabel": "Idempotent Law",
+    "nextRoute": "/boolean-algebra/commutative-law",
+    "nextRouteLabel": "Commutative Law",
+    "circuitDesign": {
+      "description": "In a circuit, combining a signal with its complement (negation) either cancels it out (AND) or ensures the output is always true (OR). This law is crucial in digital logic.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "notGate1",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
+            "position": { "x": 150, "y": 135 }
+          },
+          {
+            "id": "orGate",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 300, "y": 50 }
+          },
+          {
+            "id": "outputOR",
+            "type": "outputNode",
+            "data": { "label": "Output OR", "value": 0 },
+            "position": { "x": 450, "y": 50 }
+          },
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 250 }
+          },
+          {
+            "id": "notGate2",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
+            "position": { "x": 150, "y": 320 }
+          },
+          {
+            "id": "andGate",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 300, "y": 250 }
+          },
+          {
+            "id": "outputAND",
+            "type": "outputNode",
+            "data": { "label": "Output AND", "value": 0 },
+            "position": { "x": 450, "y": 250 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA1",
+            "target": "notGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input"
+          },
+          {
+            "id": "edge2",
+            "source": "inputA1",
+            "target": "orGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge3",
+            "source": "notGate1",
+            "target": "orGate",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge4",
+            "source": "orGate",
+            "target": "outputOR",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+          {
+            "id": "edge5",
+            "source": "inputA2",
+            "target": "notGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input"
+          },
+          {
+            "id": "edge6",
+            "source": "inputA2",
+            "target": "andGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge7",
+            "source": "notGate2",
+            "target": "andGate",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge8",
+            "source": "andGate",
+            "target": "outputAND",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "A + A'": 1, "A · A'": 0 },
+      { "A": 1, "A + A'": 1, "A · A'": 0 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of A · A'?",
+        "options": ["A", "0"],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "What is the result of A + A'?",
+        "options": ["1", "A"],
+        "correctAnswer": "1"
+      }
+    ]
+  },
+  {
+    "name": "Idempotent Law",
+    "description": "The Idempotent Law indicates that a variable ORed or ANDed with itself will always yield the same variable. This law simplifies expressions by reducing redundancy.",
+    "equation": {
+      "or": "A + A = A",
+      "and": "A · A = A"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/identity-law",
+    "previousRouteLabel": "Identity Law",
+    "nextRoute": "/boolean-algebra/complement-law",
+    "nextRouteLabel": "Complement Law",
+    "circuitDesign": {
+      "description": "In digital circuits, repeating the operation on the same input does not change the result, thus the output will be the input itself.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "orGate",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 50 }
+          },
+          {
+            "id": "outputOR",
+            "type": "outputNode",
+            "data": { "label": "Output OR", "value": 0 },
+            "position": { "x": 400, "y": 50 }
+          },
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 250 }
+          },
+          {
+            "id": "andGate",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 250 }
+          },
+          {
+            "id": "outputAND",
+            "type": "outputNode",
+            "data": { "label": "Output AND", "value": 0 },
+            "position": { "x": 400, "y": 250 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA1",
+            "target": "orGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2",
+            "source": "inputA1",
+            "target": "orGate",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3",
+            "source": "orGate",
+            "target": "outputOR",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+          {
+            "id": "edge4",
+            "source": "inputA2",
+            "target": "andGate",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge5",
+            "source": "inputA2",
+            "target": "andGate",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge6",
+            "source": "andGate",
+            "target": "outputAND",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "A + A": 0, "A · A": 0 },
+      { "A": 1, "A + A": 1, "A · A": 1 }
+    ],
+    "questions": [
+      {
+        "question": "According to the Idempotent Law, what is the result of A · A?",
+        "options": ["A", "A + A"],
+        "correctAnswer": "A"
+      },
+      {
+        "question": "What is the result of A + A?",
+        "options": ["A", "0"],
+        "correctAnswer": "A"
+      }
+    ]
+  },
+  {
+    "name": "Double Negation Law",
+    "description": "The Double Negation Law states that a variable negated twice results in the original variable. This reflects the reversibility of negation in Boolean algebra.",
+    "equation": {
+      "negation": "(A')' = A"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/commutative-law",
+    "previousRouteLabel": "Commutative Law",
+    "nextRoute": "/boolean-algebra/de-morgan's-theorem",
+    "nextRouteLabel": "De Morgan's Theorem",
+    "circuitDesign": {
+      "description": "In digital logic, applying two NOT operations in sequence to an input returns the original input, which is crucial in inverter circuits.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "notGate1",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
+            "position": { "x": 200, "y": 50 }
+          },
+          {
+            "id": "notGate2",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
+            "position": { "x": 350, "y": 50 }
+          },
+          {
+            "id": "output",
+            "type": "outputNode",
+            "data": { "label": "Output", "value": 0 },
+            "position": { "x": 500, "y": 50 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA",
+            "target": "notGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input"
+          },
+          {
+            "id": "edge2",
+            "source": "notGate1",
+            "target": "notGate2",
+            "sourceHandle": "output",
+            "targetHandle": "input"
+          },
+          {
+            "id": "edge3",
+            "source": "notGate2",
+            "target": "output",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "A'": 1, "A''": 0 },
+      { "A": 1, "A'": 0, "A''": 1 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of applying double negation to A?",
+        "options": ["A", "A'"],
+        "correctAnswer": "A"
+      }
+    ]
+  },
+  {
+    "name": "Commutative Law",
+    "description": "The Commutative Law states that the order of variables does not affect the result of the AND or OR operation. This allows Boolean expressions to be rearranged freely.",
+    "equation": {
+      "or": "A + B = B + A",
+      "and": "A · B = B · A"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/complement-law",
+    "previousRouteLabel": "Complement Law",
+    "nextRoute": "/boolean-algebra/double-negation-law",
+    "nextRouteLabel": "Double Negation Law",
+    "circuitDesign": {
+      "description": "In circuits, the order of inputs to AND or OR gates does not affect the final output. This law is used in circuit optimizations and rearrangements.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "inputB1",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 150 }
+          },
+          {
+            "id": "orGate1",
+            "type": "gateNode",
+            "data": {
+              "gateType": "or",
+              "label": "OR Gate (A + B)",
+              "value": 0
+            },
+            "position": { "x": 200, "y": 100 }
+          },
+          {
+            "id": "outputOR1",
+            "type": "outputNode",
+            "data": { "label": "Output OR (A + B)", "value": 0 },
+            "position": { "x": 400, "y": 100 }
+          },
+          {
+            "id": "inputB2",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 300 }
+          },
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 400 }
+          },
+          {
+            "id": "orGate2",
+            "type": "gateNode",
+            "data": {
+              "gateType": "or",
+              "label": "OR Gate (B + A)",
+              "value": 0
+            },
+            "position": { "x": 200, "y": 350 }
+          },
+          {
+            "id": "outputOR2",
+            "type": "outputNode",
+            "data": { "label": "Output OR (B + A)", "value": 0 },
+            "position": { "x": 400, "y": 350 }
+          },
+          {
+            "id": "inputA3",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 550 }
+          },
+          {
+            "id": "inputB3",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 650 }
+          },
+          {
+            "id": "andGate1",
+            "type": "gateNode",
+            "data": {
+              "gateType": "and",
+              "label": "AND Gate (A · B)",
+              "value": 0
+            },
+            "position": { "x": 200, "y": 600 }
+          },
+          {
+            "id": "outputAND1",
+            "type": "outputNode",
+            "data": { "label": "Output AND (A · B)", "value": 0 },
+            "position": { "x": 400, "y": 600 }
+          },
+          {
+            "id": "inputB4",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 800 }
+          },
+          {
+            "id": "inputA4",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 900 }
+          },
+          {
+            "id": "andGate2",
+            "type": "gateNode",
+            "data": {
+              "gateType": "and",
+              "label": "AND Gate (B · A)",
+              "value": 0
+            },
+            "position": { "x": 200, "y": 850 }
+          },
+          {
+            "id": "outputAND2",
+            "type": "outputNode",
+            "data": { "label": "Output AND (B · A)", "value": 0 },
+            "position": { "x": 400, "y": 850 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA1",
+            "target": "orGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2",
+            "source": "inputB1",
+            "target": "orGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3",
+            "source": "orGate1",
+            "target": "outputOR1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+          {
+            "id": "edge4",
+            "source": "inputB2",
+            "target": "orGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge5",
+            "source": "inputA2",
+            "target": "orGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge6",
+            "source": "orGate2",
+            "target": "outputOR2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+          {
+            "id": "edge7",
+            "source": "inputA3",
+            "target": "andGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge8",
+            "source": "inputB3",
+            "target": "andGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge9",
+            "source": "andGate1",
+            "target": "outputAND1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+          {
+            "id": "edge10",
+            "source": "inputB4",
+            "target": "andGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge11",
+            "source": "inputA4",
+            "target": "andGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge12",
+            "source": "andGate2",
+            "target": "outputAND2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "B": 0, "A + B": 0, "A · B": 0, "B + A": 0, "B · A": 0 },
+      { "A": 0, "B": 1, "A + B": 1, "A · B": 0, "B + A": 1, "B · A": 0 },
+      { "A": 1, "B": 0, "A + B": 1, "A · B": 0, "B + A": 1, "B · A": 0 },
+      { "A": 1, "B": 1, "A + B": 1, "A · B": 1, "B + A": 1, "B · A": 1 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of A + B according to the Commutative Law?",
+        "options": ["A + B", "B + A"],
+        "correctAnswer": "B + A"
+      },
+      {
+        "question": "What does A · B equal?",
+        "options": ["A", "B · A"],
+        "correctAnswer": "B · A"
+      }
+    ]
+  },
+  {
+    "name": "Associative Law",
+    "description": "The Associative Law in Boolean algebra states that the grouping of variables does not affect the result of AND or OR operations.",
+    "equation": {
+      "or": "A + (B + C) = (A + B) + C",
+      "and": "A · (B · C) = (A · B) · C"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/absorptive-law",
+    "previousRouteLabel": "Absorptive Law",
+    "nextRoute": "/gates/and-gate",
+    "nextRouteLabel": "AND Gate",
+    "circuitDesign": {
+      "description": "In circuits, this law allows the rearrangement of logic gates without affecting the outcome. It is essential for flexible circuit designs.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "inputB1",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 150 }
+          },
+          {
+            "id": "inputC1",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 250 }
+          },
+          {
+            "id": "orGateB1C1",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 200 }
+          },
+          {
+            "id": "orGateA1",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 400, "y": 100 }
+          },
+          {
+            "id": "output1",
+            "type": "outputNode",
+            "data": { "label": "Output", "value": 0 },
+            "position": { "x": 600, "y": 100 }
+          },
+
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 400 }
+          },
+          {
+            "id": "inputB2",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 500 }
+          },
+          {
+            "id": "inputC2",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 600 }
+          },
+          {
+            "id": "orGateA2B2",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 450 }
+          },
+          {
+            "id": "orGateC2",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 400, "y": 500 }
+          },
+          {
+            "id": "output2",
+            "type": "outputNode",
+            "data": { "label": "Output", "value": 0 },
+            "position": { "x": 600, "y": 500 }
+          },
+
+          {
+            "id": "inputA3",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 800 }
+          },
+          {
+            "id": "inputB3",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 900 }
+          },
+          {
+            "id": "inputC3",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1000 }
+          },
+          {
+            "id": "andGateB3C3",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 950 }
+          },
+          {
+            "id": "andGateA3",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 400, "y": 900 }
+          },
+          {
+            "id": "output3",
+            "type": "outputNode",
+            "data": { "label": "Output", "value": 0 },
+            "position": { "x": 600, "y": 900 }
+          },
+
+          {
+            "id": "inputA4",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1200 }
+          },
+          {
+            "id": "inputB4",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1300 }
+          },
+          {
+            "id": "inputC4",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1400 }
+          },
+          {
+            "id": "andGateA4B4",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 1250 }
+          },
+          {
+            "id": "andGateC4",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 400, "y": 1300 }
+          },
+          {
+            "id": "output4",
+            "type": "outputNode",
+            "data": { "label": "Output", "value": 0 },
+            "position": { "x": 600, "y": 1300 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1-1",
+            "source": "inputB1",
+            "target": "orGateB1C1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge1-2",
+            "source": "inputC1",
+            "target": "orGateB1C1",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge1-3",
+            "source": "inputA1",
+            "target": "orGateA1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge1-4",
+            "source": "orGateB1C1",
+            "target": "orGateA1",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge1-5",
+            "source": "orGateA1",
+            "target": "output1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge2-1",
+            "source": "inputA2",
+            "target": "orGateA2B2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2-2",
+            "source": "inputB2",
+            "target": "orGateA2B2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge2-3",
+            "source": "inputC2",
+            "target": "orGateC2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge2-4",
+            "source": "orGateA2B2",
+            "target": "orGateC2",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2-5",
+            "source": "orGateC2",
+            "target": "output2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge3-1",
+            "source": "inputB3",
+            "target": "andGateB3C3",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge3-2",
+            "source": "inputC3",
+            "target": "andGateB3C3",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3-3",
+            "source": "inputA3",
+            "target": "andGateA3",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge3-4",
+            "source": "andGateB3C3",
+            "target": "andGateA3",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3-5",
+            "source": "andGateA3",
+            "target": "output3",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge4-1",
+            "source": "inputA4",
+            "target": "andGateA4B4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge4-2",
+            "source": "inputB4",
+            "target": "andGateA4B4",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge4-3",
+            "source": "inputC4",
+            "target": "andGateC4",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge4-4",
+            "source": "andGateA4B4",
+            "target": "andGateC4",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge4-5",
+            "source": "andGateC4",
+            "target": "output4",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "B": 0, "C": 0, "A + (B + C)": 0, "(A + B) + C": 0 },
+      { "A": 0, "B": 0, "C": 1, "A + (B + C)": 1, "(A + B) + C": 1 },
+      { "A": 0, "B": 1, "C": 0, "A + (B + C)": 1, "(A + B) + C": 1 },
+      { "A": 1, "B": 1, "C": 1, "A + (B + C)": 1, "(A + B) + C": 1 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of A + (B + C)?",
+        "options": ["A + B + C", "(A + B) + C"],
+        "correctAnswer": "(A + B) + C"
+      }
+    ]
+  },
+  {
+    "name": "Distributive Law",
+    "description": "The Distributive Law states that AND distributes over OR, and vice versa. This law is vital for simplifying Boolean expressions and circuits.",
+    "equation": {
+      "first": "A · (B + C) = (A · B) + (A · C)",
+      "second": "A + (B · C) = (A + B) · (A + C)"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/de-morgan's-theorem",
+    "previousRouteLabel": "De Morgan's Theorem",
+    "nextRoute": "/boolean-algebra/absorptive-law",
+    "nextRouteLabel": "Absorptive Law",
+    "circuitDesign": {
+      "description": "The law is applied in logic circuits by breaking down the gates and distributing the operations across the inputs.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 0 }
+          },
+          {
+            "id": "inputB1",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 100 }
+          },
+          {
+            "id": "inputC1",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 200 }
+          },
+          {
+            "id": "orGate1",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 150 }
+          },
+          {
+            "id": "andGate1",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 400, "y": 75 }
+          },
+          {
+            "id": "outputFirstEq1",
+            "type": "outputNode",
+            "data": { "label": "Output A · (B + C)", "value": 0 },
+            "position": { "x": 600, "y": 75 }
+          },
+
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 400 }
+          },
+          {
+            "id": "inputB2",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 500 }
+          },
+          {
+            "id": "inputC2",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 600 }
+          },
+          {
+            "id": "andGateA2",
+            "type": "gateNode",
+            "data": {
+              "gateType": "and",
+              "label": "AND Gate A · B",
+              "value": 0
+            },
+            "position": { "x": 200, "y": 450 }
+          },
+          {
+            "id": "andGateB2",
+            "type": "gateNode",
+            "data": {
+              "gateType": "and",
+              "label": "AND Gate A · C",
+              "value": 0
+            },
+            "position": { "x": 200, "y": 550 }
+          },
+          {
+            "id": "orGate2",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 400, "y": 500 }
+          },
+          {
+            "id": "outputFirstEq2",
+            "type": "outputNode",
+            "data": { "label": "Output (A · B) + (A · C)", "value": 0 },
+            "position": { "x": 600, "y": 500 }
+          },
+
+          {
+            "id": "inputA3",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 800 }
+          },
+          {
+            "id": "inputB3",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 900 }
+          },
+          {
+            "id": "inputC3",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1000 }
+          },
+          {
+            "id": "andGate3",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 950 }
+          },
+          {
+            "id": "orGate3",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 400, "y": 850 }
+          },
+          {
+            "id": "outputSecondEq1",
+            "type": "outputNode",
+            "data": { "label": "Output A + (B · C)", "value": 0 },
+            "position": { "x": 600, "y": 850 }
+          },
+
+          {
+            "id": "inputA4",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1200 }
+          },
+          {
+            "id": "inputB4",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1300 }
+          },
+          {
+            "id": "inputC4",
+            "type": "inputNode",
+            "data": { "label": "Input C", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1400 }
+          },
+          {
+            "id": "orGateA4",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate A + B", "value": 0 },
+            "position": { "x": 200, "y": 1250 }
+          },
+          {
+            "id": "orGateB4",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate A + C", "value": 0 },
+            "position": { "x": 200, "y": 1350 }
+          },
+          {
+            "id": "andGate4",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 400, "y": 1300 }
+          },
+          {
+            "id": "outputSecondEq2",
+            "type": "outputNode",
+            "data": { "label": "Output (A + B) · (A + C)", "value": 0 },
+            "position": { "x": 600, "y": 1300 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputB1",
+            "target": "orGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2",
+            "source": "inputC1",
+            "target": "orGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3",
+            "source": "inputA1",
+            "target": "andGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge4",
+            "source": "orGate1",
+            "target": "andGate1",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge5",
+            "source": "andGate1",
+            "target": "outputFirstEq1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge6",
+            "source": "inputA2",
+            "target": "andGateA2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge7",
+            "source": "inputB2",
+            "target": "andGateA2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge8",
+            "source": "inputA2",
+            "target": "andGateB2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge9",
+            "source": "inputC2",
+            "target": "andGateB2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge10",
+            "source": "andGateA2",
+            "target": "orGate2",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge11",
+            "source": "andGateB2",
+            "target": "orGate2",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge12",
+            "source": "orGate2",
+            "target": "outputFirstEq2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge13",
+            "source": "inputB3",
+            "target": "andGate3",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge14",
+            "source": "inputC3",
+            "target": "andGate3",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge15",
+            "source": "inputA3",
+            "target": "orGate3",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge16",
+            "source": "andGate3",
+            "target": "orGate3",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge17",
+            "source": "orGate3",
+            "target": "outputSecondEq1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge18",
+            "source": "inputA4",
+            "target": "orGateA4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge19",
+            "source": "inputB4",
+            "target": "orGateA4",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge20",
+            "source": "inputA4",
+            "target": "orGateB4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge21",
+            "source": "inputC4",
+            "target": "orGateB4",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge22",
+            "source": "orGateA4",
+            "target": "andGate4",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge23",
+            "source": "orGateB4",
+            "target": "andGate4",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge24",
+            "source": "andGate4",
+            "target": "outputSecondEq2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "B": 0, "C": 0, "A · (B + C)": 0, "(A · B) + (A · C)": 0 },
+      { "A": 0, "B": 0, "C": 1, "A · (B + C)": 0, "(A · B) + (A · C)": 0 },
+      { "A": 0, "B": 1, "C": 0, "A · (B + C)": 0, "(A · B) + (A · C)": 0 },
+      { "A": 1, "B": 1, "C": 0, "A · (B + C)": 1, "(A · B) + (A · C)": 1 },
+      { "A": 1, "B": 1, "C": 1, "A · (B + C)": 1, "(A · B) + (A · C)": 1 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of A · (B + C)?",
+        "options": ["(A · B) + (A · C)", "A + (B · C)"],
+        "correctAnswer": "(A · B) + (A · C)"
+      }
+    ]
+  },
+  {
+    "name": "Absorptive Law",
+    "description": "The Absorptive Law allows a variable to absorb another in specific conditions: A + (A · B) = A and A · (A + B) = A. It simplifies expressions significantly.",
+    "equation": {
+      "first": "A + (A · B) = A",
+      "second": "A · (A + B) = A"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/distributive-law",
+    "previousRouteLabel": "Distributive Law",
+    "nextRoute": "/boolean-algebra/associative-law",
+    "nextRouteLabel": "Associative Law",
+    "circuitDesign": {
+      "description": "In circuit terms, the more complex operations become redundant and the simpler form is retained.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 50 }
+          },
+          {
+            "id": "inputB1",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 150 }
+          },
+          {
+            "id": "andGate1",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 100 }
+          },
+          {
+            "id": "orGate1",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 400, "y": 50 }
+          },
+          {
+            "id": "output1",
+            "type": "outputNode",
+            "data": { "label": "Output", "value": 0 },
+            "position": { "x": 600, "y": 50 }
+          },
+
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 300 }
+          },
+          {
+            "id": "inputB2",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 400 }
+          },
+          {
+            "id": "orGate2",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 350 }
+          },
+          {
+            "id": "andGate2",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 400, "y": 300 }
+          },
+          {
+            "id": "output2",
+            "type": "outputNode",
+            "data": { "label": "Output", "value": 0 },
+            "position": { "x": 600, "y": 300 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA1",
+            "target": "orGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2",
+            "source": "inputA1",
+            "target": "andGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge3",
+            "source": "inputB1",
+            "target": "andGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge4",
+            "source": "andGate1",
+            "target": "orGate1",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge5",
+            "source": "orGate1",
+            "target": "output1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge6",
+            "source": "inputA2",
+            "target": "orGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge7",
+            "source": "inputB2",
+            "target": "orGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge8",
+            "source": "orGate2",
+            "target": "andGate2",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge9",
+            "source": "inputA2",
+            "target": "andGate2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge10",
+            "source": "andGate2",
+            "target": "output2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      { "A": 0, "B": 0, "A + (A · B)": 0, "A · (A + B)": 0 },
+      { "A": 0, "B": 1, "A + (A · B)": 0, "A · (A + B)": 0 },
+      { "A": 1, "B": 0, "A + (A · B)": 1, "A · (A + B)": 1 },
+      { "A": 1, "B": 1, "A + (A · B)": 1, "A · (A + B)": 1 }
+    ],
+    "questions": [
+      {
+        "question": "What is the result of A + (A · B)?",
+        "options": ["A", "A + B"],
+        "correctAnswer": "A"
+      }
+    ]
+  },
+  {
+    "name": "De Morgan's Theorem",
+    "description": "De Morgan's Theorem states two important equivalences in Boolean algebra: the negation of an AND is equivalent to the OR of the negated variables, and the negation of an OR is equivalent to the AND of the negated variables.",
+    "equation": {
+      "first": "(A · B)' = A' + B'",
+      "second": "(A + B)' = A' · B'"
+    },
+    "hasPrevious": true,
+    "hasNext": true,
+    "previousRoute": "/boolean-algebra/double-negation-law",
+    "previousRouteLabel": "Double Negation Law",
+    "nextRoute": "/boolean-algebra/distributive-law",
+    "nextRouteLabel": "Distributive Law",
+    "circuitDesign": {
+      "description": "De Morgan's laws are used to simplify complex logic circuits, converting between NAND and NOR configurations.",
+      "initialData": {
+        "nodes": [
+          {
+            "id": "inputA1",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 0 }
+          },
+          {
+            "id": "inputB1",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 100 }
+          },
+          {
+            "id": "andGate1",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 200, "y": 50 }
+          },
+          {
+            "id": "notGate1",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
+            "position": { "x": 400, "y": 50 }
+          },
+          {
+            "id": "outputFirstEq1",
+            "type": "outputNode",
+            "data": { "label": "Output (A · B)'", "value": 0 },
+            "position": { "x": 600, "y": 50 }
+          },
+
+          {
+            "id": "inputA2",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 300 }
+          },
+          {
+            "id": "inputB2",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 400 }
+          },
+          {
+            "id": "notGateA2",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate A", "value": 0 },
+            "position": { "x": 200, "y": 300 }
+          },
+          {
+            "id": "notGateB2",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate B", "value": 0 },
+            "position": { "x": 200, "y": 400 }
+          },
+          {
+            "id": "orGate2",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 400, "y": 350 }
+          },
+          {
+            "id": "outputFirstEq2",
+            "type": "outputNode",
+            "data": { "label": "Output A' + B'", "value": 0 },
+            "position": { "x": 600, "y": 350 }
+          },
+
+          {
+            "id": "inputA3",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 600 }
+          },
+          {
+            "id": "inputB3",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 700 }
+          },
+          {
+            "id": "orGate3",
+            "type": "gateNode",
+            "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
+            "position": { "x": 200, "y": 650 }
+          },
+          {
+            "id": "notGate3",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
+            "position": { "x": 400, "y": 650 }
+          },
+          {
+            "id": "outputSecondEq1",
+            "type": "outputNode",
+            "data": { "label": "Output (A + B)'", "value": 0 },
+            "position": { "x": 600, "y": 650 }
+          },
+
+          {
+            "id": "inputA4",
+            "type": "inputNode",
+            "data": { "label": "Input A", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 900 }
+          },
+          {
+            "id": "inputB4",
+            "type": "inputNode",
+            "data": { "label": "Input B", "value": 0, "isDynamic": true },
+            "position": { "x": 0, "y": 1000 }
+          },
+          {
+            "id": "notGateA4",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate A", "value": 0 },
+            "position": { "x": 200, "y": 900 }
+          },
+          {
+            "id": "notGateB4",
+            "type": "gateNode",
+            "data": { "gateType": "not", "label": "NOT Gate B", "value": 0 },
+            "position": { "x": 200, "y": 1000 }
+          },
+          {
+            "id": "andGate4",
+            "type": "gateNode",
+            "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
+            "position": { "x": 400, "y": 950 }
+          },
+          {
+            "id": "outputSecondEq2",
+            "type": "outputNode",
+            "data": { "label": "Output A' · B'", "value": 0 },
+            "position": { "x": 600, "y": 950 }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge1",
+            "source": "inputA1",
+            "target": "andGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge2",
+            "source": "inputB1",
+            "target": "andGate1",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge3",
+            "source": "andGate1",
+            "target": "notGate1",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge4",
+            "source": "notGate1",
+            "target": "outputFirstEq1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge5",
+            "source": "inputA2",
+            "target": "notGateA2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge6",
+            "source": "inputB2",
+            "target": "notGateB2",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge7",
+            "source": "notGateA2",
+            "target": "orGate2",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge8",
+            "source": "notGateB2",
+            "target": "orGate2",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge9",
+            "source": "orGate2",
+            "target": "outputFirstEq2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge10",
+            "source": "inputA3",
+            "target": "orGate3",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge11",
+            "source": "inputB3",
+            "target": "orGate3",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge12",
+            "source": "orGate3",
+            "target": "notGate3",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge13",
+            "source": "notGate3",
+            "target": "outputSecondEq1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "edge14",
+            "source": "inputA4",
+            "target": "notGateA4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge15",
+            "source": "inputB4",
+            "target": "notGateB4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge16",
+            "source": "notGateA4",
+            "target": "andGate4",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "edge17",
+            "source": "notGateB4",
+            "target": "andGate4",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "edge18",
+            "source": "andGate4",
+            "target": "outputSecondEq2",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          }
+        ]
+      }
+    },
+    "truthTable": [
+      {
+        "A": 0,
+        "B": 0,
+        "(A · B)'": 1,
+        "A' + B'": 1,
+        "(A + B)'": 1,
+        "A' · B'": 1
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "(A · B)'": 1,
+        "A' + B'": 1,
+        "(A + B)'": 0,
+        "A' · B'": 0
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "(A · B)'": 1,
+        "A' + B'": 1,
+        "(A + B)'": 0,
+        "A' · B'": 0
+      },
+      {
+        "A": 1,
+        "B": 1,
+        "(A · B)'": 0,
+        "A' + B'": 0,
+        "(A + B)'": 1,
+        "A' · B'": 1
+      }
+    ],
+    "questions": [
+      {
+        "question": "What does (A · B)' equal according to De Morgan's Theorem?",
+        "options": ["A' + B'", "A · B"],
+        "correctAnswer": "A' + B'"
+      },
+      {
+        "question": "What is the result of (A + B)'?",
+        "options": ["A' · B'", "(A · B)'"],
+        "correctAnswer": "A' · B'"
+      }
+    ]
+  }
+]

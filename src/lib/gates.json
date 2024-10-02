@@ -31,8 +31,8 @@
     ],
     "hasPrevious": true,
     "hasNext": true,
-    "previousRoute": "/basic-concepts/truth-table",
-    "previousRouteLabel": "Truth Table",
+    "previousRoute": "/boolean-algebra/associative-law",
+    "previousRouteLabel": "Associative Law",
     "nextRoute": "/gates/or-gate",
     "nextRouteLabel": "OR Gate"
   },
