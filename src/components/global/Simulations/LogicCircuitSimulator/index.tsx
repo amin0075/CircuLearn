@@ -403,18 +403,20 @@ const Simulator: React.FC<SimulatorProps> = ({ initialData, isReadOnly }) => {
 
   return (
     <div className="flex h-[calc(100vh-175px)] relative">
-      <div className="md:hidden absolute top-4 left-4 z-10">
-        <Button
-          variant="contained"
-          className="px-2"
-          onClick={() => setDrawerOpen(true)}
-        >
-          <Typography variant="body2" className="text-white text-nowrap">
-            Add Elements
-          </Typography>
-          <Close className="rotate-45 w-6 h-6" />
-        </Button>
-      </div>
+      {!isReadOnly && (
+        <div className="md:hidden absolute top-4 left-4 z-10">
+          <Button
+            variant="contained"
+            className="px-2"
+            onClick={() => setDrawerOpen(true)}
+          >
+            <Typography variant="body2" className="text-white text-nowrap">
+              Add Elements
+            </Typography>
+            <Close className="rotate-45 w-6 h-6" />
+          </Button>
+        </div>
+      )}
 
       {!isReadOnly && (
         <div className="absolute top-4 right-4 z-[9] flex items-center gap-2 ssm:flex-col-reverse">
