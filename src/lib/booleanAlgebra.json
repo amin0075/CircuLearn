@@ -17,49 +17,49 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "annulment_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "highInput",
+            "id": "annulment_highInput",
             "type": "inputNode",
             "data": { "label": "High (1)", "value": 1, "isDynamic": false },
             "position": { "x": 0, "y": 150 }
           },
           {
-            "id": "orGate",
+            "id": "annulment_orGate",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 100 }
           },
           {
-            "id": "outputOR",
+            "id": "annulment_outputOR",
             "type": "outputNode",
             "data": { "label": "Output OR", "value": 0 },
             "position": { "x": 400, "y": 100 }
           },
           {
-            "id": "inputA2",
+            "id": "annulment_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 300 }
           },
           {
-            "id": "lowInput",
+            "id": "annulment_lowInput",
             "type": "inputNode",
             "data": { "label": "Low (0)", "value": 0, "isDynamic": false },
             "position": { "x": 0, "y": 400 }
           },
           {
-            "id": "andGate",
+            "id": "annulment_andGate",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 350 }
           },
           {
-            "id": "outputAND",
+            "id": "annulment_outputAND",
             "type": "outputNode",
             "data": { "label": "Output AND", "value": 0 },
             "position": { "x": 400, "y": 350 }
@@ -67,44 +67,44 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA1",
-            "target": "orGate",
+            "id": "annulment_edge1",
+            "source": "annulment_inputA1",
+            "target": "annulment_orGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge2",
-            "source": "highInput",
-            "target": "orGate",
+            "id": "annulment_edge2",
+            "source": "annulment_highInput",
+            "target": "annulment_orGate",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge3",
-            "source": "orGate",
-            "target": "outputOR",
+            "id": "annulment_edge3",
+            "source": "annulment_orGate",
+            "target": "annulment_outputOR",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
           {
-            "id": "edge4",
-            "source": "inputA2",
-            "target": "andGate",
+            "id": "annulment_edge4",
+            "source": "annulment_inputA2",
+            "target": "annulment_andGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge5",
-            "source": "lowInput",
-            "target": "andGate",
+            "id": "annulment_edge5",
+            "source": "annulment_lowInput",
+            "target": "annulment_andGate",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge6",
-            "source": "andGate",
-            "target": "outputAND",
+            "id": "annulment_edge6",
+            "source": "annulment_andGate",
+            "target": "annulment_outputAND",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -146,49 +146,49 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "identity_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "lowInput",
+            "id": "identity_lowInput",
             "type": "inputNode",
             "data": { "label": "Low (0)", "value": 0, "isDynamic": false },
             "position": { "x": 0, "y": 150 }
           },
           {
-            "id": "orGate",
+            "id": "identity_orGate",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 100 }
           },
           {
-            "id": "outputOR",
+            "id": "identity_outputOR",
             "type": "outputNode",
             "data": { "label": "Output OR", "value": 0 },
             "position": { "x": 400, "y": 100 }
           },
           {
-            "id": "inputA2",
+            "id": "identity_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 300 }
           },
           {
-            "id": "highInput",
+            "id": "identity_highInput",
             "type": "inputNode",
             "data": { "label": "High (1)", "value": 1, "isDynamic": false },
             "position": { "x": 0, "y": 400 }
           },
           {
-            "id": "andGate",
+            "id": "identity_andGate",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 350 }
           },
           {
-            "id": "outputAND",
+            "id": "identity_outputAND",
             "type": "outputNode",
             "data": { "label": "Output AND", "value": 0 },
             "position": { "x": 400, "y": 350 }
@@ -196,44 +196,44 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA1",
-            "target": "orGate",
+            "id": "identity_edge1",
+            "source": "identity_inputA1",
+            "target": "identity_orGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge2",
-            "source": "lowInput",
-            "target": "orGate",
+            "id": "identity_edge2",
+            "source": "identity_lowInput",
+            "target": "identity_orGate",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge3",
-            "source": "orGate",
-            "target": "outputOR",
+            "id": "identity_edge3",
+            "source": "identity_orGate",
+            "target": "identity_outputOR",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
           {
-            "id": "edge4",
-            "source": "inputA2",
-            "target": "andGate",
+            "id": "identity_edge4",
+            "source": "identity_inputA2",
+            "target": "identity_andGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge5",
-            "source": "highInput",
-            "target": "andGate",
+            "id": "identity_edge5",
+            "source": "identity_highInput",
+            "target": "identity_andGate",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge6",
-            "source": "andGate",
-            "target": "outputAND",
+            "id": "identity_edge6",
+            "source": "identity_andGate",
+            "target": "identity_outputAND",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -275,49 +275,49 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "complement_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "notGate1",
+            "id": "complement_notGate1",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
             "position": { "x": 150, "y": 135 }
           },
           {
-            "id": "orGate",
+            "id": "complement_orGate",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 300, "y": 50 }
           },
           {
-            "id": "outputOR",
+            "id": "complement_outputOR",
             "type": "outputNode",
             "data": { "label": "Output OR", "value": 0 },
             "position": { "x": 450, "y": 50 }
           },
           {
-            "id": "inputA2",
+            "id": "complement_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 250 }
           },
           {
-            "id": "notGate2",
+            "id": "complement_notGate2",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
             "position": { "x": 150, "y": 320 }
           },
           {
-            "id": "andGate",
+            "id": "complement_andGate",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 300, "y": 250 }
           },
           {
-            "id": "outputAND",
+            "id": "complement_outputAND",
             "type": "outputNode",
             "data": { "label": "Output AND", "value": 0 },
             "position": { "x": 450, "y": 250 }
@@ -325,58 +325,58 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA1",
-            "target": "notGate1",
+            "id": "complement_edge1",
+            "source": "complement_inputA1",
+            "target": "complement_notGate1",
             "sourceHandle": "a",
             "targetHandle": "input"
           },
           {
-            "id": "edge2",
-            "source": "inputA1",
-            "target": "orGate",
+            "id": "complement_edge2",
+            "source": "complement_inputA1",
+            "target": "complement_orGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge3",
-            "source": "notGate1",
-            "target": "orGate",
+            "id": "complement_edge3",
+            "source": "complement_notGate1",
+            "target": "complement_orGate",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge4",
-            "source": "orGate",
-            "target": "outputOR",
+            "id": "complement_edge4",
+            "source": "complement_orGate",
+            "target": "complement_outputOR",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
           {
-            "id": "edge5",
-            "source": "inputA2",
-            "target": "notGate2",
+            "id": "complement_edge5",
+            "source": "complement_inputA2",
+            "target": "complement_notGate2",
             "sourceHandle": "a",
             "targetHandle": "input"
           },
           {
-            "id": "edge6",
-            "source": "inputA2",
-            "target": "andGate",
+            "id": "complement_edge6",
+            "source": "complement_inputA2",
+            "target": "complement_andGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge7",
-            "source": "notGate2",
-            "target": "andGate",
+            "id": "complement_edge7",
+            "source": "complement_notGate2",
+            "target": "complement_andGate",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge8",
-            "source": "andGate",
-            "target": "outputAND",
+            "id": "complement_edge8",
+            "source": "complement_andGate",
+            "target": "complement_outputAND",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -418,37 +418,37 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "idempotent_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "orGate",
+            "id": "idempotent_orGate",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 50 }
           },
           {
-            "id": "outputOR",
+            "id": "idempotent_outputOR",
             "type": "outputNode",
             "data": { "label": "Output OR", "value": 0 },
             "position": { "x": 400, "y": 50 }
           },
           {
-            "id": "inputA2",
+            "id": "idempotent_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 250 }
           },
           {
-            "id": "andGate",
+            "id": "idempotent_andGate",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 250 }
           },
           {
-            "id": "outputAND",
+            "id": "idempotent_outputAND",
             "type": "outputNode",
             "data": { "label": "Output AND", "value": 0 },
             "position": { "x": 400, "y": 250 }
@@ -456,44 +456,44 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA1",
-            "target": "orGate",
+            "id": "idempotent_edge1",
+            "source": "idempotent_inputA1",
+            "target": "idempotent_orGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge2",
-            "source": "inputA1",
-            "target": "orGate",
+            "id": "idempotent_edge2",
+            "source": "idempotent_inputA1",
+            "target": "idempotent_orGate",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge3",
-            "source": "orGate",
-            "target": "outputOR",
+            "id": "idempotent_edge3",
+            "source": "idempotent_orGate",
+            "target": "idempotent_outputOR",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
           {
-            "id": "edge4",
-            "source": "inputA2",
-            "target": "andGate",
+            "id": "idempotent_edge4",
+            "source": "idempotent_inputA2",
+            "target": "idempotent_andGate",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge5",
-            "source": "inputA2",
-            "target": "andGate",
+            "id": "idempotent_edge5",
+            "source": "idempotent_inputA2",
+            "target": "idempotent_andGate",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge6",
-            "source": "andGate",
-            "target": "outputAND",
+            "id": "idempotent_edge6",
+            "source": "idempotent_andGate",
+            "target": "idempotent_outputAND",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -534,25 +534,25 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA",
+            "id": "doubleNegation_inputA",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "notGate1",
+            "id": "doubleNegation_notGate1",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
             "position": { "x": 200, "y": 50 }
           },
           {
-            "id": "notGate2",
+            "id": "doubleNegation_notGate2",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
             "position": { "x": 350, "y": 50 }
           },
           {
-            "id": "output",
+            "id": "doubleNegation_output",
             "type": "outputNode",
             "data": { "label": "Output", "value": 0 },
             "position": { "x": 500, "y": 50 }
@@ -560,23 +560,23 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA",
-            "target": "notGate1",
+            "id": "doubleNegation_edge1",
+            "source": "doubleNegation_inputA",
+            "target": "doubleNegation_notGate1",
             "sourceHandle": "a",
             "targetHandle": "input"
           },
           {
-            "id": "edge2",
-            "source": "notGate1",
-            "target": "notGate2",
+            "id": "doubleNegation_edge2",
+            "source": "doubleNegation_notGate1",
+            "target": "doubleNegation_notGate2",
             "sourceHandle": "output",
             "targetHandle": "input"
           },
           {
-            "id": "edge3",
-            "source": "notGate2",
-            "target": "output",
+            "id": "doubleNegation_edge3",
+            "source": "doubleNegation_notGate2",
+            "target": "doubleNegation_output",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -613,19 +613,19 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "commutative_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "inputB1",
+            "id": "commutative_inputB1",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 150 }
           },
           {
-            "id": "orGate1",
+            "id": "commutative_orGate1",
             "type": "gateNode",
             "data": {
               "gateType": "or",
@@ -635,25 +635,25 @@
             "position": { "x": 200, "y": 100 }
           },
           {
-            "id": "outputOR1",
+            "id": "commutative_outputOR1",
             "type": "outputNode",
             "data": { "label": "Output OR (A + B)", "value": 0 },
             "position": { "x": 400, "y": 100 }
           },
           {
-            "id": "inputB2",
+            "id": "commutative_inputB2",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 300 }
           },
           {
-            "id": "inputA2",
+            "id": "commutative_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 400 }
           },
           {
-            "id": "orGate2",
+            "id": "commutative_orGate2",
             "type": "gateNode",
             "data": {
               "gateType": "or",
@@ -663,25 +663,25 @@
             "position": { "x": 200, "y": 350 }
           },
           {
-            "id": "outputOR2",
+            "id": "commutative_outputOR2",
             "type": "outputNode",
             "data": { "label": "Output OR (B + A)", "value": 0 },
             "position": { "x": 400, "y": 350 }
           },
           {
-            "id": "inputA3",
+            "id": "commutative_inputA3",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 550 }
           },
           {
-            "id": "inputB3",
+            "id": "commutative_inputB3",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 650 }
           },
           {
-            "id": "andGate1",
+            "id": "commutative_andGate1",
             "type": "gateNode",
             "data": {
               "gateType": "and",
@@ -691,25 +691,25 @@
             "position": { "x": 200, "y": 600 }
           },
           {
-            "id": "outputAND1",
+            "id": "commutative_outputAND1",
             "type": "outputNode",
             "data": { "label": "Output AND (A · B)", "value": 0 },
             "position": { "x": 400, "y": 600 }
           },
           {
-            "id": "inputB4",
+            "id": "commutative_inputB4",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 800 }
           },
           {
-            "id": "inputA4",
+            "id": "commutative_inputA4",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 900 }
           },
           {
-            "id": "andGate2",
+            "id": "commutative_andGate2",
             "type": "gateNode",
             "data": {
               "gateType": "and",
@@ -719,7 +719,7 @@
             "position": { "x": 200, "y": 850 }
           },
           {
-            "id": "outputAND2",
+            "id": "commutative_outputAND2",
             "type": "outputNode",
             "data": { "label": "Output AND (B · A)", "value": 0 },
             "position": { "x": 400, "y": 850 }
@@ -727,86 +727,86 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA1",
-            "target": "orGate1",
+            "id": "commutative_edge1",
+            "source": "commutative_inputA1",
+            "target": "commutative_orGate1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge2",
-            "source": "inputB1",
-            "target": "orGate1",
+            "id": "commutative_edge2",
+            "source": "commutative_inputB1",
+            "target": "commutative_orGate1",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge3",
-            "source": "orGate1",
-            "target": "outputOR1",
+            "id": "commutative_edge3",
+            "source": "commutative_orGate1",
+            "target": "commutative_outputOR1",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
           {
-            "id": "edge4",
-            "source": "inputB2",
-            "target": "orGate2",
+            "id": "commutative_edge4",
+            "source": "commutative_inputB2",
+            "target": "commutative_orGate2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge5",
-            "source": "inputA2",
-            "target": "orGate2",
+            "id": "commutative_edge5",
+            "source": "commutative_inputA2",
+            "target": "commutative_orGate2",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge6",
-            "source": "orGate2",
-            "target": "outputOR2",
+            "id": "commutative_edge6",
+            "source": "commutative_orGate2",
+            "target": "commutative_outputOR2",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
           {
-            "id": "edge7",
-            "source": "inputA3",
-            "target": "andGate1",
+            "id": "commutative_edge7",
+            "source": "commutative_inputA3",
+            "target": "commutative_andGate1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge8",
-            "source": "inputB3",
-            "target": "andGate1",
+            "id": "commutative_edge8",
+            "source": "commutative_inputB3",
+            "target": "commutative_andGate1",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge9",
-            "source": "andGate1",
-            "target": "outputAND1",
+            "id": "commutative_edge9",
+            "source": "commutative_andGate1",
+            "target": "commutative_outputAND1",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
           {
-            "id": "edge10",
-            "source": "inputB4",
-            "target": "andGate2",
+            "id": "commutative_edge10",
+            "source": "commutative_inputB4",
+            "target": "commutative_andGate2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge11",
-            "source": "inputA4",
-            "target": "andGate2",
+            "id": "commutative_edge11",
+            "source": "commutative_inputA4",
+            "target": "commutative_andGate2",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge12",
-            "source": "andGate2",
-            "target": "outputAND2",
+            "id": "commutative_edge12",
+            "source": "commutative_andGate2",
+            "target": "commutative_outputAND2",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -850,148 +850,148 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "associative_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "inputB1",
+            "id": "associative_inputB1",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 150 }
           },
           {
-            "id": "inputC1",
+            "id": "associative_inputC1",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 250 }
           },
           {
-            "id": "orGateB1C1",
+            "id": "associative_orGateB1C1",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 200 }
           },
           {
-            "id": "orGateA1",
+            "id": "associative_orGateA1",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 400, "y": 100 }
           },
           {
-            "id": "output1",
+            "id": "associative_output1",
             "type": "outputNode",
             "data": { "label": "Output", "value": 0 },
             "position": { "x": 600, "y": 100 }
           },
 
           {
-            "id": "inputA2",
+            "id": "associative_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 400 }
           },
           {
-            "id": "inputB2",
+            "id": "associative_inputB2",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 500 }
           },
           {
-            "id": "inputC2",
+            "id": "associative_inputC2",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 600 }
           },
           {
-            "id": "orGateA2B2",
+            "id": "associative_orGateA2B2",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 450 }
           },
           {
-            "id": "orGateC2",
+            "id": "associative_orGateC2",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 400, "y": 500 }
           },
           {
-            "id": "output2",
+            "id": "associative_output2",
             "type": "outputNode",
             "data": { "label": "Output", "value": 0 },
             "position": { "x": 600, "y": 500 }
           },
 
           {
-            "id": "inputA3",
+            "id": "associative_inputA3",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 800 }
           },
           {
-            "id": "inputB3",
+            "id": "associative_inputB3",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 900 }
           },
           {
-            "id": "inputC3",
+            "id": "associative_inputC3",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1000 }
           },
           {
-            "id": "andGateB3C3",
+            "id": "associative_andGateB3C3",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 950 }
           },
           {
-            "id": "andGateA3",
+            "id": "associative_andGateA3",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 400, "y": 900 }
           },
           {
-            "id": "output3",
+            "id": "associative_output3",
             "type": "outputNode",
             "data": { "label": "Output", "value": 0 },
             "position": { "x": 600, "y": 900 }
           },
 
           {
-            "id": "inputA4",
+            "id": "associative_inputA4",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1200 }
           },
           {
-            "id": "inputB4",
+            "id": "associative_inputB4",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1300 }
           },
           {
-            "id": "inputC4",
+            "id": "associative_inputC4",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1400 }
           },
           {
-            "id": "andGateA4B4",
+            "id": "associative_andGateA4B4",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 1250 }
           },
           {
-            "id": "andGateC4",
+            "id": "associative_andGateC4",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 400, "y": 1300 }
           },
           {
-            "id": "output4",
+            "id": "associative_output4",
             "type": "outputNode",
             "data": { "label": "Output", "value": 0 },
             "position": { "x": 600, "y": 1300 }
@@ -999,145 +999,145 @@
         ],
         "edges": [
           {
-            "id": "edge1-1",
-            "source": "inputB1",
-            "target": "orGateB1C1",
+            "id": "associative_edge1-1",
+            "source": "associative_inputB1",
+            "target": "associative_orGateB1C1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge1-2",
-            "source": "inputC1",
-            "target": "orGateB1C1",
+            "id": "associative_edge1-2",
+            "source": "associative_inputC1",
+            "target": "associative_orGateB1C1",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge1-3",
-            "source": "inputA1",
-            "target": "orGateA1",
+            "id": "associative_edge1-3",
+            "source": "associative_inputA1",
+            "target": "associative_orGateA1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge1-4",
-            "source": "orGateB1C1",
-            "target": "orGateA1",
+            "id": "associative_edge1-4",
+            "source": "associative_orGateB1C1",
+            "target": "associative_orGateA1",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge1-5",
-            "source": "orGateA1",
-            "target": "output1",
-            "sourceHandle": "output",
-            "targetHandle": "a"
-          },
-
-          {
-            "id": "edge2-1",
-            "source": "inputA2",
-            "target": "orGateA2B2",
-            "sourceHandle": "a",
-            "targetHandle": "input1"
-          },
-          {
-            "id": "edge2-2",
-            "source": "inputB2",
-            "target": "orGateA2B2",
-            "sourceHandle": "a",
-            "targetHandle": "input2"
-          },
-          {
-            "id": "edge2-3",
-            "source": "inputC2",
-            "target": "orGateC2",
-            "sourceHandle": "a",
-            "targetHandle": "input2"
-          },
-          {
-            "id": "edge2-4",
-            "source": "orGateA2B2",
-            "target": "orGateC2",
-            "sourceHandle": "output",
-            "targetHandle": "input1"
-          },
-          {
-            "id": "edge2-5",
-            "source": "orGateC2",
-            "target": "output2",
+            "id": "associative_edge1-5",
+            "source": "associative_orGateA1",
+            "target": "associative_output1",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge3-1",
-            "source": "inputB3",
-            "target": "andGateB3C3",
+            "id": "associative_edge2-1",
+            "source": "associative_inputA2",
+            "target": "associative_orGateA2B2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge3-2",
-            "source": "inputC3",
-            "target": "andGateB3C3",
+            "id": "associative_edge2-2",
+            "source": "associative_inputB2",
+            "target": "associative_orGateA2B2",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge3-3",
-            "source": "inputA3",
-            "target": "andGateA3",
+            "id": "associative_edge2-3",
+            "source": "associative_inputC2",
+            "target": "associative_orGateC2",
             "sourceHandle": "a",
-            "targetHandle": "input1"
+            "targetHandle": "input2"
           },
           {
-            "id": "edge3-4",
-            "source": "andGateB3C3",
-            "target": "andGateA3",
+            "id": "associative_edge2-4",
+            "source": "associative_orGateA2B2",
+            "target": "associative_orGateC2",
             "sourceHandle": "output",
-            "targetHandle": "input2"
+            "targetHandle": "input1"
           },
           {
-            "id": "edge3-5",
-            "source": "andGateA3",
-            "target": "output3",
+            "id": "associative_edge2-5",
+            "source": "associative_orGateC2",
+            "target": "associative_output2",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge4-1",
-            "source": "inputA4",
-            "target": "andGateA4B4",
+            "id": "associative_edge3-1",
+            "source": "associative_inputB3",
+            "target": "associative_andGateB3C3",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge4-2",
-            "source": "inputB4",
-            "target": "andGateA4B4",
+            "id": "associative_edge3-2",
+            "source": "associative_inputC3",
+            "target": "associative_andGateB3C3",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge4-3",
-            "source": "inputC4",
-            "target": "andGateC4",
+            "id": "associative_edge3-3",
+            "source": "associative_inputA3",
+            "target": "associative_andGateA3",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "associative_edge3-4",
+            "source": "associative_andGateB3C3",
+            "target": "associative_andGateA3",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "associative_edge3-5",
+            "source": "associative_andGateA3",
+            "target": "associative_output3",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "associative_edge4-1",
+            "source": "associative_inputA4",
+            "target": "associative_andGateA4B4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "associative_edge4-2",
+            "source": "associative_inputB4",
+            "target": "associative_andGateA4B4",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge4-4",
-            "source": "andGateA4B4",
-            "target": "andGateC4",
+            "id": "associative_edge4-3",
+            "source": "associative_inputC4",
+            "target": "associative_andGateC4",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "associative_edge4-4",
+            "source": "associative_andGateA4B4",
+            "target": "associative_andGateC4",
             "sourceHandle": "output",
             "targetHandle": "input1"
           },
           {
-            "id": "edge4-5",
-            "source": "andGateC4",
-            "target": "output4",
+            "id": "associative_edge4-5",
+            "source": "associative_andGateC4",
+            "target": "associative_output4",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -1176,62 +1176,62 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "distributive_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 0 }
           },
           {
-            "id": "inputB1",
+            "id": "distributive_inputB1",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 100 }
           },
           {
-            "id": "inputC1",
+            "id": "distributive_inputC1",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 200 }
           },
           {
-            "id": "orGate1",
+            "id": "distributive_orGate1",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 150 }
           },
           {
-            "id": "andGate1",
+            "id": "distributive_andGate1",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 400, "y": 75 }
           },
           {
-            "id": "outputFirstEq1",
+            "id": "distributive_outputFirstEq1",
             "type": "outputNode",
             "data": { "label": "Output A · (B + C)", "value": 0 },
             "position": { "x": 600, "y": 75 }
           },
 
           {
-            "id": "inputA2",
+            "id": "distributive_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 400 }
           },
           {
-            "id": "inputB2",
+            "id": "distributive_inputB2",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 500 }
           },
           {
-            "id": "inputC2",
+            "id": "distributive_inputC2",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 600 }
           },
           {
-            "id": "andGateA2",
+            "id": "distributive_andGateA2",
             "type": "gateNode",
             "data": {
               "gateType": "and",
@@ -1241,7 +1241,7 @@
             "position": { "x": 200, "y": 450 }
           },
           {
-            "id": "andGateB2",
+            "id": "distributive_andGateB2",
             "type": "gateNode",
             "data": {
               "gateType": "and",
@@ -1251,93 +1251,93 @@
             "position": { "x": 200, "y": 550 }
           },
           {
-            "id": "orGate2",
+            "id": "distributive_orGate2",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 400, "y": 500 }
           },
           {
-            "id": "outputFirstEq2",
+            "id": "distributive_outputFirstEq2",
             "type": "outputNode",
             "data": { "label": "Output (A · B) + (A · C)", "value": 0 },
             "position": { "x": 600, "y": 500 }
           },
 
           {
-            "id": "inputA3",
+            "id": "distributive_inputA3",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 800 }
           },
           {
-            "id": "inputB3",
+            "id": "distributive_inputB3",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 900 }
           },
           {
-            "id": "inputC3",
+            "id": "distributive_inputC3",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1000 }
           },
           {
-            "id": "andGate3",
+            "id": "distributive_andGate3",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 950 }
           },
           {
-            "id": "orGate3",
+            "id": "distributive_orGate3",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 400, "y": 850 }
           },
           {
-            "id": "outputSecondEq1",
+            "id": "distributive_outputSecondEq1",
             "type": "outputNode",
             "data": { "label": "Output A + (B · C)", "value": 0 },
             "position": { "x": 600, "y": 850 }
           },
 
           {
-            "id": "inputA4",
+            "id": "distributive_inputA4",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1200 }
           },
           {
-            "id": "inputB4",
+            "id": "distributive_inputB4",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1300 }
           },
           {
-            "id": "inputC4",
+            "id": "distributive_inputC4",
             "type": "inputNode",
             "data": { "label": "Input C", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1400 }
           },
           {
-            "id": "orGateA4",
+            "id": "distributive_orGateA4",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate A + B", "value": 0 },
             "position": { "x": 200, "y": 1250 }
           },
           {
-            "id": "orGateB4",
+            "id": "distributive_orGateB4",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate A + C", "value": 0 },
             "position": { "x": 200, "y": 1350 }
           },
           {
-            "id": "andGate4",
+            "id": "distributive_andGate4",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 400, "y": 1300 }
           },
           {
-            "id": "outputSecondEq2",
+            "id": "distributive_outputSecondEq2",
             "type": "outputNode",
             "data": { "label": "Output (A + B) · (A + C)", "value": 0 },
             "position": { "x": 600, "y": 1300 }
@@ -1345,173 +1345,173 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputB1",
-            "target": "orGate1",
+            "id": "distributive_edge1",
+            "source": "distributive_inputB1",
+            "target": "distributive_orGate1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge2",
-            "source": "inputC1",
-            "target": "orGate1",
+            "id": "distributive_edge2",
+            "source": "distributive_inputC1",
+            "target": "distributive_orGate1",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge3",
-            "source": "inputA1",
-            "target": "andGate1",
+            "id": "distributive_edge3",
+            "source": "distributive_inputA1",
+            "target": "distributive_andGate1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge4",
-            "source": "orGate1",
-            "target": "andGate1",
+            "id": "distributive_edge4",
+            "source": "distributive_orGate1",
+            "target": "distributive_andGate1",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge5",
-            "source": "andGate1",
-            "target": "outputFirstEq1",
-            "sourceHandle": "output",
-            "targetHandle": "a"
-          },
-
-          {
-            "id": "edge6",
-            "source": "inputA2",
-            "target": "andGateA2",
-            "sourceHandle": "a",
-            "targetHandle": "input1"
-          },
-          {
-            "id": "edge7",
-            "source": "inputB2",
-            "target": "andGateA2",
-            "sourceHandle": "a",
-            "targetHandle": "input2"
-          },
-          {
-            "id": "edge8",
-            "source": "inputA2",
-            "target": "andGateB2",
-            "sourceHandle": "a",
-            "targetHandle": "input1"
-          },
-          {
-            "id": "edge9",
-            "source": "inputC2",
-            "target": "andGateB2",
-            "sourceHandle": "a",
-            "targetHandle": "input2"
-          },
-          {
-            "id": "edge10",
-            "source": "andGateA2",
-            "target": "orGate2",
-            "sourceHandle": "output",
-            "targetHandle": "input1"
-          },
-          {
-            "id": "edge11",
-            "source": "andGateB2",
-            "target": "orGate2",
-            "sourceHandle": "output",
-            "targetHandle": "input2"
-          },
-          {
-            "id": "edge12",
-            "source": "orGate2",
-            "target": "outputFirstEq2",
+            "id": "distributive_edge5",
+            "source": "distributive_andGate1",
+            "target": "distributive_outputFirstEq1",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge13",
-            "source": "inputB3",
-            "target": "andGate3",
+            "id": "distributive_edge6",
+            "source": "distributive_inputA2",
+            "target": "distributive_andGateA2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge14",
-            "source": "inputC3",
-            "target": "andGate3",
+            "id": "distributive_edge7",
+            "source": "distributive_inputB2",
+            "target": "distributive_andGateA2",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge15",
-            "source": "inputA3",
-            "target": "orGate3",
+            "id": "distributive_edge8",
+            "source": "distributive_inputA2",
+            "target": "distributive_andGateB2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge16",
-            "source": "andGate3",
-            "target": "orGate3",
+            "id": "distributive_edge9",
+            "source": "distributive_inputC2",
+            "target": "distributive_andGateB2",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "distributive_edge10",
+            "source": "distributive_andGateA2",
+            "target": "distributive_orGate2",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "distributive_edge11",
+            "source": "distributive_andGateB2",
+            "target": "distributive_orGate2",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge17",
-            "source": "orGate3",
-            "target": "outputSecondEq1",
+            "id": "distributive_edge12",
+            "source": "distributive_orGate2",
+            "target": "distributive_outputFirstEq2",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge18",
-            "source": "inputA4",
-            "target": "orGateA4",
+            "id": "distributive_edge13",
+            "source": "distributive_inputB3",
+            "target": "distributive_andGate3",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge19",
-            "source": "inputB4",
-            "target": "orGateA4",
+            "id": "distributive_edge14",
+            "source": "distributive_inputC3",
+            "target": "distributive_andGate3",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge20",
-            "source": "inputA4",
-            "target": "orGateB4",
+            "id": "distributive_edge15",
+            "source": "distributive_inputA3",
+            "target": "distributive_orGate3",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge21",
-            "source": "inputC4",
-            "target": "orGateB4",
-            "sourceHandle": "a",
-            "targetHandle": "input2"
-          },
-          {
-            "id": "edge22",
-            "source": "orGateA4",
-            "target": "andGate4",
-            "sourceHandle": "output",
-            "targetHandle": "input1"
-          },
-          {
-            "id": "edge23",
-            "source": "orGateB4",
-            "target": "andGate4",
+            "id": "distributive_edge16",
+            "source": "distributive_andGate3",
+            "target": "distributive_orGate3",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge24",
-            "source": "andGate4",
-            "target": "outputSecondEq2",
+            "id": "distributive_edge17",
+            "source": "distributive_orGate3",
+            "target": "distributive_outputSecondEq1",
+            "sourceHandle": "output",
+            "targetHandle": "a"
+          },
+
+          {
+            "id": "distributive_edge18",
+            "source": "distributive_inputA4",
+            "target": "distributive_orGateA4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "distributive_edge19",
+            "source": "distributive_inputB4",
+            "target": "distributive_orGateA4",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "distributive_edge20",
+            "source": "distributive_inputA4",
+            "target": "distributive_orGateB4",
+            "sourceHandle": "a",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "distributive_edge21",
+            "source": "distributive_inputC4",
+            "target": "distributive_orGateB4",
+            "sourceHandle": "a",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "distributive_edge22",
+            "source": "distributive_orGateA4",
+            "target": "distributive_andGate4",
+            "sourceHandle": "output",
+            "targetHandle": "input1"
+          },
+          {
+            "id": "distributive_edge23",
+            "source": "distributive_orGateB4",
+            "target": "distributive_andGate4",
+            "sourceHandle": "output",
+            "targetHandle": "input2"
+          },
+          {
+            "id": "distributive_edge24",
+            "source": "distributive_andGate4",
+            "target": "distributive_outputSecondEq2",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -1551,62 +1551,62 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "absorptive_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 50 }
           },
           {
-            "id": "inputB1",
+            "id": "absorptive_inputB1",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 150 }
           },
           {
-            "id": "andGate1",
+            "id": "absorptive_andGate1",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 100 }
           },
           {
-            "id": "orGate1",
+            "id": "absorptive_orGate1",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 400, "y": 50 }
           },
           {
-            "id": "output1",
+            "id": "absorptive_output1",
             "type": "outputNode",
             "data": { "label": "Output", "value": 0 },
             "position": { "x": 600, "y": 50 }
           },
 
           {
-            "id": "inputA2",
+            "id": "absorptive_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 300 }
           },
           {
-            "id": "inputB2",
+            "id": "absorptive_inputB2",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 400 }
           },
           {
-            "id": "orGate2",
+            "id": "absorptive_orGate2",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 350 }
           },
           {
-            "id": "andGate2",
+            "id": "absorptive_andGate2",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 400, "y": 300 }
           },
           {
-            "id": "output2",
+            "id": "absorptive_output2",
             "type": "outputNode",
             "data": { "label": "Output", "value": 0 },
             "position": { "x": 600, "y": 300 }
@@ -1614,73 +1614,73 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA1",
-            "target": "orGate1",
+            "id": "absorptive_edge1",
+            "source": "absorptive_inputA1",
+            "target": "absorptive_orGate1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge2",
-            "source": "inputA1",
-            "target": "andGate1",
+            "id": "absorptive_edge2",
+            "source": "absorptive_inputA1",
+            "target": "absorptive_andGate1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge3",
-            "source": "inputB1",
-            "target": "andGate1",
+            "id": "absorptive_edge3",
+            "source": "absorptive_inputB1",
+            "target": "absorptive_andGate1",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge4",
-            "source": "andGate1",
-            "target": "orGate1",
+            "id": "absorptive_edge4",
+            "source": "absorptive_andGate1",
+            "target": "absorptive_orGate1",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge5",
-            "source": "orGate1",
-            "target": "output1",
+            "id": "absorptive_edge5",
+            "source": "absorptive_orGate1",
+            "target": "absorptive_output1",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge6",
-            "source": "inputA2",
-            "target": "orGate2",
+            "id": "absorptive_edge6",
+            "source": "absorptive_inputA2",
+            "target": "absorptive_orGate2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge7",
-            "source": "inputB2",
-            "target": "orGate2",
+            "id": "absorptive_edge7",
+            "source": "absorptive_inputB2",
+            "target": "absorptive_orGate2",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge8",
-            "source": "orGate2",
-            "target": "andGate2",
+            "id": "absorptive_edge8",
+            "source": "absorptive_orGate2",
+            "target": "absorptive_andGate2",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge9",
-            "source": "inputA2",
-            "target": "andGate2",
+            "id": "absorptive_edge9",
+            "source": "absorptive_inputA2",
+            "target": "absorptive_andGate2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge10",
-            "source": "andGate2",
-            "target": "output2",
+            "id": "absorptive_edge10",
+            "source": "absorptive_andGate2",
+            "target": "absorptive_output2",
             "sourceHandle": "output",
             "targetHandle": "a"
           }
@@ -1719,136 +1719,136 @@
       "initialData": {
         "nodes": [
           {
-            "id": "inputA1",
+            "id": "deMorgan_inputA1",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 0 }
           },
           {
-            "id": "inputB1",
+            "id": "deMorgan_inputB1",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 100 }
           },
           {
-            "id": "andGate1",
+            "id": "deMorgan_andGate1",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 200, "y": 50 }
           },
           {
-            "id": "notGate1",
+            "id": "deMorgan_notGate1",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
             "position": { "x": 400, "y": 50 }
           },
           {
-            "id": "outputFirstEq1",
+            "id": "deMorgan_outputFirstEq1",
             "type": "outputNode",
             "data": { "label": "Output (A · B)'", "value": 0 },
             "position": { "x": 600, "y": 50 }
           },
 
           {
-            "id": "inputA2",
+            "id": "deMorgan_inputA2",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 300 }
           },
           {
-            "id": "inputB2",
+            "id": "deMorgan_inputB2",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 400 }
           },
           {
-            "id": "notGateA2",
+            "id": "deMorgan_notGateA2",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate A", "value": 0 },
             "position": { "x": 200, "y": 300 }
           },
           {
-            "id": "notGateB2",
+            "id": "deMorgan_notGateB2",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate B", "value": 0 },
             "position": { "x": 200, "y": 400 }
           },
           {
-            "id": "orGate2",
+            "id": "deMorgan_orGate2",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 400, "y": 350 }
           },
           {
-            "id": "outputFirstEq2",
+            "id": "deMorgan_outputFirstEq2",
             "type": "outputNode",
             "data": { "label": "Output A' + B'", "value": 0 },
             "position": { "x": 600, "y": 350 }
           },
 
           {
-            "id": "inputA3",
+            "id": "deMorgan_inputA3",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 600 }
           },
           {
-            "id": "inputB3",
+            "id": "deMorgan_inputB3",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 700 }
           },
           {
-            "id": "orGate3",
+            "id": "deMorgan_orGate3",
             "type": "gateNode",
             "data": { "gateType": "or", "label": "OR Gate", "value": 0 },
             "position": { "x": 200, "y": 650 }
           },
           {
-            "id": "notGate3",
+            "id": "deMorgan_notGate3",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate", "value": 0 },
             "position": { "x": 400, "y": 650 }
           },
           {
-            "id": "outputSecondEq1",
+            "id": "deMorgan_outputSecondEq1",
             "type": "outputNode",
             "data": { "label": "Output (A + B)'", "value": 0 },
             "position": { "x": 600, "y": 650 }
           },
 
           {
-            "id": "inputA4",
+            "id": "deMorgan_inputA4",
             "type": "inputNode",
             "data": { "label": "Input A", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 900 }
           },
           {
-            "id": "inputB4",
+            "id": "deMorgan_inputB4",
             "type": "inputNode",
             "data": { "label": "Input B", "value": 0, "isDynamic": true },
             "position": { "x": 0, "y": 1000 }
           },
           {
-            "id": "notGateA4",
+            "id": "deMorgan_notGateA4",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate A", "value": 0 },
             "position": { "x": 200, "y": 900 }
           },
           {
-            "id": "notGateB4",
+            "id": "deMorgan_notGateB4",
             "type": "gateNode",
             "data": { "gateType": "not", "label": "NOT Gate B", "value": 0 },
             "position": { "x": 200, "y": 1000 }
           },
           {
-            "id": "andGate4",
+            "id": "deMorgan_andGate4",
             "type": "gateNode",
             "data": { "gateType": "and", "label": "AND Gate", "value": 0 },
             "position": { "x": 400, "y": 950 }
           },
           {
-            "id": "outputSecondEq2",
+            "id": "deMorgan_outputSecondEq2",
             "type": "outputNode",
             "data": { "label": "Output A' · B'", "value": 0 },
             "position": { "x": 600, "y": 950 }
@@ -1856,131 +1856,131 @@
         ],
         "edges": [
           {
-            "id": "edge1",
-            "source": "inputA1",
-            "target": "andGate1",
+            "id": "deMorgan_edge1",
+            "source": "deMorgan_inputA1",
+            "target": "deMorgan_andGate1",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge2",
-            "source": "inputB1",
-            "target": "andGate1",
+            "id": "deMorgan_edge2",
+            "source": "deMorgan_inputB1",
+            "target": "deMorgan_andGate1",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge3",
-            "source": "andGate1",
-            "target": "notGate1",
+            "id": "deMorgan_edge3",
+            "source": "deMorgan_andGate1",
+            "target": "deMorgan_notGate1",
             "sourceHandle": "output",
             "targetHandle": "input1"
           },
           {
-            "id": "edge4",
-            "source": "notGate1",
-            "target": "outputFirstEq1",
+            "id": "deMorgan_edge4",
+            "source": "deMorgan_notGate1",
+            "target": "deMorgan_outputFirstEq1",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge5",
-            "source": "inputA2",
-            "target": "notGateA2",
+            "id": "deMorgan_edge5",
+            "source": "deMorgan_inputA2",
+            "target": "deMorgan_notGateA2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge6",
-            "source": "inputB2",
-            "target": "notGateB2",
+            "id": "deMorgan_edge6",
+            "source": "deMorgan_inputB2",
+            "target": "deMorgan_notGateB2",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge7",
-            "source": "notGateA2",
-            "target": "orGate2",
+            "id": "deMorgan_edge7",
+            "source": "deMorgan_notGateA2",
+            "target": "deMorgan_orGate2",
             "sourceHandle": "output",
             "targetHandle": "input1"
           },
           {
-            "id": "edge8",
-            "source": "notGateB2",
-            "target": "orGate2",
+            "id": "deMorgan_edge8",
+            "source": "deMorgan_notGateB2",
+            "target": "deMorgan_orGate2",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge9",
-            "source": "orGate2",
-            "target": "outputFirstEq2",
+            "id": "deMorgan_edge9",
+            "source": "deMorgan_orGate2",
+            "target": "deMorgan_outputFirstEq2",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge10",
-            "source": "inputA3",
-            "target": "orGate3",
+            "id": "deMorgan_edge10",
+            "source": "deMorgan_inputA3",
+            "target": "deMorgan_orGate3",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge11",
-            "source": "inputB3",
-            "target": "orGate3",
+            "id": "deMorgan_edge11",
+            "source": "deMorgan_inputB3",
+            "target": "deMorgan_orGate3",
             "sourceHandle": "a",
             "targetHandle": "input2"
           },
           {
-            "id": "edge12",
-            "source": "orGate3",
-            "target": "notGate3",
+            "id": "deMorgan_edge12",
+            "source": "deMorgan_orGate3",
+            "target": "deMorgan_notGate3",
             "sourceHandle": "output",
             "targetHandle": "input1"
           },
           {
-            "id": "edge13",
-            "source": "notGate3",
-            "target": "outputSecondEq1",
+            "id": "deMorgan_edge13",
+            "source": "deMorgan_notGate3",
+            "target": "deMorgan_outputSecondEq1",
             "sourceHandle": "output",
             "targetHandle": "a"
           },
 
           {
-            "id": "edge14",
-            "source": "inputA4",
-            "target": "notGateA4",
+            "id": "deMorgan_edge14",
+            "source": "deMorgan_inputA4",
+            "target": "deMorgan_notGateA4",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge15",
-            "source": "inputB4",
-            "target": "notGateB4",
+            "id": "deMorgan_edge15",
+            "source": "deMorgan_inputB4",
+            "target": "deMorgan_notGateB4",
             "sourceHandle": "a",
             "targetHandle": "input1"
           },
           {
-            "id": "edge16",
-            "source": "notGateA4",
-            "target": "andGate4",
+            "id": "deMorgan_edge16",
+            "source": "deMorgan_notGateA4",
+            "target": "deMorgan_andGate4",
             "sourceHandle": "output",
             "targetHandle": "input1"
           },
           {
-            "id": "edge17",
-            "source": "notGateB4",
-            "target": "andGate4",
+            "id": "deMorgan_edge17",
+            "source": "deMorgan_notGateB4",
+            "target": "deMorgan_andGate4",
             "sourceHandle": "output",
             "targetHandle": "input2"
           },
           {
-            "id": "edge18",
-            "source": "andGate4",
-            "target": "outputSecondEq2",
+            "id": "deMorgan_edge18",
+            "source": "deMorgan_andGate4",
+            "target": "deMorgan_outputSecondEq2",
             "sourceHandle": "output",
             "targetHandle": "a"
           }

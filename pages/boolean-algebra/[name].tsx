@@ -14,9 +14,11 @@ export default function LawPage() {
   const router = useRouter();
   const { name } = router.query;
   const { primaryColor } = useThemeStore((state) => state);
+
   const law = lawsData.find(
     (l) => l.name.toLowerCase().replace(/ /g, "-") === name
   );
+
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [showAnswers, setShowAnswers] = useState(false);
 
