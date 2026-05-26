@@ -2,15 +2,7 @@
   "name": "circulearn",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@11.1.2",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp",
-      "unrs-resolver",
-      "msw"
-    ]
-  },
+  "packageManager": "pnpm@11.3.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
