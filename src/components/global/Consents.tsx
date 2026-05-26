@@ -1,66 +1,145 @@
 import React from "react";
-import { Controller } from "react-hook-form";
-import Checkbox from "@src/components/Checkbox";
-import Typography from "@src/components/Typography";
+import {
+  Controller,
+  type Control,
+  type FieldErrors,
+} from "react-hook-form";
 
-interface ConsentsProps {
-  control: any;
-  errors: any;
+import { Checkbox } from "@src/components/ui/checkbox";
+import { Label } from "@src/components/ui/label";
+import { Typography } from "@src/components/ui/typography";
+import {
+  CONSENT_AGREEMENT_LABEL,
+  QUIZ_CONSENT_STATEMENTS,
+  type ConsentContext,
+  getConsentIntro,
+} from "@src/lib/consent";
+
+export interface ConsentFormValues {
+  consent: boolean;
 }
 
-const Consents: React.FC<ConsentsProps> = ({ control, errors }) => {
+type ConsentsBaseProps = {
+  context: ConsentContext;
+  idPrefix?: string;
+};
+
+type ConsentsStandaloneProps = ConsentsBaseProps & {
+  agreed: boolean;
+  onAgreedChange: (checked: boolean) => void;
+  errorMessage?: string;
+};
+
+type ConsentsFormProps = ConsentsBaseProps & {
+  control: Control<ConsentFormValues>;
+  errors: FieldErrors<ConsentFormValues>;
+};
+
+export type ConsentsProps = ConsentsStandaloneProps | ConsentsFormProps;
+
+function isFormProps(props: ConsentsProps): props is ConsentsFormProps {
+  return "control" in props;
+}
+
+function ConsentAgreementCheckbox({
+  id,
+  agreed,
+  onAgreedChange,
+  errorMessage,
+}: {
+  id: string;
+  agreed: boolean;
+  onAgreedChange: (checked: boolean) => void;
+  errorMessage?: string;
+}) {
   return (
-    <section className="flex flex-col gap-2">
-      <Typography variant="h4">Consent Section</Typography>
-      <div className="flex flex-col gap-2">
-        <Controller
-          control={control}
-          name="consent.0"
-          render={({ field: { onChange, value } }) => (
-            <Checkbox name="consent.0" onChange={onChange} checked={value}>
-              I consent to the collection of my feedback for research purposes.
-            </Checkbox>
-          )}
+    <div>
+      <div className="flex items-start gap-2">
+        <Checkbox
+          id={id}
+          checked={agreed}
+          onCheckedChange={(checked) => onAgreedChange(checked === true)}
         />
-        {errors.consent?.[0] && (
-          <Typography className="!text-red-500" variant="caption">
-            {errors.consent[0]?.message}.
-          </Typography>
-        )}
-
-        <Controller
-          control={control}
-          name="consent.1"
-          render={({ field: { onChange, value } }) => (
-            <Checkbox name="consent.1" onChange={onChange} checked={value}>
-              I understand that my participation is voluntary and that I can
-              withdraw at any time without giving a reason.
-            </Checkbox>
-          )}
-        />
-        {errors.consent?.[1] && (
-          <Typography className="!text-red-500" variant="caption">
-            {errors.consent[1]?.message}.
-          </Typography>
-        )}
-
-        <Controller
-          control={control}
-          name="consent.2"
-          render={({ field: { onChange, value } }) => (
-            <Checkbox name="consent.2" onChange={onChange} checked={value}>
-              I agree that the data collected will be used for academic purposes
-              and may be published in an anonymous form.
-            </Checkbox>
-          )}
-        />
-        {errors.consent?.[2] && (
-          <Typography className="!text-red-500" variant="caption">
-            {errors.consent[2]?.message}.
-          </Typography>
-        )}
+        <Label htmlFor={id}>{CONSENT_AGREEMENT_LABEL}</Label>
       </div>
+      {errorMessage && (
+        <Typography variant="body-xs" className="text-destructive">
+          {errorMessage}
+        </Typography>
+      )}
+    </div>
+  );
+}
+
+function ConsentSectionContent({
+  context,
+  idPrefix,
+  agreed,
+  onAgreedChange,
+  errorMessage,
+}: {
+  context: ConsentContext;
+  idPrefix: string;
+  agreed: boolean;
+  onAgreedChange: (checked: boolean) => void;
+  errorMessage?: string;
+}) {
+  return (
+    <section className="flex flex-col gap-3">
+      <Typography variant="heading-lg" as="h2">
+        Consent Section
+      </Typography>
+      <Typography variant="body-sm" className="text-muted-foreground">
+        {getConsentIntro(context)}
+      </Typography>
+      <ul className="flex list-disc flex-col gap-2 pl-5">
+        {QUIZ_CONSENT_STATEMENTS.map((statement) => (
+          <li key={statement}>
+            <Typography variant="body-sm" as="span">
+              {statement}
+            </Typography>
+          </li>
+        ))}
+      </ul>
+      <ConsentAgreementCheckbox
+        id={`${idPrefix}-consent-agreement`}
+        agreed={agreed}
+        onAgreedChange={onAgreedChange}
+        errorMessage={errorMessage}
+      />
     </section>
+  );
+}
+
+const Consents: React.FC<ConsentsProps> = (props) => {
+  const { context, idPrefix = "consent" } = props;
+
+  if (isFormProps(props)) {
+    return (
+      <Controller
+        control={props.control}
+        name="consent"
+        render={({ field: { onChange, value } }) => (
+          <ConsentSectionContent
+            context={context}
+            idPrefix={idPrefix}
+            agreed={value}
+            onAgreedChange={onChange}
+            errorMessage={props.errors.consent?.message}
+          />
+        )}
+      />
+    );
+  }
+
+  return (
+    <ConsentSectionContent
+      context={context}
+      idPrefix={idPrefix}
+      agreed={props.agreed}
+      onAgreedChange={props.onAgreedChange}
+      errorMessage={props.errorMessage}
+    />
   );
 };
 

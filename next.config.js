@@ -1,27 +1,33 @@
-// const withTM = require("next-transpile-modules")([""]);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: ["images2.imgbox.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images2.imgbox.com",
+      },
+    ],
     formats: ["image/webp"],
     dangerouslyAllowSVG: true,
   },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
+      issuer: /\.[jt]sx?$/,
       use: ["@svgr/webpack"],
     });
 
     return config;
   },
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
   },
 };
 
-// module.exports = withTM(nextConfig);
 module.exports = nextConfig;

@@ -1,20 +1,33 @@
-import React from "react";
-import Modal from "@src/components/Modal";
-import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
-import { useThemeStore } from "@src/zustand_stores/Theme";
-import Paper from "../Paper";
+"use client";
 
-interface IProps {
+import { Button } from "@src/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@src/components/ui/card";
+import { Typography } from "@src/components/ui/typography";
+import { useUserPreferencesStore } from "@src/stores/user-preferences";
+
+interface CookiePolicyModalProps {
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CookiePolicyModal: React.FC<IProps> = ({
+export default function CookiePolicyModal({
   isModalOpen,
   setIsModalOpen,
-}) => {
-  const { setHasAcceptedCookies } = useThemeStore((state) => state);
+}: CookiePolicyModalProps) {
+  const setHasAcceptedCookies = useUserPreferencesStore(
+    (state) => state.setHasAcceptedCookies,
+  );
+
+  if (!isModalOpen) {
+    return null;
+  }
 
   const handleAcknowledge = () => {
     setHasAcceptedCookies(true);
@@ -22,23 +35,22 @@ const CookiePolicyModal: React.FC<IProps> = ({
   };
 
   return (
-    <Paper className="flex flex-col gap-4 p-4 max-w-[400px] fixed bottom-5 right-5 z-70">
-      <Typography variant="h4" className="text-center">
-        Cookie Policy
-      </Typography>
-      <Typography variant="body2">
-        I only use cookies to store the results of your quizzes and feedback.
-        This data is anonymous and used solely to improve your experience.
-      </Typography>
-      <Button
-        variant="contained"
-        className="self-center"
-        onClick={handleAcknowledge}
-      >
-        <Typography variant="body2">I understand</Typography>
-      </Button>
-    </Paper>
+    <Card className="fixed bottom-5 right-5 z-70 max-w-[400px] shadow-lg">
+      <CardHeader>
+        <CardTitle>Cookie Policy</CardTitle>
+        <CardDescription>How we use cookies on CircuLearn</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Typography variant="body-sm">
+          I use cookies only for essential preferences (such as theme). Quiz
+          answers are graded in your browser and are not stored on our servers.
+        </Typography>
+      </CardContent>
+      <CardFooter>
+        <Button onClick={handleAcknowledge} className="w-full">
+          I understand
+        </Button>
+      </CardFooter>
+    </Card>
   );
-};
-
-export default CookiePolicyModal;
+}

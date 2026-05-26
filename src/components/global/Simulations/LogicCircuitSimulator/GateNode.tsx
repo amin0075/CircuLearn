@@ -1,49 +1,17 @@
 import React from "react";
-import { Handle, Position, NodeProps } from "react-flow-renderer";
-import { useThemeStore } from "@src/zustand_stores/Theme";
-import { borderColor } from "@src/utils/colorUtils";
-import {
-  LogicGateAnd,
-  LogicGateOr,
-  LogicGateNot,
-  LogicGateNand,
-  LogicGateNor,
-  LogicGateXor,
-  LogicGateXnor,
-} from "@src/assets/icons";
+import { Handle, Position, NodeProps, Node } from "@xyflow/react";
 
-interface GateNodeData {
-  gateType: string;
-  value?: number;
-}
+import { Typography } from "@src/components/ui/typography";
+import type { GateNodeData } from "@src/lib/circuit/types";
+import { GateIcon } from "@src/lib/gates/gate-icon";
 
-const GateNode: React.FC<NodeProps<GateNodeData>> = ({ data, selected }) => {
-  const { primaryColor } = useThemeStore();
-  const renderIcon = () => {
-    switch (data.gateType) {
-      case "and":
-        return <LogicGateAnd className="w-8 h-8" />;
-      case "or":
-        return <LogicGateOr className="w-8 h-8" />;
-      case "not":
-        return <LogicGateNot className="w-8 h-8" />;
-      case "nand":
-        return <LogicGateNand className="w-8 h-8" />;
-      case "nor":
-        return <LogicGateNor className="w-8 h-8" />;
-      case "xor":
-        return <LogicGateXor className="w-8 h-8" />;
-      case "xnor":
-        return <LogicGateXnor className="w-8 h-8" />;
-      default:
-        return null;
-    }
-  };
+import { CircuitNodeShell } from "./CircuitNodeShell";
 
+type GateNodeType = Node<GateNodeData, "gateNode">;
+
+const GateNode: React.FC<NodeProps<GateNodeType>> = ({ data, selected }) => {
   return (
-    <div
-      className={`bg-white p-2 border rounded shadow ${selected ? borderColor(primaryColor) : ""}`}
-    >
+    <CircuitNodeShell selected={selected}>
       {data.gateType !== "not" && (
         <>
           <Handle
@@ -68,9 +36,15 @@ const GateNode: React.FC<NodeProps<GateNodeData>> = ({ data, selected }) => {
           style={{ top: "50%" }}
         />
       )}
-      <div className="flex items-center space-x-2 text-black">
-        {renderIcon()}
-        <span>{data.gateType.toUpperCase()} Gate</span>
+      <div className="flex items-center gap-2">
+        <GateIcon
+          gateId={data.gateType}
+          className="size-8 shrink-0 text-foreground"
+        />
+        <Typography as="span" variant="label-sm">
+          {data.gateType.toUpperCase()}{" "}
+          <span className="text-muted-foreground">Gate</span>
+        </Typography>
       </div>
       <Handle
         type="source"
@@ -78,7 +52,7 @@ const GateNode: React.FC<NodeProps<GateNodeData>> = ({ data, selected }) => {
         id="output"
         style={{ top: "50%" }}
       />
-    </div>
+    </CircuitNodeShell>
   );
 };
 

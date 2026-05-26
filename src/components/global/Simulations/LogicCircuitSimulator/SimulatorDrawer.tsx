@@ -1,240 +1,215 @@
-import React, { useState } from "react";
-import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
-import {
-  LogicGateAnd,
-  LogicGateOr,
-  LogicGateNot,
-  LogicGateNand,
-  LogicGateNor,
-  LogicGateXor,
-  LogicGateXnor,
-  LightBulbOff,
-  Arrow,
-} from "@src/assets/icons";
+"use client";
 
-interface DrawerProps {
+import * as React from "react";
+import {
+  ChevronRightIcon,
+  CircleDotIcon,
+  LightbulbIcon,
+  MinusCircleIcon,
+  ToggleLeftIcon,
+} from "lucide-react";
+
+import { Button } from "@src/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@src/components/ui/collapsible";
+import { Typography } from "@src/components/ui/typography";
+import type { CircuitNodeType, InputLevelId } from "@src/lib/circuit/types";
+import { LOGIC_GATES, type LogicGateId } from "@src/lib/gates/registry";
+import { cn } from "@src/lib/utils";
+
+interface SimulatorDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  addNode: (nodeType: string, gateType?: string) => void;
+  addNode: (
+    nodeType: CircuitNodeType,
+    gateType?: LogicGateId | InputLevelId,
+  ) => void;
 }
 
-const SimulatorDrawer: React.FC<DrawerProps> = ({
+type SectionKey = "inputs" | "gates" | "outputs";
+
+const elementButtonClass =
+  "h-8 w-full justify-start gap-2 px-2.5 text-left font-normal";
+
+function ElementButton({
+  icon: Icon,
+  label,
+  onClick,
+}: {
+  icon?: React.ComponentType<{ className?: string }>;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <Button
+      type="button"
+      variant="outline"
+      size="sm"
+      className={elementButtonClass}
+      onClick={onClick}
+    >
+      {Icon ? (
+        <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden />
+      ) : null}
+      <Typography as="span" variant="body-sm">
+        {label}
+      </Typography>
+    </Button>
+  );
+}
+
+function ElementsSection({
+  title,
+  sectionKey,
+  open,
+  onOpenChange,
+  children,
+}: {
+  title: string;
+  sectionKey: SectionKey;
+  open: boolean;
+  onOpenChange: (section: SectionKey, open: boolean) => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <Collapsible
+      open={open}
+      onOpenChange={(nextOpen) => onOpenChange(sectionKey, nextOpen)}
+      className="rounded-lg border border-border/60 bg-muted/20"
+    >
+      <CollapsibleTrigger
+        className={cn(
+          "flex w-full items-center justify-between px-3 py-2.5 text-left transition-colors",
+          "hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30",
+        )}
+      >
+        <Typography
+          variant="label-sm"
+          fontWeight="semibold"
+          className="tracking-wide text-muted-foreground uppercase"
+        >
+          {title}
+        </Typography>
+        <ChevronRightIcon
+          className={cn(
+            "size-4 shrink-0 text-muted-foreground transition-transform duration-200",
+            open && "rotate-90",
+          )}
+        />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className="flex flex-col gap-1.5 px-2 pb-2.5">
+          {children}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
+
+export default function SimulatorDrawer({
   isOpen,
   onClose,
   addNode,
-}) => {
-  // Define the state for collapsible sections
-  const [sections, setSections] = useState({
-    inputs: false,
-    gates: false,
-    outputs: false,
+}: SimulatorDrawerProps) {
+  const [openSections, setOpenSections] = React.useState<
+    Record<SectionKey, boolean>
+  >({
+    inputs: true,
+    gates: true,
+    outputs: true,
   });
 
-  // Function to toggle sections (typed as keyof typeof sections)
-  const toggleSection = (section: keyof typeof sections) => {
-    setSections((prevState) => ({
-      ...prevState,
-      [section]: !prevState[section],
-    }));
+  const setSectionOpen = (section: SectionKey, open: boolean) => {
+    setOpenSections((prev) => ({ ...prev, [section]: open }));
   };
 
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black bg-opacity-50 z-10 transition-opacity ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={cn(
+          "fixed inset-x-0 top-14 bottom-0 z-20 bg-black/50 transition-opacity md:hidden",
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
         onClick={onClose}
-      ></div>
-      <div
-        className={`fixed inset-y-0 left-0 w-64 md:rounded-l-10 dark:bg-backgroundDark bg-gray-300 p-4 z-10 transition-transform transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:relative md:flex md:flex-col`}
+        aria-hidden
+      />
+      <aside
+        aria-label="Circuit elements"
+        className={cn(
+          "flex min-h-0 flex-col border-r border-border bg-card",
+          "fixed top-14 bottom-0 left-0 z-30 w-[min(100%,16rem)] shadow-lg transition-transform duration-200 ease-out",
+          "md:relative md:top-auto md:bottom-auto md:z-auto md:h-full md:w-64 md:max-w-64 md:shrink-0 md:translate-x-0 md:shadow-none md:rounded-l-lg",
+          isOpen
+            ? "translate-x-0"
+            : "pointer-events-none -translate-x-full md:pointer-events-auto md:translate-x-0",
+        )}
       >
-        <aside className="md:w-[240px] p-4 dark:bg-backgroundDark bg-gray-300 max-h-full overflow-y-auto">
-          <Typography variant="h4" className="mb-2">
-            Elements
+        <div className="shrink-0 border-b border-border/60 px-4 py-3.5">
+          <Typography variant="heading-sm">Elements</Typography>
+          <Typography variant="body-xs" className="mt-1 text-muted-foreground">
+            Tap a component to add it to the canvas center.
           </Typography>
-          <Typography variant="caption" className="mb-2">
-            Click on the titles to expand and add elements to the canvas.
-          </Typography>
+        </div>
 
-          {/* Inputs Section */}
-          <div
-            onClick={() => toggleSection("inputs")}
-            className="flex items-center justify-between cursor-pointer text-black dark:text-white mt-4 mb-2"
-          >
-            <Typography
-              variant="body2"
-              fontweight="bold"
-              textTransform="uppercase"
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain touch-pan-y p-3">
+          <div className="flex flex-col gap-2">
+            <ElementsSection
+              title="Inputs"
+              sectionKey="inputs"
+              open={openSections.inputs}
+              onOpenChange={setSectionOpen}
             >
-              Inputs
-            </Typography>
-            <Arrow
-              className={`w-4 h-4 transition-all duration-300 ease-in-out ${
-                sections.inputs ? "rotate-[270deg]" : "rotate-90"
-              }`}
-            />
-          </div>
-          <div
-            className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${
-              sections.inputs ? "max-h-[500px]" : "max-h-0"
-            }`}
-          >
-            <Button
-              className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("inputNode")}
-            >
-              <Typography variant="body2" className="text-white">
-                Add Dynamic Input
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("inputNode", "low")}
-            >
-              <Typography variant="body2" className="text-white">
-                Add Low (0)
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-yellow-500 hover:bg-yellow-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("inputNode", "high")}
-            >
-              <Typography variant="body2" className="text-white">
-                Add High (1)
-              </Typography>
-            </Button>
-          </div>
+              <ElementButton
+                icon={ToggleLeftIcon}
+                label="Dynamic input"
+                onClick={() => addNode("inputNode")}
+              />
+              <ElementButton
+                icon={MinusCircleIcon}
+                label="Low (0)"
+                onClick={() => addNode("inputNode", "low")}
+              />
+              <ElementButton
+                icon={CircleDotIcon}
+                label="High (1)"
+                onClick={() => addNode("inputNode", "high")}
+              />
+            </ElementsSection>
 
-          {/* Gates Section */}
-          <div
-            onClick={() => toggleSection("gates")}
-            className="flex items-center justify-between cursor-pointer text-black dark:text-white mt-4 mb-2"
-          >
-            <Typography
-              variant="body2"
-              fontweight="bold"
-              textTransform="uppercase"
+            <ElementsSection
+              title="Gates"
+              sectionKey="gates"
+              open={openSections.gates}
+              onOpenChange={setSectionOpen}
             >
-              Gates
-            </Typography>
-            <Arrow
-              className={`w-4 h-4 transition-all duration-300 ease-in-out ${
-                sections.gates ? "rotate-[270deg]" : "rotate-90"
-              }`}
-            />
-          </div>
-          <div
-            className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${
-              sections.gates ? "max-h-[500px]" : "max-h-0"
-            }`}
-          >
-            <Button
-              className="w-full bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("gateNode", "and")}
-            >
-              <LogicGateAnd className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add AND Gate
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-orange-500 hover:bg-orange-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("gateNode", "or")}
-            >
-              <LogicGateOr className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add OR Gate
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-purple-500 hover:bg-purple-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("gateNode", "not")}
-            >
-              <LogicGateNot className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add NOT Gate
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("gateNode", "nand")}
-            >
-              <LogicGateNand className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add NAND Gate
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-pink-500 hover:bg-pink-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("gateNode", "nor")}
-            >
-              <LogicGateNor className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add NOR Gate
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("gateNode", "xor")}
-            >
-              <LogicGateXor className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add XOR Gate
-              </Typography>
-            </Button>
-            <Button
-              className="w-full bg-teal-500 hover:bg-teal-700 text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("gateNode", "xnor")}
-            >
-              <LogicGateXnor className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add XNOR Gate
-              </Typography>
-            </Button>
-          </div>
+              {LOGIC_GATES.map(({ id, label, Icon }) => (
+                <ElementButton
+                  key={id}
+                  icon={Icon}
+                  label={label}
+                  onClick={() => addNode("gateNode", id)}
+                />
+              ))}
+            </ElementsSection>
 
-          {/* Outputs Section */}
-          <div
-            onClick={() => toggleSection("outputs")}
-            className="flex items-center justify-between cursor-pointer text-black dark:text-white mt-4 mb-2"
-          >
-            <Typography
-              variant="body2"
-              fontweight="bold"
-              textTransform="uppercase"
+            <ElementsSection
+              title="Outputs"
+              sectionKey="outputs"
+              open={openSections.outputs}
+              onOpenChange={setSectionOpen}
             >
-              Outputs
-            </Typography>
-            <Arrow
-              className={`w-4 h-4 transition-all duration-300 ease-in-out ${
-                sections.outputs ? "rotate-[270deg]" : "rotate-90"
-              }`}
-            />
+              <ElementButton
+                icon={LightbulbIcon}
+                label="Output (lamp)"
+                onClick={() => addNode("outputNode")}
+              />
+            </ElementsSection>
           </div>
-          <div
-            className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out ${
-              sections.outputs ? "max-h-[500px]" : "max-h-0"
-            }`}
-          >
-            <Button
-              variant="contained"
-              className="w-full text-white py-2 px-4 rounded flex items-center justify-center mb-2"
-              onClick={() => addNode("outputNode")}
-            >
-              <LightBulbOff className="mr-2 w-6 h-6" />
-              <Typography variant="body2" className="text-white">
-                Add Output (Lamp)
-              </Typography>
-            </Button>
-          </div>
-        </aside>
-      </div>
+        </div>
+      </aside>
     </>
   );
-};
-
-export default SimulatorDrawer;
+}

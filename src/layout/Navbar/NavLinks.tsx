@@ -1,73 +1,57 @@
-// react
-import React, { ReactNode, useEffect, useLayoutEffect, useState } from "react";
+"use client";
 
-// next js
-import { useRouter } from "next/router";
+import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-// components
-import Typography from "@src/components/Typography";
+import { Button } from "@src/components/ui/button";
 import { navRoutes } from "@src/routes";
-import { textColor } from "@src/utils/colorUtils";
-import { useThemeStore } from "@src/zustand_stores/Theme";
+import { cn } from "@src/lib/utils";
+import { useUserPreferencesStore } from "@src/stores/user-preferences";
+
 import UserGuide from "./UserGuide";
 
-interface IProps {
-  children?: ReactNode;
+interface NavLinksProps {
   usedInNavbar?: boolean;
   className?: string;
 }
 
-const NavLinks: React.FC<IProps> = ({ usedInNavbar = true, className }) => {
-  const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { primaryColor, isFirstVisit } = useThemeStore((state) => state);
+export default function NavLinks({
+  usedInNavbar = true,
+  className,
+}: NavLinksProps) {
+  const pathname = usePathname();
+  const [userGuideOpen, setUserGuideOpen] = useState(false);
+  const hasSeenUserGuide = useUserPreferencesStore(
+    (state) => state.hasSeenUserGuide,
+  );
+  const isModalOpen = !hasSeenUserGuide || userGuideOpen;
 
-  useEffect(() => {
-    if (isFirstVisit) {
-      setIsModalOpen(true);
-    }
-  }, [isFirstVisit]);
+  if (!usedInNavbar) {
+    return null;
+  }
 
   return (
-    <div
-      className={`flex gap-5 ${usedInNavbar ? "gap-5 items-center flex-row" : "flex-col items-start px-7 gap-3"} ${className}`}
-    >
+    <div className={cn("flex items-center gap-1", className)}>
       {navRoutes.map((route) => (
-        <Link
-          href={route.url}
+        <Button
           key={route.url}
-          aria-label={`go to ${route.name}`}
+          variant="ghost"
+          size="sm"
+          asChild
+          className={cn(
+            pathname === route.url && "bg-accent text-accent-foreground",
+          )}
         >
-          <Typography
-            textTransform="first-letter-capital"
-            variant="base"
-            fontweight="medium"
-            className={`${
-              router.pathname === route.url
-                ? textColor(primaryColor)
-                : "text-black dark:text-white"
-            }`}
-          >
+          <Link href={route.url} className="capitalize">
             {route.name}
-          </Typography>
-        </Link>
+          </Link>
+        </Button>
       ))}
-      <span
-        className="cursor-pointer"
-        onClick={() => {
-          setIsModalOpen(true);
-        }}
-      >
-        <Typography variant="base" fontweight="medium">
-          User Guide
-        </Typography>
-      </span>
-
-      {/* modal for user guide */}
-      <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <Button variant="ghost" size="sm" onClick={() => setUserGuideOpen(true)}>
+        User Guide
+      </Button>
+      <UserGuide isModalOpen={isModalOpen} setIsModalOpen={setUserGuideOpen} />
     </div>
   );
-};
-
-export default NavLinks;
+}

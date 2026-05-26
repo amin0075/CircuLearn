@@ -1,0 +1,108 @@
+/* Reference roles — not imported in production; semantic colors live in globals.css */
+:root {
+	--radius: 0.625rem;
+
+	/* Base colors using neutral palette */
+	--background: var(--color-gray-50);
+	--foreground: var(--color-gray-800);
+
+	/* Card */
+	--card: var(--color-white);
+	--card-foreground: var(--color-gray-800);
+
+	/* Popover */
+	--popover: var(--color-white);
+	--popover-foreground: var(--color-gray-800);
+
+	/* Primary - Teal */
+	--primary: var(--color-teal-800);
+	--primary-dark: var(--color-teal-900);
+	--primary-light: var(--color-teal-100);
+	--primary-foreground: var(--color-white);
+
+	/* Secondary - Pink-800 */
+	--secondary: var(--color-pink-800);
+	--secondary-dark: var(--color-pink-900);
+	--secondary-light: var(--color-pink-100);
+	--secondary-foreground: var(--color-white);
+
+	/* Muted - Neutral */
+	--muted: var(--color-gray-100);
+	--muted-foreground: var(--color-gray-600);
+
+	/* Accent - Light Teal */
+	--accent: var(--color-teal-50);
+	--accent-foreground: var(--color-teal-900);
+
+	/* Status colors */
+	--destructive: var(--color-red-700);
+	--destructive-foreground: var(--color-white);
+	--success: var(--color-green-600);
+	--warning: var(--color-amber-400);
+
+	/* Border & Input */
+	--border: var(--color-gray-300);
+	--input: var(--color-gray-700);
+	--ring: var(--color-teal-800);
+
+	/* Additional Roles */
+	--outline: var(--color-white);
+	--outline-dark: var(--color-gray-800);
+	--backdrop: var(--color-white);
+	--bg-gradient-start: var(--color-white) 50%;
+	--bg-gradient-end: #f1f1e6 50%;
+}
+
+.dark {
+	/* Base colors using neutral palette */
+	--background: var(--color-gray-950);
+	--foreground: var(--color-gray-50);
+
+	/* Card */
+	--card: var(--color-gray-900);
+	--card-foreground: var(--color-gray-50);
+
+	/* Popover */
+	--popover: var(--color-gray-900);
+	--popover-foreground: var(--color-gray-50);
+
+	/* Primary */
+	--primary: var(--color-teal-700);
+	--primary-dark: var(--color-teal-800);
+	--primary-light: var(--color-teal-900);
+	--primary-foreground: var(--color-white);
+
+	/* Secondary */
+	--secondary: var(--color-pink-300);
+	--secondary-dark: var(--color-pink-400);
+	--secondary-light: var(--color-pink-100);
+	--secondary-foreground: var(--color-gray-950);
+
+	/* Muted - Neutral dark */
+	--muted: var(--color-gray-800);
+	--muted-foreground: var(--color-gray-400);
+
+	/* Accent — tinted surface for chips/toggles (not flat teal-900 on charcoal) */
+	--accent: color-mix(
+		in srgb,
+		var(--color-teal-500) 22%,
+		var(--color-gray-800)
+	);
+	--accent-foreground: var(--color-teal-50);
+
+	/* Status colors */
+	--destructive: var(--color-red-300);
+	--destructive-foreground: var(--color-gray-950);
+	--success: var(--color-green-600);
+	--warning: var(--color-amber-400);
+
+	/* Border & Input */
+	--border: var(--color-gray-800);
+	--input: var(--color-gray-700);
+	--ring: var(--color-teal-600);
+	--ring-foreground: var(--color-white);
+
+	--outline: var(--color-gray-800);
+	--outline-dark: var(--color-white);
+	--backdrop: var(--color-gray-800);
+}

@@ -1,25 +1,25 @@
-import { Edge, Node, Position } from "react-flow-renderer";
+import { Edge, Node, Position } from "@xyflow/react";
 
 export const initialNodes: Node[] = [
   {
     id: "1",
     type: "inputNode",
     data: { label: "Input", value: 0, isDynamic: true },
-    position: { x: 250, y: 5 },
+    position: { x: 200, y: 20 },
     sourcePosition: Position.Right,
   },
   {
     id: "2",
     type: "inputNode",
     data: { label: "Input", value: 0, isDynamic: true },
-    position: { x: 250, y: 100 },
+    position: { x: 200, y: 120 },
     sourcePosition: Position.Right,
   },
   {
     id: "3",
     type: "gateNode",
     data: { gateType: "and", value: 0, label: "AND Gate" },
-    position: { x: 440, y: 50 },
+    position: { x: 480, y: 70 },
     targetPosition: Position.Left,
     sourcePosition: Position.Right,
   },
@@ -27,7 +27,7 @@ export const initialNodes: Node[] = [
     id: "4",
     type: "outputNode",
     data: { label: "Lamp", value: 0 },
-    position: { x: 600, y: 50 },
+    position: { x: 700, y: 70 },
     targetPosition: Position.Left,
   },
 ];

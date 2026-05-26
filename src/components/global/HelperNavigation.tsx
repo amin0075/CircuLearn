@@ -1,56 +1,63 @@
-// react
-import React, { ReactNode } from "react";
+import Link from "next/link"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
-// next js
-import Link from "next/link";
+import { Button } from "@src/components/ui/button"
+import { Typography } from "@src/components/ui/typography"
+import { cn } from "@src/lib/utils"
 
-// components
-import Typography from "@src/components/Typography";
-import Button from "@src/components/Button";
-
-interface IProps {
-  children?: ReactNode;
-  hasPrevious?: boolean;
-  hasNext?: boolean;
-  previousRoute?: string;
-  previousRouteLabel?: string;
-  NextRouteLabel?: string;
-  nextRoute?: string;
+interface HelperNavigationProps {
+  hasPrevious?: boolean
+  hasNext?: boolean
+  previousRoute?: string
+  previousRouteLabel?: string
+  NextRouteLabel?: string
+  nextRoute?: string
+  className?: string
 }
 
-const HelperNavigation: React.FC<IProps> = (props) => {
-  const {
-    hasPrevious = true,
-    hasNext = true,
-    previousRoute = "",
-    previousRouteLabel = "",
-    NextRouteLabel = "",
-    nextRoute = "",
-  } = props;
-
+const HelperNavigation = ({
+  hasPrevious = true,
+  hasNext = true,
+  previousRoute = "",
+  previousRouteLabel = "",
+  NextRouteLabel = "",
+  nextRoute = "",
+  className,
+}: HelperNavigationProps) => {
   return (
-    <div
-      className={`flex items-center gap-5  w-full max-w-lg mx-auto mt-6 ${!hasPrevious && hasNext ? "justify-end" : "justify-between"}`}
+    <nav
+      aria-label="Lesson navigation"
+      className={cn(
+        "flex w-full flex-wrap items-center gap-3",
+        !hasPrevious && hasNext ? "justify-end" : "justify-between",
+        className,
+      )}
     >
-      {hasPrevious && (
-        <Link href={previousRoute}>
-          <Button variant="contained">
-            <Typography variant="body2">
-              Previous: {previousRouteLabel}
+      {hasPrevious ? (
+        <Button asChild variant="outline" size="lg" className="gap-1.5">
+          <Link href={previousRoute}>
+            <ChevronLeft className="size-4" aria-hidden />
+            <Typography variant="label-sm" as="span">
+              {previousRouteLabel}
             </Typography>
-          </Button>
-        </Link>
+          </Link>
+        </Button>
+      ) : (
+        <span />
       )}
 
-      {hasNext && (
-        <Link href={nextRoute}>
-          <Button variant="contained">
-            <Typography variant="body2">Next: {NextRouteLabel}</Typography>
-          </Button>
-        </Link>
-      )}
-    </div>
-  );
-};
+      {hasNext ? (
+        <Button asChild size="lg" className="gap-1.5">
+          <Link href={nextRoute}>
+            <Typography variant="label-sm" as="span">
+              {NextRouteLabel}
+            </Typography>
+            <ChevronRight className="size-4" aria-hidden />
+          </Link>
+        </Button>
+      ) : null}
+    </nav>
+  )
+}
 
-export default HelperNavigation;
+export default HelperNavigation

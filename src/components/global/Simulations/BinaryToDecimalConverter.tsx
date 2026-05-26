@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import Paper from "@src/components/Paper";
-import Typography from "@src/components/Typography";
-import TextField from "@src/components/TextField";
-import Button from "@src/components/Button";
+import { useState } from "react";
 
-const BinaryToDecimalConverter: React.FC = () => {
+import { Button } from "@src/components/ui/button";
+import { Field } from "@src/components/ui/field";
+import { Card } from "@src/components/ui/card";
+import { Typography } from "@src/components/ui/typography";
+
+const BinaryToDecimalConverter = () => {
   const [binary, setBinary] = useState("");
   const [steps, setSteps] = useState<number[]>([]);
   const [decimal, setDecimal] = useState<number | null>(null);
@@ -14,7 +15,7 @@ const BinaryToDecimalConverter: React.FC = () => {
     if (isValidBinary) {
       const reversedBinary = binary.split("").reverse();
       const calculatedSteps = reversedBinary.map(
-        (bit, index) => parseInt(bit) * Math.pow(2, index)
+        (bit, index) => parseInt(bit) * Math.pow(2, index),
       );
       const decimalValue = calculatedSteps.reduce((acc, step) => acc + step, 0);
 
@@ -28,12 +29,14 @@ const BinaryToDecimalConverter: React.FC = () => {
   };
 
   return (
-    <Paper className="p-4 mb-4">
-      <Typography variant="h3">Binary to Decimal Converter</Typography>
-      <div className="flex gap-4 items-center mt-4">
-        <TextField
+    <Card className="mb-4 p-4">
+      <Typography variant="heading-xl" as="h2">
+        Binary to Decimal Converter
+      </Typography>
+      <div className="mt-4 flex items-center gap-4">
+        <Field
           variant="bordered"
-          label={<Typography variant="body1">Binary Number</Typography>}
+          label={<Typography variant="body-base">Binary Number</Typography>}
           value={binary}
           onChange={(e) => {
             setSteps([]);
@@ -41,34 +44,32 @@ const BinaryToDecimalConverter: React.FC = () => {
           }}
           className="px-2"
         />
-        <Button
-          variant="contained"
-          className="self-end"
-          onClick={convertToDecimal}
-        >
+        <Button className="self-end" onClick={convertToDecimal}>
           Convert
         </Button>
       </div>
       {steps.length > 0 && (
         <div className="mt-4">
-          <Typography variant="body1">Calculation Steps:</Typography>
-          <div className="flex items-center mt-2">
+          <Typography variant="body-base">Calculation Steps:</Typography>
+          <div className="mt-2 flex items-center">
             {binary.split("").map((digit, index) => (
-              <div key={index} className="flex flex-col items-center mx-2">
-                <Typography variant="h4">{digit}</Typography>
-                <Typography variant="body2">
+              <div key={index} className="mx-2 flex flex-col items-center">
+                <Typography variant="heading-xl" as="h2">
+                  {digit}
+                </Typography>
+                <Typography variant="body-sm">
                   × 2<sup>{binary.length - index - 1}</sup>
                 </Typography>
-                <Typography variant="body2">= {steps[index]}</Typography>
+                <Typography variant="body-sm">= {steps[index]}</Typography>
               </div>
             ))}
           </div>
-          <Typography variant="body1" className="mt-4">
+          <Typography variant="body-base" className="mt-4">
             Sum of all values = <strong>{decimal}</strong>
           </Typography>
         </div>
       )}
-    </Paper>
+    </Card>
   );
 };
 

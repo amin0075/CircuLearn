@@ -4,10 +4,9 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   darkMode: "class",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./public/**/*.html",
-    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     colors: {
@@ -134,21 +133,6 @@ module.exports = {
         bold: 700,
         extraBold: 800,
       },
-      fontSize: {
-        h1: ["52px", "1.85"],
-        h1_md: ["40px", "1.85"],
-        h1_sm: ["30px", "1.85"],
-        h2: ["36px", "1.3"],
-        h2_sm: ["24px", "1.3"],
-        h3: ["30px", "1.375"],
-        h3_sm: ["22px", "1.375"],
-        h4: ["20px", "1.375"],
-        base: ["18px", "1.625"],
-        body1: ["16px", "1.6"],
-        body2: ["14px", "1.5"],
-        caption: ["12px", "1.25"],
-        caption2: ["10px", "1.625"],
-      },
       borderRadius: {
         30: "30px",
         20: "20px",
@@ -180,5 +164,5 @@ module.exports = {
     padding: ["responsive", "direction"],
     textAlign: ["responsive", "direction"],
   },
-  plugins: [require("flowbite/plugin"), require("tailwindcss-dir")()],
+  plugins: [require("@tailwindcss/typography")],
 };

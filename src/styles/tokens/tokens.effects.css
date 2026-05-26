@@ -1,0 +1,20 @@
+@theme {
+	/* Drop Shadows */
+	--drop-shadow-md: 0 3px 3px #0000001f;
+	--drop-shadow-lg: 0 4px 4px #00000026;
+
+	/* Easing Functions */
+	--ease-in: cubic-bezier(0.4, 0, 1, 1);
+	--ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+	/* Animations */
+	--animate-spin: spin 1s linear infinite;
+	--animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	--animate-flash: flash 1s ease 2;
+	--animate-scroll: scroll 50s linear infinite;
+
+	/* Transitions */
+	--default-transition-duration: 0.15s;
+	--default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

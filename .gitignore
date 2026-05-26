@@ -37,3 +37,9 @@ yarn-error.log*
 next-env.d.ts
 
 certificates
+.env
+.env*.local
+
+.codacy
+.agents
+.cursor

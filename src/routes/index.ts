@@ -1,28 +1,6 @@
 // types
 import { IRoute } from "@src/@types/route";
 
-// icons
-import {
-  Presentation,
-  ChipCircuit,
-  Binary,
-  Boolean,
-  Table,
-  LogicGateAnd,
-  LogicGateNot,
-  LogicGateOr,
-  LogicGateNand,
-  LogicGateNor,
-  LogicGateXor,
-  LogicGateXnor,
-  Test,
-  Feedback,
-  Glossary,
-  Faq,
-  Reference,
-  LawIcon,
-} from "@src/assets/icons";
-
 type IMainRoute = {
   introduction: IRoute;
   basicConcepts: IRoute[];
@@ -55,11 +33,9 @@ const ROUTES_URL = {
   xorGate: "/gates/xor-gate",
   xnorGate: "/gates/xnor-gate",
   quiz: "/final-step/quiz",
-  feedback: "/final-step/feedback",
   glossary: "/additional-resources/glossary",
   faq: "/additional-resources/faq",
   references: "/additional-resources/references",
-  results: "/additional-resources/results",
   contact: "/contact",
   privacy: "/privacy",
   simulator: "/simulator",
@@ -69,100 +45,78 @@ const mainRoutes: IMainRoute = {
   introduction: {
     name: "Intro to logic circuits",
     url: ROUTES_URL.introduction,
-    icon: Presentation,
   },
 
   basicConcepts: [
     {
       name: "Binary System",
       url: ROUTES_URL.binarySystem,
-      icon: Binary,
     },
     {
       name: "Truth Table",
       url: ROUTES_URL.truthTable,
-      icon: Table,
     },
   ],
   BooleanAlgebra: [
     {
       name: "Introduction",
       url: ROUTES_URL.booleanAlgebraIntro,
-      icon: Boolean,
     },
     {
       name: "Annulment Law",
       url: ROUTES_URL.AnnulmentLaw,
-      icon: LawIcon,
     },
     {
       name: "Identity Law",
       url: ROUTES_URL.IdentityLaw,
-      icon: LawIcon,
     },
     {
       name: "Idempotent Law",
       url: ROUTES_URL.IdempotentLaw,
-      icon: LawIcon,
     },
     {
       name: "Complement Law",
       url: ROUTES_URL.ComplementLaw,
-      icon: LawIcon,
     },
     {
       name: "Commutative Law",
       url: ROUTES_URL.CommutativeLaw,
-      icon: LawIcon,
     },
     {
       name: "Double Negation Law",
       url: ROUTES_URL.DoubleNegationLaw,
-      icon: LawIcon,
     },
     {
       name: "de Morgan´s Theorem",
       url: ROUTES_URL.deMorganTheorem,
-      icon: LawIcon,
     },
     {
       name: "Distributive Law",
       url: ROUTES_URL.DistributiveLaw,
-      icon: LawIcon,
     },
     {
       name: "Absorptive Law",
       url: ROUTES_URL.AbsorptiveLaw,
-      icon: LawIcon,
     },
     {
       name: "Associative Law",
       url: ROUTES_URL.AssociativeLaw,
-      icon: LawIcon,
     },
   ],
   gates: [
-    { name: "AND Gate", url: ROUTES_URL.andGate, icon: LogicGateAnd },
-    { name: "OR Gate", url: ROUTES_URL.orGate, icon: LogicGateOr },
-    { name: "NOT Gate", url: ROUTES_URL.notGate, icon: LogicGateNot },
-    { name: "NAND Gate", url: ROUTES_URL.nandGate, icon: LogicGateNand },
-    { name: "NOR Gate", url: ROUTES_URL.norGate, icon: LogicGateNor },
-    { name: "XOR Gate", url: ROUTES_URL.xorGate, icon: LogicGateXor },
-    { name: "XNOR Gate", url: ROUTES_URL.xnorGate, icon: LogicGateXnor },
+    { name: "AND Gate", url: ROUTES_URL.andGate },
+    { name: "OR Gate", url: ROUTES_URL.orGate },
+    { name: "NOT Gate", url: ROUTES_URL.notGate },
+    { name: "NAND Gate", url: ROUTES_URL.nandGate },
+    { name: "NOR Gate", url: ROUTES_URL.norGate },
+    { name: "XOR Gate", url: ROUTES_URL.xorGate },
+    { name: "XNOR Gate", url: ROUTES_URL.xnorGate },
   ],
-  finalStep: [
-    { name: "Quiz", url: ROUTES_URL.quiz, icon: Test },
-    {
-      name: "Feedback about the application",
-      url: ROUTES_URL.feedback,
-      icon: Feedback,
-    },
-  ],
+  finalStep: [{ name: "Quiz", url: ROUTES_URL.quiz }],
   additionalResources: [
-    { name: "Glossary of terms", url: ROUTES_URL.glossary, icon: Glossary },
-    { name: "FAQs", url: ROUTES_URL.faq, icon: Faq },
-    { name: "Results", url: ROUTES_URL.results, icon: Test },
-    { name: "References", url: ROUTES_URL.references, icon: Reference },
+    { name: "Glossary of terms", url: ROUTES_URL.glossary },
+    { name: "FAQs", url: ROUTES_URL.faq },
+    { name: "References", url: ROUTES_URL.references },
   ],
 };
 

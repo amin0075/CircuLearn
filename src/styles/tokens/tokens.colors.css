@@ -1,0 +1,150 @@
+/* Reference palette — not imported in production; semantic colors live in globals.css */
+@theme {
+	/* Colors */
+	--color-white: #ffffff;
+	--color-black: #000000;
+
+	/* Neutral - Shadcn Palette */
+	--color-neutral-50: #fafafa;
+	--color-neutral-100: #f5f5f5;
+	--color-neutral-200: #e5e5e5;
+	--color-neutral-300: #d4d4d4;
+	--color-neutral-400: #a3a3a3;
+	--color-neutral-500: #737373;
+	--color-neutral-600: #525252;
+	--color-neutral-700: #404040;
+	--color-neutral-800: #262626;
+	--color-neutral-900: #171717;
+	--color-neutral-950: #0a0a0a;
+
+	/* Gray - Tailwind Palette */
+	--color-gray-50: #fafafa;
+	--color-gray-100: #f5f5f5;
+	--color-gray-150: #ededed;
+	--color-gray-200: #eeeeee;
+	--color-gray-300: #e0e0e0;
+	--color-gray-400: #bdbdbd;
+	--color-gray-500: #9e9e9e;
+	--color-gray-600: #757575;
+	--color-gray-700: #616161;
+	--color-gray-800: #424242;
+	--color-gray-900: #212121;
+	--color-gray-950: #0a0a0a;
+
+	--color-green-50: #e8f5e9;
+	--color-green-100: #c8e6c9;
+	--color-green-200: #a5d6a7;
+	--color-green-300: #81c784;
+	--color-green-400: #66bb6a;
+	--color-green-500: #4caf50;
+	--color-green-600: #43a047;
+	--color-green-700: #388e3c;
+	--color-green-800: #2e7d32;
+	--color-green-900: #1b5e20;
+
+	--color-red-50: #ffebee;
+	--color-red-100: #ffcdd2;
+	--color-red-200: #ef9a9a;
+	--color-red-300: #e57373;
+	--color-red-400: #ef5350;
+	--color-red-500: #f44336;
+	--color-red-600: #e53935;
+	--color-red-700: #d32f2f;
+	--color-red-800: #c62828;
+	--color-red-900: #b71c1c;
+
+	--color-yellow-50: #fffde7;
+	--color-yellow-100: #fff9c4;
+	--color-yellow-200: #fff59d;
+	--color-yellow-300: #fff176;
+	--color-yellow-400: #ffee58;
+	--color-yellow-500: #ffeb38;
+	--color-yellow-600: #ffd835;
+	--color-yellow-700: #fbc02d;
+	--color-yellow-800: #f9a825;
+	--color-yellow-900: #f57f17;
+
+	--color-teal-50: #e0f2f1;
+	--color-teal-100: #b2dfdb;
+	--color-teal-200: #80cbc4;
+	--color-teal-300: #4db6ac;
+	--color-teal-400: #26a69a;
+	--color-teal-500: #009688;
+	--color-teal-600: #00897b;
+	--color-teal-700: #00796b;
+	--color-teal-800: #00695c;
+	--color-teal-900: #004d40;
+
+	--color-cyan-50: #e0f7fa;
+	--color-cyan-100: #b2ebf2;
+	--color-cyan-200: #80deea;
+	--color-cyan-300: #4dd0e1;
+	--color-cyan-400: #26c6da;
+	--color-cyan-500: #00bcd4;
+	--color-cyan-600: #00acc1;
+	--color-cyan-700: #0097a7;
+	--color-cyan-800: #00838f;
+	--color-cyan-900: #006064;
+
+	--color-indigo-50: #e8eaf6;
+	--color-indigo-100: #c5cae9;
+	--color-indigo-200: #9fa8da;
+	--color-indigo-300: #7986cb;
+	--color-indigo-400: #5c6bc0;
+	--color-indigo-500: #3f51b5;
+	--color-indigo-600: #3949ab;
+	--color-indigo-700: #303f9f;
+	--color-indigo-800: #283593;
+	--color-indigo-900: #1a237e;
+
+	--color-purple-50: #ede7f6;
+	--color-purple-100: #d1c4e9;
+	--color-purple-200: #b39ddb;
+	--color-purple-300: #9575cd;
+	--color-purple-400: #7e57c2;
+	--color-purple-500: #673ab7;
+	--color-purple-600: #5e35b1;
+	--color-purple-700: #512da8;
+	--color-purple-800: #4527a0;
+	--color-purple-900: #311b92;
+
+	--color-pink-50: #fce4ec;
+	--color-pink-100: #f8bbd0;
+	--color-pink-200: #f48fb1;
+	--color-pink-300: #f06292;
+	--color-pink-400: #ec407a;
+	--color-pink-600: #d81b60;
+	--color-pink-800: #ad1457;
+	--color-pink-900: #880e4f;
+
+	/* Rose */
+	--color-rose-50: oklch(96.9% 0.015 12.422);
+
+	/* Slate */
+	--color-slate-50: oklch(98.4% 0.003 247.858);
+	--color-slate-600: oklch(44.6% 0.043 257.281);
+
+	/* Blue - oklch values */
+	--color-blue-50: oklch(97% 0.014 254.604);
+	--color-blue-100: oklch(93.2% 0.032 255.585);
+	--color-blue-300: oklch(80.9% 0.105 251.813);
+	--color-blue-400: oklch(70.7% 0.165 254.624);
+	--color-blue-800: oklch(42.4% 0.199 265.638);
+
+	/* Orange */
+	--color-orange-600: oklch(64.6% 0.222 41.116);
+
+	/* Amber */
+	--color-amber-400: #fbbf24;
+	--color-amber-A200: #ffd740;
+
+	/* Green Accent */
+	--color-green-A200: #69f0ae;
+
+	/* Deep Orange */
+	--color-deep-orange: #ff6e40;
+
+	/* Brand Colors */
+	--lightgold: #f1f1e6;
+	--brand-green: #00c09e;
+}

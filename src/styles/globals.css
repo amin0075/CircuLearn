@@ -1,102 +1,293 @@
-@import url(./Plus-Jakarta-Sans-font-face.css);
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* CircuLearn — Tailwind v4 + shadcn (preset bfXmtpMry / radix-mira) */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./tokens/index.css";
+
+@custom-variant dark (&:is(.dark *));
+@config "../../tailwind.config.js";
+
+/* --- Design tokens -------------------------------------------------------- */
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.148 0.004 228.8);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.148 0.004 228.8);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.148 0.004 228.8);
+  --primary: oklch(0.508 0.118 165.612);
+  --primary-foreground: oklch(0.979 0.021 166.113);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.963 0.002 197.1);
+  --muted-foreground: oklch(0.56 0.021 213.5);
+  --accent: oklch(0.963 0.002 197.1);
+  --accent-foreground: oklch(0.218 0.008 223.9);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.925 0.005 214.3);
+  --input: oklch(0.925 0.005 214.3);
+  --ring: oklch(0.723 0.014 214.4);
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.987 0.002 197.1);
+  --sidebar-foreground: oklch(0.148 0.004 228.8);
+  --sidebar-primary: oklch(0.596 0.145 163.225);
+  --sidebar-primary-foreground: oklch(0.979 0.021 166.113);
+  --sidebar-accent: oklch(0.963 0.002 197.1);
+  --sidebar-accent-foreground: oklch(0.218 0.008 223.9);
+  --sidebar-border: oklch(0.925 0.005 214.3);
+  --sidebar-ring: oklch(0.723 0.014 214.4);
+}
+
+.dark {
+  --background: oklch(0.148 0.004 228.8);
+  --foreground: oklch(0.987 0.002 197.1);
+  --card: oklch(0.218 0.008 223.9);
+  --card-foreground: oklch(0.987 0.002 197.1);
+  --popover: oklch(0.218 0.008 223.9);
+  --popover-foreground: oklch(0.987 0.002 197.1);
+  --primary: oklch(0.432 0.095 166.913);
+  --primary-foreground: oklch(0.979 0.021 166.113);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.275 0.011 216.9);
+  --muted-foreground: oklch(0.723 0.014 214.4);
+  --accent: oklch(0.275 0.011 216.9);
+  --accent-foreground: oklch(0.987 0.002 197.1);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.56 0.021 213.5);
+  --chart-1: oklch(0.809 0.105 251.813);
+  --chart-2: oklch(0.623 0.214 259.815);
+  --chart-3: oklch(0.546 0.245 262.881);
+  --chart-4: oklch(0.488 0.243 264.376);
+  --chart-5: oklch(0.424 0.199 265.638);
+  --sidebar: oklch(0.218 0.008 223.9);
+  --sidebar-foreground: oklch(0.987 0.002 197.1);
+  --sidebar-primary: oklch(0.696 0.17 162.48);
+  --sidebar-primary-foreground: oklch(0.262 0.051 172.552);
+  --sidebar-accent: oklch(0.275 0.011 216.9);
+  --sidebar-accent-foreground: oklch(0.987 0.002 197.1);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.56 0.021 213.5);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-title: var(--font-heading);
+  --font-text: var(--font-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* --- Base ----------------------------------------------------------------- */
 
 @layer base {
   html {
-    /* font-family: PlusJakartaSans, sans-serif; */
     scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+  }
+
+  *,
+  *::before,
+  *::after {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  a {
+    @apply text-inherit no-underline;
   }
 }
 
+/* --- Project utilities ---------------------------------------------------- */
+
 @layer utilities {
-  /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .without-ring {
+    @apply focus:ring-0 focus:ring-offset-0;
+  }
+
+  .svg-draw {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+  }
+
+  .custom-backdrop::backdrop {
+    @apply backdrop-blur-md;
   }
 }
 
-html,
-body {
+/* --- React Flow (logic circuit simulator) --------------------------------- */
+
+.logic-circuit-flow .react-flow__node {
   padding: 0;
-  margin: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.logic-circuit-flow .react-flow__viewport svg {
+  overflow: visible;
 }
 
-/* ul {
-  display: flex;
-  flex-direction: column;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-  padding-left: 1rem;
-} */
-
-* {
-  box-sizing: border-box;
-  /* transition: all 0.2s ease-in-out; */
-}
-
-.without-ring {
-  @apply focus:ring-0 focus:ring-offset-0;
-}
-
-.svg-draw {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-}
-
-.custom-backdrop::backdrop {
-  @apply backdrop-blur-md;
-}
-
-/* react flow */
-.react-flow__node-default {
-  padding: 10px;
-  border-radius: 5px;
-  background: #ffffff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  font-weight: 500;
-  text-align: center;
-}
-
-.react-flow__edge-path {
-  stroke: #007acc;
+.logic-circuit-flow .react-flow__edge-path {
+  stroke: var(--primary);
   stroke-width: 3;
 }
 
-.react-flow__node-input {
-  border-color: #007acc;
-  background-color: #e3f2fd;
-}
-
-.react-flow__node-output {
-  border-color: #e91e63;
-  background-color: #fce4ec;
-}
-
-/* CSS to increase handle size on mobile */
-.react-flow__handle {
+.logic-circuit-flow .react-flow__handle {
   width: 10px !important;
   height: 10px !important;
+  background: var(--primary) !important;
+  border: 2px solid var(--background) !important;
+}
+
+.logic-circuit-flow .react-flow__controls {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 4px color-mix(in oklch, var(--foreground) 12%, transparent);
+}
+
+.logic-circuit-flow .react-flow__controls-button {
+  background: var(--card) !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--foreground) !important;
+  fill: var(--foreground) !important;
+}
+
+.logic-circuit-flow .react-flow__controls-button:hover {
+  background: var(--accent) !important;
+}
+
+.logic-circuit-flow .react-flow__controls-button:last-child {
+  border-bottom: none !important;
+}
+
+.logic-circuit-flow .react-flow__minimap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+}
+
+.logic-circuit-flow .react-flow__minimap-mask {
+  fill: color-mix(in oklch, var(--background) 72%, transparent);
+}
+
+.logic-circuit-flow .react-flow__edge-text {
+  fill: var(--muted-foreground);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.logic-circuit-flow .react-flow__edge-textbg {
+  fill: var(--card);
+}
+
+.logic-circuit-flow .react-flow__background pattern circle {
+  fill: color-mix(in oklch, var(--muted-foreground) 28%, transparent);
 }
 
 @media (max-width: 768px) {
-  .react-flow__handle {
+  .logic-circuit-flow .react-flow__handle {
     width: 13px !important;
     height: 13px !important;
+  }
+}
+
+/* Theme toggle — circular view transition reveal (useThemeToggleTransition) */
+
+@keyframes themeReveal {
+  from {
+    clip-path: circle(0 at var(--theme-reveal-x) var(--theme-reveal-y));
+  }
+  to {
+    clip-path: circle(
+      var(--theme-reveal-radius) at var(--theme-reveal-x) var(--theme-reveal-y)
+    );
+  }
+}
+
+@supports (view-transition-name: root) {
+  :root {
+    --theme-reveal-x: 50vw;
+    --theme-reveal-y: 50vh;
+    --theme-reveal-radius: 0px;
+    --theme-reveal-duration: 1s;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-new(root) {
+    animation: themeReveal var(--theme-reveal-duration) ease-in-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @supports (view-transition-name: root) {
+    ::view-transition-new(root) {
+      animation: none;
+      clip-path: none;
+    }
   }
 }

@@ -1,0 +1,47 @@
+# Dependencies and build artifacts
+node_modules/
+.pnp
+.pnp.js
+.yarn/
+.next/
+out/
+build/
+.vercel/
+.npm-cache/
+
+# Git (large, rarely needed for coding context)
+.git/
+
+# Testing and reports
+coverage/
+test-results/
+playwright-report/
+
+# Lock files (large, low context value)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+skills-lock.json
+
+# Local and env
+.env
+.env*.local
+
+# Codacy CLI workspace
+.codacy/
+
+# Static assets (binary, low context value)
+public/fonts/
+public/old/
+
+
+# Generated schema (@-mention when working on GraphQL)
+src/lib/graphql/schema.graphql
+
+# Misc
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+*.pem
+vector-store/
+# example/

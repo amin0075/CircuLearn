@@ -1,20 +1,17 @@
-import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Typography from '@src/components/Typography';
-import { NextRouter } from 'next/router';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Typography } from "@/components/ui/typography";
 
 interface INotify {
   message: string;
-  type: 'error' | 'success' | 'info' | 'warning';
-  router: NextRouter;
+  type: "error" | "success" | "info" | "warning";
   position?:
-    | 'top-right'
-    | 'top-center'
-    | 'top-left'
-    | 'bottom-right'
-    | 'bottom-center'
-    | 'bottom-left';
+    | "top-right"
+    | "top-center"
+    | "top-left"
+    | "bottom-right"
+    | "bottom-center"
+    | "bottom-left";
   autoClose?: number;
   hideProgressBar?: boolean;
   closeOnClick?: boolean;
@@ -25,9 +22,8 @@ interface INotify {
 
 export const notify = ({
   message,
-  router,
   type,
-  position = 'top-right',
+  position = "top-right",
   autoClose = 5000,
   hideProgressBar = false,
   closeOnClick = true,
@@ -40,12 +36,10 @@ export const notify = ({
     autoClose,
     hideProgressBar,
     closeOnClick,
-    rtl: router.locale === 'en-US' ? false : true,
+    rtl: false,
     pauseOnFocusLoss,
     draggable,
     pauseOnHover,
     type,
   });
 };
-
-export { ToastContainer };

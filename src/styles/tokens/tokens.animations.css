@@ -1,0 +1,43 @@
+/**
+ * View transition theme reveal (see `useThemeToggleTransition`).
+ * WCAG 2.3.3: `prefers-reduced-motion` handled at bottom.
+ */
+
+@keyframes themeReveal {
+	from {
+		clip-path: circle(0 at var(--theme-reveal-x) var(--theme-reveal-y));
+	}
+	to {
+		clip-path: circle(
+			var(--theme-reveal-radius) at var(--theme-reveal-x) var(--theme-reveal-y)
+		);
+	}
+}
+
+@supports (view-transition-name: root) {
+	:root {
+		--theme-reveal-x: 50vw;
+		--theme-reveal-y: 50vh;
+		--theme-reveal-radius: 0px;
+		--theme-reveal-duration: 1s;
+	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
+		mix-blend-mode: normal;
+	}
+
+	::view-transition-new(root) {
+		animation: themeReveal var(--theme-reveal-duration) ease-in-out both;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	@supports (view-transition-name: root) {
+		::view-transition-new(root) {
+			animation: none;
+			clip-path: none;
+		}
+	}
+}

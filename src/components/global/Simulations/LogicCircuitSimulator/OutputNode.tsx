@@ -1,34 +1,37 @@
 import React from "react";
-import { Handle, Position, NodeProps } from "react-flow-renderer";
-import { useThemeStore } from "@src/zustand_stores/Theme";
-import { borderColor } from "@src/utils/colorUtils";
-import { LightBulbOn, LightBulbOff } from "@src/assets/icons";
-import Typography from "@src/components/Typography";
+import { Handle, Position, NodeProps, Node } from "@xyflow/react";
 
-const OutputNode: React.FC<NodeProps> = ({ data, selected }) => {
+import { Typography } from "@src/components/ui/typography";
+import { LightBulbOff, LightBulbOn } from "@src/assets/light-bulb-icons";
+
+import { CircuitNodeShell, SignalValueBadge } from "./CircuitNodeShell";
+
+interface OutputNodeData extends Record<string, unknown> {
+  label: string;
+  value?: number;
+}
+
+type OutputNodeType = Node<OutputNodeData, "outputNode">;
+
+const OutputNode: React.FC<NodeProps<OutputNodeType>> = ({
+  data,
+  selected,
+}) => {
   const isOn = data.value === 1;
-  const { primaryColor } = useThemeStore();
 
   return (
-    <div
-      className={`p-2 dark:bg-backgroundDark bg-backgroundLight border rounded shadow ${selected ? borderColor(primaryColor) : "border-black dark:border-white"}`}
-    >
+    <CircuitNodeShell selected={selected}>
       <Handle type="target" position={Position.Left} id="a" />
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center gap-2">
         {isOn ? (
-          <LightBulbOn className="w-10 h-10 text-yellow-500" />
+          <LightBulbOn className="size-10 shrink-0 text-amber-500" />
         ) : (
-          <LightBulbOff className="w-10 h-10 text-gray-500" />
+          <LightBulbOff className="size-10 shrink-0 text-muted-foreground" />
         )}
-        <Typography variant="body2">{data.label}</Typography>
-        <Typography
-          variant="body2"
-          className={`${isOn ? "text-green-500 dark:text-green-500" : "text-red-500 dark:text-red-500"} dark:bg-white p-1 px-2 bg-black rounded-md`}
-        >
-          {data.value}
-        </Typography>
+        <Typography variant="label-sm">{data.label}</Typography>
+        <SignalValueBadge value={data.value as number | undefined} />
       </div>
-    </div>
+    </CircuitNodeShell>
   );
 };
 
