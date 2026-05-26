@@ -17,7 +17,7 @@ export function CircuitNodeShell({
   return (
     <div
       className={cn(
-        "rounded-lg bg-card p-2 text-card-foreground shadow-sm",
+        "rounded-lg border border-input bg-card p-2 text-card-foreground shadow-none",
         selected && "ring-2 ring-primary/60 ring-offset-2 ring-offset-background",
         className,
       )}

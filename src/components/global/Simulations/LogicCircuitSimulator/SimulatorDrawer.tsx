@@ -32,7 +32,7 @@ interface SimulatorDrawerProps {
 type SectionKey = "inputs" | "gates" | "outputs";
 
 const elementButtonClass =
-  "h-8 w-full justify-start gap-2 px-2.5 text-left font-normal";
+  "h-8 w-full justify-start gap-2 border-input bg-background px-2.5 text-left font-normal shadow-none dark:bg-background/90";
 
 function ElementButton({
   icon: Icon,
